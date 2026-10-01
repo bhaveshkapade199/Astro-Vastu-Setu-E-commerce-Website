@@ -1,0 +1,48 @@
+/* ============================================
+   ASTRO VASTU SETU - Theme Variables
+   Change these colors to update the entire website instantly!
+   ============================================ */
+
+:root {
+  /* Main Brand Colors */
+  --primary-green: #1a5c2e;
+  --dark-green: #0f3d1e;
+  --light-green: #2d7a45;
+  --accent-green: #3a9455;
+  
+  /* Background & Accent Colors */
+  --cream: #f5f0e8;
+  --ivory: #faf7f0;
+  --gold: #c9a227;
+  --gold-light: #e8c547;
+  --gold-dark: #a07d1c;
+  
+  /* Text Colors */
+  --dark-charcoal: #1e1e1e;
+  --text-dark: #2c2c2c;
+  --text-medium: #555555;
+  --text-light: #888888;
+  --white: #ffffff;
+  
+  /* Functional Colors */
+  --red-price: #cc0000;
+  --success: #28a745;
+  --border-light: #e0d9cc;
+  
+  /* UI Elements */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  
+  /* Typography */
+  --font-main: 'Poppins', 'Segoe UI', sans-serif;
+  --font-marathi: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+  
+  /* Animations */
+  --transition: all 0.3s ease;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement-bar"><span class="marquee-text">📦 Track your order | Fast & Safe Delivery across India | Support: +91 98765 43210</span></div>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
+    <div class="header-actions" style="margin-left:auto;">
+      <button class="action-btn" onclick="location.href='wishlist.html'"><span class="icon">🤍</span><span>Wishlist</span><span class="badge" id="wishlistBadge">0</span></button>
+      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-header">
+  <h1>📦 Track Your Order</h1>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Track Order</span></div>
+</div>
+
+<div class="tracking-layout">
+  <!-- SEARCH -->
+  <div class="tracking-search-box">
+    <h3>🔍 Enter Order Details</h3>
+    <div class="tracking-input-row">
+      <input type="text" id="trackOrderId" placeholder="Order ID (e.g. AVS12345678)">
+      <input type="text" id="trackMobile" placeholder="Registered Mobile Number">
+      <button onclick="trackOrder()">🔍 Track Order</button>
+    </div>
+    <p style="font-size:13px;color:var(--text-light);margin-top:12px;">Enter your Order ID (from confirmation email/SMS) and registered mobile number.</p>
+  </div>
+
+  <!-- TRACKING RESULT -->
+  <div id="trackingResult"></div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Auto-fill from last order
+  const order = JSON.parse(localStorage.getItem('avs_last_order') || 'null');
+  if (order) {
+    document.getElementById('trackOrderId').value = order.id;
+    document.getElementById('trackMobile').value = order.customer.mobile;
+  }
+  updateBadges();
+});
+
+function trackOrder() {
+  const orderId = document.getElementById('trackOrderId').value.trim();
+  const mobile = document.getElementById('trackMobile').value.trim();
+  const result = document.getElementById('trackingResult');
+  
+  if (!orderId || !mobile) {
+    showToast('❌ Please enter both Order ID and Mobile Number', 'error');
+    return;
+  }
+  
+  // Check saved orders
+  const orders = JSON.parse(localStorage.getItem('avs_orders') || '[]');
+  const order = orders.find(o => o.id === orderId && o.customer.mobile === mobile);
+  
+  if (!order) {
+    result.innerHTML = `
+      <div style="background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border-light);text-align:center;">
+        <div style="font-size:48px;margin-bottom:12px;">😕</div>
+        <h3 style="font-size:18px;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Order Not Found</h3>
+        <p style="color:var(--text-medium);font-size:14px;">No order found with this ID and mobile combination. Please check and try again.</p>
+        <p style="margin-top:12px;font-size:13px;color:var(--text-light);">Need help? <a href="https://wa.me/919876543210" style="color:var(--primary-green);font-weight:600;">Contact us on WhatsApp</a></p>
+      </div>`;
+    return;
+  }
+  
+  // Determine tracking steps based on order date
+  const now = Date.now();
+  const orderTime = parseInt(order.id.replace('AVS',''));
+  const hoursPassed = (now - orderTime) / (1000 * 60 * 60);
+  
+  const steps = [
+    { name: 'Order Placed', time: new Date(orderTime).toLocaleString('en-IN'), done: true, active: false },
+    { name: 'Payment Confirmed', time: new Date(orderTime + 5*60*1000).toLocaleString('en-IN'), done: true, active: false },
+    { name: 'Processing', time: hoursPassed > 2 ? new Date(orderTime + 2*60*60*1000).toLocaleString('en-IN') : '', done: hoursPassed > 2, active: hoursPassed <= 2 && hoursPassed > 0.5 },
+    { name: 'Packed', time: hoursPassed > 24 ? 'Packed & Ready' : '', done: hoursPassed > 24, active: hoursPassed > 2 && hoursPassed <= 24 },
+    { name: 'Shipped', time: hoursPassed > 48 ? 'Dispatched' : '', done: hoursPassed > 48, active: hoursPassed > 24 && hoursPassed <= 48 },
+    { name: 'Out for Delivery', time: hoursPassed > 120 ? 'Out for Delivery' : '', done: hoursPassed > 120, active: hoursPassed > 48 && hoursPassed <= 120 },
+    { name: 'Delivered', time: hoursPassed > 168 ? 'Delivered' : '', done: hoursPassed > 168, active: false },
+  ];
+  
+  result.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;flex-wrap:wrap;">
+      <div class="tracking-timeline">
+        <h3>📍 Order Status — #${order.id}</h3>
+        <div style="margin-bottom:16px;padding:12px;background:var(--cream);border-radius:8px;font-size:13px;">
+          <strong>Customer:</strong> ${order.customer.name} | <strong>Mobile:</strong> ${order.customer.mobile}<br>
+          <strong>Delivery To:</strong> ${order.customer.address}
+        </div>
+        <div class="timeline">
+          ${steps.map(s => `
+            <div class="timeline-step ${s.done ? 'done' : s.active ? 'active' : ''}">
+              <div class="timeline-dot">${s.done ? '✓' : s.active ? '●' : ''}</div>
+              <div class="timeline-content">
+                <div class="timeline-step-name">${s.name}</div>
+                ${s.time ? `<div class="timeline-step-time">${s.time}</div>` : ''}
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div style="background:var(--white);border-radius:16px;padding:24px;border:1px solid var(--border-light);">
+        <h4 style="font-size:16px;font-weight:700;color:var(--primary-green);margin-bottom:16px;">📦 Order Summary</h4>
+        ${order.items.map(item => {
+          const p = PRODUCTS.find(x => x.id === item.id);
+          if (!p) return '';
+          return `<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-light);">
+            <div style="width:44px;height:44px;background:var(--cream);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px;">${p.emoji}</div>
+            <div><div style="font-size:13px;font-weight:600;">${p.name}</div><div style="font-size:12px;color:var(--text-light);">Qty: ${item.qty}</div></div>
+            <div style="margin-left:auto;font-size:13px;font-weight:700;color:var(--primary-green);">₹${p.price * item.qty}</div>
+          </div>`;
+        }).join('')}
+        <div style="display:flex;justify-content:space-between;padding-top:12px;font-size:16px;font-weight:800;color:var(--primary-green);">
+          <span>Total</span><span>₹${order.total}</span>
+        </div>
+        <div style="margin-top:20px;padding:12px;background:var(--cream);border-radius:8px;font-size:13px;">
+          <div style="font-weight:700;margin-bottom:4px;">📅 Estimated Delivery</div>
+          <div style="color:var(--primary-green);font-weight:800;">${order.estimatedDelivery}</div>
+        </div>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:10px;">Need Help?</h4>
+          <a href="https://wa.me/919876543210" target="_blank" style="display:flex;align-items:center;gap:8px;color:var(--primary-green);font-weight:600;font-size:13px;margin-bottom:6px;">💬 +91 98765 43210</a>
+          <a href="mailto:support@astrovastusetu.com" style="display:flex;align-items:center;gap:8px;color:var(--primary-green);font-weight:600;font-size:13px;">📧 support@astrovastusetu.com</a>
+        </div>
+        <button onclick="location.href='contact.html'" style="width:100%;margin-top:16px;background:var(--cream);color:var(--primary-green);border:2px solid var(--primary-green);padding:10px;border-radius:8px;font-weight:600;font-size:13px;">📞 Contact Support</button>
+      </div>
+    </div>`;
+}
+</script>
+
+<footer class="site-footer" style="margin-top:60px;">
+  <div class="footer-inner">
+    <div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p><div class="payment-badges"><span class="payment-badge" style="background:#002970;">Razorpay</span><span class="payment-badge">UPI</span></div></div>
+  </div>
+</footer>
+</body>
+</html>

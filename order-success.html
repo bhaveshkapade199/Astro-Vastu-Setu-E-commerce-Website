@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Successful - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
+    <div class="header-actions" style="margin-left:auto;">
+      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="order-success">
+  <div class="success-card">
+    <div class="success-icon">🎉</div>
+    <h2>ORDER PLACED SUCCESSFULLY!</h2>
+    <p id="thankYouMsg">Thank you for your order!</p>
+
+    <div class="order-details-box" id="orderDetailsBox">
+      <div class="order-detail-row"><span class="key">Order ID</span><span class="val" id="orderId">—</span></div>
+      <div class="order-detail-row"><span class="key">Payment Status</span><span class="val" style="color:var(--success);">✓ Successful</span></div>
+      <div class="order-detail-row"><span class="key">Payment Method</span><span class="val" id="paymentMethod">Razorpay</span></div>
+      <div class="order-detail-row"><span class="key">Total Amount</span><span class="val" id="orderTotal">—</span></div>
+      <div class="order-detail-row"><span class="key">Delivery To</span><span class="val" id="deliveryAddress" style="font-size:12px;">—</span></div>
+      <div class="order-detail-row"><span class="key">Estimated Delivery</span><span class="val" id="estDelivery">—</span></div>
+    </div>
+
+    <div style="background:var(--cream);border-radius:12px;padding:16px;margin-bottom:24px;font-size:14px;color:var(--text-medium);">
+      📧 Order confirmation sent to your email &amp; 💬 WhatsApp.<br>
+      📦 You'll receive a tracking number once shipped.
+    </div>
+
+    <div class="success-actions">
+      <a href="track.html" class="btn-primary" style="display:inline-flex;">📦 TRACK ORDER</a>
+      <a id="whatsappConfirm" href="#" target="_blank" class="whatsapp-big-btn" style="padding:12px 24px;">💬 Contact on WhatsApp</a>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="account.html" style="color:var(--primary-green);font-weight:600;font-size:14px;">📋 View My Orders</a>
+      <span style="color:var(--border-light);">|</span>
+      <a href="shop.html" style="color:var(--primary-green);font-weight:600;font-size:14px;">🛍️ Continue Shopping</a>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const order = JSON.parse(localStorage.getItem('avs_last_order') || 'null');
+  if (!order) {
+    location.href = 'index.html';
+    return;
+  }
+  
+  document.getElementById('thankYouMsg').textContent = `Thank You, ${order.customer.name}! Your order has been confirmed.`;
+  document.getElementById('orderId').textContent = '#' + order.id;
+  document.getElementById('paymentMethod').textContent = 'Razorpay';
+  document.getElementById('orderTotal').textContent = '₹' + order.total;
+  document.getElementById('deliveryAddress').textContent = order.customer.address;
+  document.getElementById('estDelivery').textContent = order.estimatedDelivery;
+  document.getElementById('whatsappConfirm').href = `https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20placed%20an%20order%20%23${order.id}.%20Please%20confirm.`;
+  
+  updateBadges();
+  
+  // Confetti effect
+  setTimeout(() => showConfetti(), 300);
+});
+
+function showConfetti() {
+  const colors = ['#c9a227','#1a5c2e','#e8c547','#ffffff'];
+  for (let i = 0; i < 80; i++) {
+    const el = document.createElement('div');
+    el.style.cssText = `position:fixed;top:-10px;left:${Math.random()*100}vw;width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'};animation:fall ${Math.random()*2+2}s linear forwards;z-index:9999;`;
+    document.body.appendChild(el);
+    
+    const style = document.createElement('style');
+    style.textContent = `@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0;}}`;
+    document.head.appendChild(style);
+    
+    setTimeout(() => el.remove(), 4000);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement-bar">
+  <span class="marquee-text">🛒 Free Shipping above ₹999 | Use code NAVRATRI10 for 10% OFF | 100% Secure Payments</span>
+</div>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
+    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+    <div class="search-bar"><input type="text" id="searchInput" placeholder="Search products..."><button onclick="doSearch()">🔍</button></div>
+    <div class="header-actions">
+      <button class="action-btn" onclick="openLoginModal()"><span class="icon">👤</span><span>Account</span></button>
+      <button class="action-btn" onclick="location.href='wishlist.html'"><span class="icon">🤍</span><span>Wishlist</span><span class="badge" id="wishlistBadge">0</span></button>
+      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+    </div>
+  </div>
+  <nav class="main-nav"><div class="nav-inner"><ul class="nav-list">
+    <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+    <li><a href="shop.html" class="nav-link">💎 Bracelets</a></li>
+    <li><a href="shop.html?cat=lakshmipotli" class="nav-link">🪔 Lakshmi Potli</a></li>
+    <li><a href="about.html" class="nav-link">About Us</a></li>
+    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+  </ul></div></nav>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li><li><a href="account.html">👤 Account</a></li></ul></nav></div>
+
+<div class="page-header">
+  <h1>🛒 Your Shopping Cart</h1>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Cart</span></div>
+</div>
+
+<div class="cart-layout" id="cartLayout">
+  <!-- rendered by JS -->
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></div></div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Policies</h4><ul><li><a href="shipping.html">Shipping</a></li><li><a href="returns.html">Returns</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
+      <div class="footer-col"><h4>Get In Touch</h4><div class="footer-contact-item"><span class="ci-icon">📞</span><span>+91 98765 43210</span></div></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p><div class="payment-badges"><span class="payment-badge" style="background:#002970;">Razorpay</span><span class="payment-badge">UPI</span><span class="payment-badge" style="background:#1434CB;">VISA</span></div></div>
+  </div>
+</footer>
+
+<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span><span>WhatsApp</span></a></div>
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<nav class="mobile-bottom-nav"><ul>
+  <li><a href="index.html"><span class="bn-icon">🏠</span> Home</a></li>
+  <li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li>
+  <li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li>
+  <li><a href="cart.html" class="active"><span class="bn-icon">🛒</span> Cart</a></li>
+  <li><a href="account.html"><span class="bn-icon">👤</span> Account</a></li>
+</ul></nav>
+
+<div class="overlay" id="loginOverlay"><div class="modal"><div class="modal-close" onclick="closeLoginModal()">✕</div><h2 style="text-align:center;">Welcome Back</h2><div class="form-group" style="margin-bottom:14px;"><label>Mobile / Email</label><input type="text" placeholder="Enter mobile or email" style="width:100%;"></div><div class="form-group" style="margin-bottom:20px;"><label>Password</label><input type="password" placeholder="Enter password" style="width:100%;"></div><button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Login →</button></div></div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+let appliedCouponDiscount = 0;
+
+document.addEventListener('DOMContentLoaded', renderCart);
+
+function renderCart() {
+  const cart = getCart();
+  const container = document.getElementById('cartLayout');
+  
+  if (!cart.length) {
+    container.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:80px 20px;">
+        <div style="font-size:72px;margin-bottom:16px;">🛒</div>
+        <h2 style="font-size:24px;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Your cart is empty</h2>
+        <p style="color:var(--text-medium);margin-bottom:24px;">Add some amazing spiritual products to your cart!</p>
+        <a href="shop.html" class="btn-primary" style="display:inline-flex;">🛍️ Shop Now</a>
+      </div>`;
+    return;
+  }
+  
+  let subtotal = 0;
+  const itemsHTML = cart.map(item => {
+    const p = PRODUCTS.find(x => x.id === item.id);
+    if (!p) return '';
+    const total = p.price * item.qty;
+    subtotal += total;
+    return `
+      <div class="cart-item" id="cartItem_${p.id}">
+        <div class="cart-product-info">
+          <div class="cart-img">${p.emoji}</div>
+          <div>
+            <div class="cart-product-name"><a href="product.html?id=${p.id}">${p.name}</a></div>
+            <div style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${p.material.substring(0,40)}...</div>
+            <button class="cart-remove" onclick="removeCartItem(${p.id})">🗑️ Remove</button>
+            <button class="cart-remove" style="margin-left:12px;color:var(--primary-green);" onclick="moveToWishlist(${p.id})">❤️ Move to Wishlist</button>
+          </div>
+        </div>
+        <div style="font-size:16px;font-weight:600;color:var(--primary-green);">₹${p.price}</div>
+        <div class="cart-qty">
+          <div class="qty-control">
+            <button class="qty-btn" onclick="updateCartQty(${p.id},-1)">−</button>
+            <input type="number" class="qty-input" value="${item.qty}" min="1" max="10" style="width:50px;" onchange="setCartQty(${p.id},this.value)">
+            <button class="qty-btn" onclick="updateCartQty(${p.id},1)">+</button>
+          </div>
+        </div>
+        <div class="cart-total-price">₹${total}</div>
+        <button class="cart-remove-btn" onclick="removeCartItem(${p.id})">✕</button>
+      </div>`;
+  }).join('');
+
+  const shipping = subtotal >= 999 ? 0 : 99;
+  const finalTotal = subtotal - appliedCouponDiscount + shipping;
+
+  container.innerHTML = `
+    <div>
+      <div class="cart-table">
+        <div class="cart-table-header">
+          <div>Product</div><div>Price</div><div>Quantity</div><div>Total</div><div></div>
+        </div>
+        ${itemsHTML}
+      </div>
+      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="shop.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--primary-green);font-weight:600;font-size:14px;border:2px solid var(--primary-green);padding:10px 20px;border-radius:8px;">← Continue Shopping</a>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <h3>Price Details</h3>
+      <div class="coupon-box">
+        <h4>🎟️ Apply Coupon</h4>
+        <div class="coupon-row">
+          <input type="text" id="couponInput" placeholder="Enter coupon code" style="text-transform:uppercase;">
+          <button onclick="applyCouponCode()">Apply</button>
+        </div>
+        <div id="couponMsg"></div>
+        <div style="margin-top:8px;font-size:12px;color:var(--text-light);">Try: NAVRATRI10, WELCOME50, DIWALI200</div>
+      </div>
+      <div class="price-breakdown">
+        <div class="price-line"><span class="label">Subtotal (${cart.length} item${cart.length>1?'s':''})</span><span class="value">₹${subtotal}</span></div>
+        <div class="price-line"><span class="label">Discount</span><span class="discount-val">−₹${appliedCouponDiscount}</span></div>
+        <div class="price-line"><span class="label">Shipping</span><span class="value">${shipping === 0 ? '<span style="color:var(--success);font-weight:700;">FREE</span>' : '₹'+shipping}</span></div>
+      </div>
+      <div class="price-total"><span>Total Amount</span><span>₹${finalTotal}</span></div>
+      ${subtotal < 999 ? `<p style="font-size:12px;color:var(--success);margin-top:8px;text-align:center;">Add ₹${999-subtotal} more for FREE shipping!</p>` : ''}
+      <button class="btn-checkout" onclick="location.href='checkout.html'">🛒 PROCEED TO CHECKOUT →</button>
+      <div class="safe-payment">🔒 Safe & Secure Payments by Razorpay</div>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;">
+        <span style="background:#002970;color:white;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700;">Razorpay</span>
+        <span style="background:#f3f3f3;color:#333;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700;">UPI</span>
+        <span style="background:#1434CB;color:white;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700;">VISA</span>
+      </div>
+    </div>
+  `;
+}
+
+function updateCartQty(id, delta) {
+  const cart = getCart();
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty = Math.max(1, Math.min(10, item.qty + delta));
+  setCart(cart);
+  renderCart();
+}
+
+function setCartQty(id, val) {
+  const cart = getCart();
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty = Math.max(1, Math.min(10, parseInt(val) || 1));
+  setCart(cart);
+  renderCart();
+}
+
+function removeCartItem(id) {
+  removeFromCart(id);
+  renderCart();
+  showToast('Item removed from cart', '');
+}
+
+function moveToWishlist(id) {
+  removeFromCart(id);
+  const wl = getWishlist();
+  if (!wl.includes(id)) {
+    wl.push(id);
+    setWishlist(wl);
+  }
+  renderCart();
+  showToast('❤️ Moved to wishlist!', 'gold');
+}
+
+function applyCouponCode() {
+  const code = document.getElementById('couponInput').value.trim();
+  const cart = getCart();
+  const subtotal = cart.reduce((s, i) => {
+    const p = PRODUCTS.find(x => x.id === i.id);
+    return p ? s + p.price * i.qty : s;
+  }, 0);
+  
+  const result = applyCoupon(code, subtotal);
+  const msgEl = document.getElementById('couponMsg');
+  
+  if (result.valid) {
+    appliedCouponDiscount = result.discount;
+    msgEl.innerHTML = `<div class="coupon-success">✅ ${result.message}</div>`;
+    renderCart();
+  } else {
+    appliedCouponDiscount = 0;
+    msgEl.innerHTML = `<div style="color:var(--red-price);font-size:13px;margin-top:6px;">❌ ${result.message}</div>`;
+  }
+}
+</script>
+</body>
+</html>

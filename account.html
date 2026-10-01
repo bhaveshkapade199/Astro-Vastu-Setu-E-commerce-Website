@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement-bar"><span class="marquee-text">👤 Manage your orders, wishlist and profile | Astro Vastu Setu</span></div>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
+    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+    <div class="search-bar"><input type="text" id="searchInput" placeholder="Search products..."><button onclick="doSearch()">🔍</button></div>
+    <div class="header-actions">
+      <button class="action-btn" onclick="location.href='wishlist.html'"><span class="icon">🤍</span><span>Wishlist</span><span class="badge" id="wishlistBadge">0</span></button>
+      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+    </div>
+  </div>
+  <nav class="main-nav"><div class="nav-inner"><ul class="nav-list">
+    <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+    <li><a href="shop.html" class="nav-link">💎 Shop</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul></div></nav>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
+
+<div class="page-header">
+  <h1>👤 My Account</h1>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span>My Account</span></div>
+</div>
+
+<div class="account-layout">
+  <!-- SIDEBAR -->
+  <div class="account-sidebar">
+    <div class="account-user-info">
+      <div class="account-avatar" id="accountAvatar">U</div>
+      <div class="account-name" id="accountName">Guest User</div>
+      <div class="account-email" id="accountEmail">Please login</div>
+    </div>
+    <nav class="account-nav">
+      <ul>
+        <li><a href="#" class="active" onclick="showSection('orders',this)"><span class="nav-icon">📦</span> My Orders</a></li>
+        <li><a href="#" onclick="showSection('track',this)"><span class="nav-icon">🔍</span> Track Order</a></li>
+        <li><a href="wishlist.html"><span class="nav-icon">❤️</span> Wishlist</a></li>
+        <li><a href="#" onclick="showSection('addresses',this)"><span class="nav-icon">📍</span> Saved Addresses</a></li>
+        <li><a href="#" onclick="showSection('profile',this)"><span class="nav-icon">👤</span> Personal Details</a></li>
+        <li><a href="#" onclick="showSection('password',this)"><span class="nav-icon">🔐</span> Change Password</a></li>
+        <li><a href="#" onclick="doLogout()"><span class="nav-icon">🚪</span> Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="account-content" id="accountContent">
+    <!-- Loaded dynamically -->
+  </div>
+</div>
+
+<footer class="site-footer" style="margin-top:40px;">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></div></div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Policies</h4><ul><li><a href="shipping.html">Shipping</a></li><li><a href="returns.html">Returns</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+      <div class="footer-col"><h4>Get In Touch</h4><div class="footer-contact-item"><span class="ci-icon">📞</span><span>+91 98765 43210</span></div></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span><span>WhatsApp</span></a></div>
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<nav class="mobile-bottom-nav"><ul>
+  <li><a href="index.html"><span class="bn-icon">🏠</span> Home</a></li>
+  <li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li>
+  <li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li>
+  <li><a href="cart.html"><span class="bn-icon">🛒</span> Cart</a></li>
+  <li><a href="account.html" class="active"><span class="bn-icon">👤</span> Account</a></li>
+</ul></nav>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+let currentSection = 'orders';
+let userData = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+  userData = JSON.parse(localStorage.getItem('avs_user') || 'null');
+  if (!userData) {
+    // Show login prompt
+    document.getElementById('accountContent').innerHTML = `
+      <div style="text-align:center;padding:60px 20px;">
+        <div style="font-size:64px;margin-bottom:16px;">🔐</div>
+        <h3 style="font-size:22px;font-weight:700;margin-bottom:8px;">Please Login to Continue</h3>
+        <p style="color:var(--text-medium);margin-bottom:24px;">Sign in to view your orders, wishlist, and profile.</p>
+        <button class="btn-primary" style="display:inline-flex;" onclick="openLoginModal()">👤 Login / Sign Up</button>
+      </div>`;
+    return;
+  }
+  
+  const name = userData.name || 'Customer';
+  document.getElementById('accountName').textContent = name;
+  document.getElementById('accountEmail').textContent = userData.email || '+91 98765 43210';
+  document.getElementById('accountAvatar').textContent = name.charAt(0).toUpperCase();
+  
+  updateBadges();
+  showSection('orders', document.querySelector('.account-nav a'));
+});
+
+function showSection(section, link) {
+  currentSection = section;
+  document.querySelectorAll('.account-nav a').forEach(a => a.classList.remove('active'));
+  if (link) link.classList.add('active');
+  
+  const content = document.getElementById('accountContent');
+  
+  if (section === 'orders') {
+    const orders = JSON.parse(localStorage.getItem('avs_orders') || '[]');
+    
+    content.innerHTML = `<h3>📦 My Orders</h3>` + (orders.length ? orders.map(o => `
+      <div class="order-card">
+        <div class="order-card-header">
+          <span class="order-id">Order #${o.id}</span>
+          <span class="order-date">📅 ${o.date}</span>
+          <span class="order-status-badge status-delivered">✓ Confirmed</span>
+        </div>
+        <div class="order-card-body">
+          ${o.items.map(item => {
+            const p = PRODUCTS.find(x => x.id === item.id);
+            if (!p) return '';
+            return `<div class="order-product-line">
+              <div class="opl-img">${p.emoji}</div>
+              <div class="opl-name">${p.name}</div>
+              <div class="opl-qty">×${item.qty}</div>
+              <div class="opl-price">₹${p.price * item.qty}</div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div class="order-card-footer">
+          <span class="order-total">Total: ₹${o.total}</span>
+          <div style="display:flex;gap:8px;">
+            <button onclick="location.href='track.html'" style="background:var(--primary-green);color:white;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;">📦 Track Order</button>
+            <a href="https://wa.me/919876543210" target="_blank" style="background:#25d366;color:white;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;display:inline-flex;">💬 Help</a>
+          </div>
+        </div>
+      </div>`).join('') : `<div class="empty-state"><div class="empty-icon">📦</div><h3>No orders yet</h3><p>Start shopping to see your orders here!</p><a href="shop.html" class="btn-primary" style="display:inline-flex;">🛍️ Shop Now</a></div>`);
+  
+  } else if (section === 'track') {
+    content.innerHTML = `<h3>🔍 Track Order</h3><p style="margin-bottom:20px;color:var(--text-medium);">Enter your order details to track delivery status.</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;"><input type="text" id="accTrackId" placeholder="Order ID" style="flex:1;min-width:150px;"><input type="text" id="accTrackMobile" placeholder="Mobile Number" style="flex:1;min-width:150px;"><button onclick="location.href='track.html'" style="background:var(--primary-green);color:white;padding:10px 20px;border-radius:6px;font-weight:600;">Track →</button></div>`;
+  
+  } else if (section === 'addresses') {
+    content.innerHTML = `<h3>📍 Saved Addresses</h3><div class="empty-state"><div class="empty-icon">📍</div><h3>No saved addresses</h3><p>Save addresses during checkout for faster ordering.</p></div>`;
+  
+  } else if (section === 'profile') {
+    const user = userData || {};
+    content.innerHTML = `
+      <h3>👤 Personal Details</h3>
+      <div style="max-width:500px;">
+        <div class="form-group" style="margin-bottom:16px;"><label>Full Name</label><input type="text" value="${user.name || ''}" style="width:100%;"></div>
+        <div class="form-group" style="margin-bottom:16px;"><label>Mobile Number</label><input type="tel" value="${user.mobile || '+91 98765 43210'}" style="width:100%;"></div>
+        <div class="form-group" style="margin-bottom:16px;"><label>Email Address</label><input type="email" value="${user.email || ''}" style="width:100%;"></div>
+        <button class="btn-primary" onclick="showToast('✅ Profile updated!','success')">Save Changes</button>
+      </div>`;
+  
+  } else if (section === 'password') {
+    content.innerHTML = `
+      <h3>🔐 Change Password</h3>
+      <div style="max-width:500px;">
+        <div class="form-group" style="margin-bottom:16px;"><label>Current Password</label><input type="password" placeholder="Enter current password" style="width:100%;"></div>
+        <div class="form-group" style="margin-bottom:16px;"><label>New Password</label><input type="password" placeholder="Enter new password" style="width:100%;"></div>
+        <div class="form-group" style="margin-bottom:20px;"><label>Confirm New Password</label><input type="password" placeholder="Confirm new password" style="width:100%;"></div>
+        <button class="btn-primary" onclick="showToast('✅ Password changed successfully!','success')">Update Password</button>
+      </div>`;
+  }
+}
+
+function doLogout() {
+  localStorage.removeItem('avs_user');
+  showToast('👋 Logged out successfully', '');
+  setTimeout(() => location.href = 'index.html', 1000);
+}
+
+function openLoginModal() {
+  // Redirect to index which has login modal
+  location.href = 'index.html#login';
+}
+</script>
+</body>
+</html>

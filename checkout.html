@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement-bar">
+  <span class="marquee-text">🔒 100% Secure Checkout | Powered by Razorpay | UPI • Cards • Net Banking • Wallets</span>
+</div>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
+    <div class="header-actions" style="margin-left:auto;">
+      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="page-header">
+  <h1>🛒 Checkout</h1>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <a href="cart.html">Cart</a> › <span>Checkout</span></div>
+</div>
+
+<!-- CHECKOUT STEPS -->
+<div style="max-width:1400px;margin:0 auto;padding:20px 40px 0;">
+  <div class="checkout-steps">
+    <div class="checkout-step done"><div class="step-num">✓</div> Cart</div>
+    <div class="checkout-step active"><div class="step-num">2</div> Shipping Address</div>
+    <div class="checkout-step"><div class="step-num">3</div> Delivery Method</div>
+    <div class="checkout-step"><div class="step-num">4</div> Payment</div>
+    <div class="checkout-step"><div class="step-num">5</div> Confirmation</div>
+  </div>
+</div>
+
+<div class="checkout-layout">
+  <!-- LEFT: FORMS -->
+  <div>
+    <!-- CUSTOMER DETAILS -->
+    <div class="form-section">
+      <h3>👤 Customer Details</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="fullName" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number *</label>
+          <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="Enter email (for order confirmation)" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- DELIVERY ADDRESS -->
+    <div class="form-section">
+      <h3>📍 Delivery Address</h3>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label>House / Flat No., Building *</label>
+        <input type="text" id="address1" placeholder="House/Flat No., Building Name" style="width:100%;" required>
+      </div>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label>Street / Area / Locality *</label>
+        <input type="text" id="address2" placeholder="Street, Area, Landmark" style="width:100%;" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>City *</label>
+          <input type="text" id="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+          <label>State *</label>
+          <select id="state" style="width:100%;" required>
+            <option value="">Select State</option>
+            <option>Maharashtra</option><option>Gujarat</option><option>Delhi</option>
+            <option>Karnataka</option><option>Tamil Nadu</option><option>Rajasthan</option>
+            <option>Uttar Pradesh</option><option>Madhya Pradesh</option><option>West Bengal</option>
+            <option>Andhra Pradesh</option><option>Telangana</option><option>Pune</option>
+            <option>Bihar</option><option>Punjab</option><option>Haryana</option>
+            <option>Himachal Pradesh</option><option>Uttarakhand</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label>Pincode *</label>
+        <input type="text" id="pincode" placeholder="6-digit pincode" maxlength="6" style="width:200px;" required>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+        <input type="checkbox" style="accent-color:var(--primary-green);width:16px;height:16px;border:none;padding:0;border-radius:2px;">
+        Save this address for future orders
+      </label>
+    </div>
+
+    <!-- DELIVERY METHOD -->
+    <div class="form-section">
+      <h3>🚚 Delivery Method</h3>
+      <div class="delivery-options">
+        <label class="delivery-option selected">
+          <input type="radio" name="delivery" value="standard" checked onchange="updateDelivery(0,'Standard')">
+          <div class="delivery-option-info">
+            <div class="do-name">🚚 Standard Delivery</div>
+            <div class="do-desc">Estimated Delivery: 3–7 Working Days | Safe & Tracked</div>
+          </div>
+          <div class="delivery-option-price" id="stdPrice">FREE</div>
+        </label>
+        <label class="delivery-option">
+          <input type="radio" name="delivery" value="express" onchange="updateDelivery(99,'Express')">
+          <div class="delivery-option-info">
+            <div class="do-name">⚡ Express Delivery</div>
+            <div class="do-desc">Estimated Delivery: 1–2 Working Days | Priority Shipping</div>
+          </div>
+          <div class="delivery-option-price">₹99</div>
+        </label>
+      </div>
+      <p style="font-size:12px;color:var(--success);margin-top:10px;" id="freeShippingMsg"></p>
+    </div>
+
+    <!-- COUPON -->
+    <div class="form-section">
+      <h3>🎟️ Apply Coupon</h3>
+      <div class="coupon-row">
+        <input type="text" id="checkoutCoupon" placeholder="Enter coupon code" style="text-transform:uppercase;">
+        <button onclick="applyCheckoutCoupon()">Apply</button>
+      </div>
+      <div id="checkoutCouponMsg" style="margin-top:8px;"></div>
+      <p style="font-size:12px;color:var(--text-light);margin-top:6px;">Available: NAVRATRI10 | WELCOME50 | DIWALI200 | FIRST20</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: ORDER SUMMARY -->
+  <div class="checkout-order-summary">
+    <h3>📦 Order Summary</h3>
+    <div id="orderProductsList"></div>
+    <div class="price-breakdown" style="margin-top:16px;" id="checkoutPriceBreakdown"></div>
+    <div class="price-total" id="checkoutTotal">
+      <span>Total</span><span>₹0</span>
+    </div>
+    <button class="btn-pay" onclick="proceedToPayment()">
+      🔒 Pay Securely with Razorpay
+    </button>
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap;">
+      <span style="background:#002970;color:white;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;">Razorpay</span>
+      <span style="background:#f3f3f3;color:#333;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;">UPI</span>
+      <span style="background:#1434CB;color:white;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;">VISA</span>
+      <span style="background:#EB001B;color:white;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;">Mastercard</span>
+    </div>
+    <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:12px;">🔒 Your payment information is encrypted and secure. We do not store card details.</p>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+let checkoutDiscount = 0;
+let checkoutShipping = 0;
+let deliveryMethod = 'Standard';
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCheckoutSummary();
+});
+
+function renderCheckoutSummary() {
+  const cart = getCart();
+  const productsEl = document.getElementById('orderProductsList');
+  const priceEl = document.getElementById('checkoutPriceBreakdown');
+  const totalEl = document.getElementById('checkoutTotal');
+  
+  let subtotal = 0;
+  productsEl.innerHTML = cart.map(item => {
+    const p = PRODUCTS.find(x => x.id === item.id);
+    if (!p) return '';
+    subtotal += p.price * item.qty;
+    return `
+      <div class="order-product-item">
+        <div class="order-product-img">${p.emoji}</div>
+        <div>
+          <div class="order-product-name">${p.name}</div>
+          <div class="order-product-qty">Qty: ${item.qty}</div>
+        </div>
+        <div class="order-product-price">₹${p.price * item.qty}</div>
+      </div>`;
+  }).join('');
+
+  const baseShipping = subtotal >= 999 ? 0 : 99;
+  checkoutShipping = deliveryMethod === 'Express' ? Math.max(baseShipping, 99) : baseShipping;
+  const finalTotal = subtotal - checkoutDiscount + checkoutShipping;
+
+  document.getElementById('stdPrice').textContent = baseShipping === 0 ? 'FREE' : `₹${baseShipping}`;
+  document.getElementById('freeShippingMsg').textContent = subtotal < 999 ? `Add ₹${999-subtotal} more for FREE standard shipping!` : '✓ You qualify for FREE standard shipping!';
+
+  priceEl.innerHTML = `
+    <div class="price-line"><span class="label">Subtotal</span><span class="value">₹${subtotal}</span></div>
+    <div class="price-line"><span class="label">Discount</span><span class="discount-val">−₹${checkoutDiscount}</span></div>
+    <div class="price-line"><span class="label">Shipping (${deliveryMethod})</span><span class="value">${checkoutShipping === 0 ? 'FREE' : '₹'+checkoutShipping}</span></div>
+  `;
+  totalEl.innerHTML = `<span>Total Amount</span><span>₹${finalTotal}</span>`;
+}
+
+function updateDelivery(extra, method) {
+  deliveryMethod = method;
+  document.querySelectorAll('.delivery-option').forEach(o => o.classList.remove('selected'));
+  event.target.closest('.delivery-option').classList.add('selected');
+  renderCheckoutSummary();
+}
+
+function applyCheckoutCoupon() {
+  const code = document.getElementById('checkoutCoupon').value.trim();
+  const cart = getCart();
+  const subtotal = cart.reduce((s, i) => {
+    const p = PRODUCTS.find(x => x.id === i.id);
+    return p ? s + p.price * i.qty : s;
+  }, 0);
+  
+  const result = applyCoupon(code, subtotal);
+  const msgEl = document.getElementById('checkoutCouponMsg');
+  
+  if (result.valid) {
+    checkoutDiscount = result.discount;
+    msgEl.innerHTML = `<div class="coupon-success">✅ ${result.message}</div>`;
+  } else {
+    checkoutDiscount = 0;
+    msgEl.innerHTML = `<div style="color:var(--red-price);font-size:13px;">❌ ${result.message}</div>`;
+  }
+  renderCheckoutSummary();
+}
+
+function proceedToPayment() {
+  // Validate form
+  const required = ['fullName','mobile','address1','address2','city','state','pincode'];
+  const labels = { fullName:'Full Name', mobile:'Mobile Number', address1:'House/Flat No.', address2:'Street/Area', city:'City', state:'State', pincode:'Pincode' };
+  
+  for (const field of required) {
+    const el = document.getElementById(field);
+    if (!el || !el.value.trim()) {
+      el && (el.style.borderColor = 'var(--red-price)');
+      showToast(`❌ Please enter ${labels[field]}`, 'error');
+      el?.focus();
+      return;
+    }
+    el.style.borderColor = '';
+  }
+  
+  const mobile = document.getElementById('mobile').value;
+  if (mobile.length !== 10 || isNaN(mobile)) {
+    showToast('❌ Please enter a valid 10-digit mobile number', 'error');
+    return;
+  }
+  
+  const pincode = document.getElementById('pincode').value;
+  if (pincode.length !== 6 || isNaN(pincode)) {
+    showToast('❌ Please enter a valid 6-digit pincode', 'error');
+    return;
+  }
+  
+  // Save order data
+  const cart = getCart();
+  const subtotal = cart.reduce((s, i) => {
+    const p = PRODUCTS.find(x => x.id === i.id);
+    return p ? s + p.price * i.qty : s;
+  }, 0);
+  
+  const orderData = {
+    customer: {
+      name: document.getElementById('fullName').value,
+      mobile: document.getElementById('mobile').value,
+      email: document.getElementById('email').value,
+      address: `${document.getElementById('address1').value}, ${document.getElementById('address2').value}, ${document.getElementById('city').value}, ${document.getElementById('state').value} - ${document.getElementById('pincode').value}`
+    },
+    items: cart,
+    subtotal,
+    discount: checkoutDiscount,
+    shipping: checkoutShipping,
+    total: subtotal - checkoutDiscount + checkoutShipping,
+    deliveryMethod
+  };
+  
+  localStorage.setItem('avs_pending_order', JSON.stringify(orderData));
+  
+  // Simulate Razorpay
+  showToast('🔒 Connecting to Razorpay...', 'gold');
+  
+  // In production: call backend to create Razorpay order, then open Razorpay checkout
+  // For demo: simulate successful payment after 2 seconds
+  setTimeout(() => {
+    simulateRazorpayPayment(orderData);
+  }, 1500);
+}
+
+function simulateRazorpayPayment(orderData) {
+  // In production, this would be replaced with actual Razorpay integration:
+  // const rzp = new Razorpay({ key: 'YOUR_KEY_ID', amount: orderData.total * 100, ... });
+  // rzp.open();
+  
+  const orderId = 'AVS' + Date.now().toString().slice(-8);
+  const order = {
+    ...orderData,
+    id: orderId,
+    paymentId: 'pay_' + Math.random().toString(36).substr(2,12),
+    status: 'Confirmed',
+    paymentMethod: 'Razorpay',
+    date: new Date().toLocaleDateString('en-IN'),
+    estimatedDelivery: new Date(Date.now() + 5*24*60*60*1000).toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'})
+  };
+  
+  localStorage.setItem('avs_last_order', JSON.stringify(order));
+  
+  // Save to order history
+  const orders = JSON.parse(localStorage.getItem('avs_orders') || '[]');
+  orders.unshift(order);
+  localStorage.setItem('avs_orders', JSON.stringify(orders));
+  
+  // Clear cart
+  setCart([]);
+  
+  location.href = 'order-success.html';
+}
+</script>
+</body>
+</html>

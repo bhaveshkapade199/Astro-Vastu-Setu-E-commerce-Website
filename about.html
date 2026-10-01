@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement-bar"><span class="marquee-text">🕉️ About Astro Vastu Setu | Heal • Balance • Prosper | Jalgaon, Maharashtra</span></div>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
+    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+    <div class="search-bar"><input type="text" id="searchInput" placeholder="Search products..."><button onclick="doSearch()">🔍</button></div>
+    <div class="header-actions">
+      <button class="action-btn" onclick="openLoginModal()"><span class="icon">👤</span><span>Account</span></button>
+      <button class="action-btn" onclick="location.href='wishlist.html'"><span class="icon">🤍</span><span>Wishlist</span><span class="badge" id="wishlistBadge">0</span></button>
+      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+    </div>
+  </div>
+  <nav class="main-nav"><div class="nav-inner"><ul class="nav-list">
+    <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+    <li><a href="shop.html" class="nav-link">💎 Shop</a></li>
+    <li><a href="shop.html?cat=lakshmipotli" class="nav-link">🪔 Lakshmi Potli</a></li>
+    <li><a href="about.html" class="nav-link active">About Us</a></li>
+    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+  </ul></div></nav>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
+
+<div class="page-header">
+  <h1>About Astro Vastu Setu</h1>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span>About Us</span></div>
+</div>
+
+<div class="about-layout">
+  <!-- HERO -->
+  <div class="about-hero">
+    <div class="about-text">
+      <h2>🕉️ Our Story</h2>
+      <p>Astro Vastu Setu was founded with a simple yet powerful vision: to bring authentic, high-quality spiritual and wellness products to every home in India, making the ancient wisdom of gemstone healing and Vastu accessible to all.</p>
+      <p>Based in Jalgaon, Maharashtra, we source our products directly from trusted suppliers who share our commitment to quality and authenticity. Every bracelet, every Rudraksha bead, every Lakshmi Potli — is carefully selected and quality-checked before reaching you.</p>
+      <p>The name "Astro Vastu Setu" means "Bridge to Astro Vastu" — we aim to be the bridge between ancient spiritual wisdom and modern living, helping you bring positive energy, balance, and prosperity into your life.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;">
+        <div style="text-align:center;background:var(--cream);padding:16px;border-radius:12px;">
+          <div style="font-size:28px;font-weight:800;color:var(--primary-green);">500+</div>
+          <div style="font-size:13px;color:var(--text-medium);">Happy Customers</div>
+        </div>
+        <div style="text-align:center;background:var(--cream);padding:16px;border-radius:12px;">
+          <div style="font-size:28px;font-weight:800;color:var(--primary-green);">13+</div>
+          <div style="font-size:13px;color:var(--text-medium);">Unique Products</div>
+        </div>
+        <div style="text-align:center;background:var(--cream);padding:16px;border-radius:12px;">
+          <div style="font-size:28px;font-weight:800;color:var(--primary-green);">4.8★</div>
+          <div style="font-size:13px;color:var(--text-medium);">Average Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img">
+      <div class="big-om">🕉️</div>
+      <h3>Astro Vastu Setu</h3>
+      <p>सकारात्मक ऊर्जा • हर कदम पर</p>
+      <p style="margin-top:12px;font-size:13px;opacity:0.8;">Heal • Balance • Prosper</p>
+      <p style="margin-top:12px;font-size:12px;opacity:0.6;">Jalgaon, Maharashtra, India</p>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <h2 style="text-align:center;font-size:28px;font-weight:700;color:var(--primary-green);margin-bottom:8px;">Our Core Values</h2>
+  <p style="text-align:center;color:var(--text-medium);margin-bottom:32px;">What makes Astro Vastu Setu different</p>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">💎</div>
+      <div class="value-title">Authenticity</div>
+      <div class="value-desc">We source only genuine, natural gemstones and traditional spiritual products. Every item is quality-checked for authenticity before it reaches your door.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🙏</div>
+      <div class="value-title">Respect for Tradition</div>
+      <div class="value-desc">We deeply respect the spiritual traditions behind each product. We present benefits as traditional and wellness-based beliefs, not medical claims.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💚</div>
+      <div class="value-title">Customer First</div>
+      <div class="value-desc">Your satisfaction is our priority. From easy ordering to fast delivery, secure packaging, and hassle-free returns — we put customers at the center.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔒</div>
+      <div class="value-title">Transparency</div>
+      <div class="value-desc">Honest product descriptions, clear pricing, and secure payment. No hidden charges. What you see is exactly what you get.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🚀</div>
+      <div class="value-title">Innovation</div>
+      <div class="value-desc">Combining traditional wisdom with modern e-commerce. We continuously improve our products, packaging, and service to deliver the best experience.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌿</div>
+      <div class="value-title">Wellness Focus</div>
+      <div class="value-desc">We believe in holistic wellness. Our products support meditation, mindfulness, and spiritual practices as part of a balanced, positive lifestyle.</div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <div style="background:linear-gradient(135deg,var(--primary-green),var(--dark-green));border-radius:20px;padding:40px;margin:40px 0;color:white;text-align:center;">
+    <h2 style="font-size:28px;font-weight:700;color:var(--gold-light);margin-bottom:8px;">Why Choose Astro Vastu Setu?</h2>
+    <p style="color:rgba(255,255,255,0.8);margin-bottom:32px;">We're committed to bringing you the best spiritual products</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;">
+        <div style="font-size:32px;margin-bottom:8px;">✓</div>
+        <div style="font-weight:700;color:var(--gold-light);">100% Genuine</div>
+        <div style="font-size:12px;opacity:0.7;margin-top:4px;">Natural Stones</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;">
+        <div style="font-size:32px;margin-bottom:8px;">🚚</div>
+        <div style="font-weight:700;color:var(--gold-light);">Fast Delivery</div>
+        <div style="font-size:12px;opacity:0.7;margin-top:4px;">Pan India Shipping</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;">
+        <div style="font-size:32px;margin-bottom:8px;">🔒</div>
+        <div style="font-weight:700;color:var(--gold-light);">Secure Payments</div>
+        <div style="font-size:12px;opacity:0.7;margin-top:4px;">Powered by Razorpay</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;">
+        <div style="font-size:32px;margin-bottom:8px;">↩️</div>
+        <div style="font-weight:700;color:var(--gold-light);">Easy Returns</div>
+        <div style="font-size:12px;opacity:0.7;margin-top:4px;">7-Day Return Policy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="text-align:center;padding:40px 0;">
+    <h2 style="font-size:28px;font-weight:700;color:var(--primary-green);margin-bottom:8px;">Ready to Begin Your Spiritual Journey?</h2>
+    <p style="color:var(--text-medium);margin-bottom:24px;">Explore our collection of authentic spiritual and wellness products.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="shop.html" class="btn-primary">🛍️ Shop Now</a>
+      <a href="contact.html" class="btn-secondary" style="color:var(--primary-green);border-color:var(--primary-green);">📞 Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></div><p class="footer-desc">Premium spiritual & wellness products.</p></div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Policies</h4><ul><li><a href="shipping.html">Shipping</a></li><li><a href="returns.html">Returns</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
+      <div class="footer-col"><h4>Get In Touch</h4><div class="footer-contact-item"><span class="ci-icon">📞</span><span>+91 98765 43210</span></div><div class="footer-contact-item"><span class="ci-icon">📧</span><span>support@astrovastusetu.com</span></div><div class="footer-contact-item"><span class="ci-icon">📍</span><span>Jalgaon, Maharashtra, India</span></div></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p><div class="payment-badges"><span class="payment-badge" style="background:#002970;">Razorpay</span><span class="payment-badge">UPI</span><span class="payment-badge" style="background:#1434CB;">VISA</span></div></div>
+  </div>
+</footer>
+
+<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span><span>WhatsApp</span></a></div>
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<nav class="mobile-bottom-nav"><ul><li><a href="index.html"><span class="bn-icon">🏠</span> Home</a></li><li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li><li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li><li><a href="cart.html"><span class="bn-icon">🛒</span> Cart</a></li><li><a href="account.html"><span class="bn-icon">👤</span> Account</a></li></ul></nav>
+
+<div class="overlay" id="loginOverlay"><div class="modal"><div class="modal-close" onclick="closeLoginModal()">✕</div><h2 style="text-align:center;">Welcome Back</h2><div class="form-group" style="margin-bottom:14px;"><label>Mobile / Email</label><input type="text" style="width:100%;"></div><div class="form-group" style="margin-bottom:20px;"><label>Password</label><input type="password" style="width:100%;"></div><button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Login →</button></div></div>
+<div class="toast-container" id="toastContainer"></div>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
