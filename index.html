@@ -1,626 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Astro Vastu Setu - Heal • Balance • Prosper</title>
-  <meta name="description" content="Authentic spiritual & energy products - Gemstone Bracelets, Rudraksha, Dhanyog, Lakshmi Potli. Bringing positive energy into your life.">
+  <meta name="description"
+    content="Authentic spiritual & energy products - Gemstone Bracelets, Rudraksha, Dhanyog, Lakshmi Potli. Bringing positive energy into your life.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
-<div class="announcement-bar">
-  <span class="marquee-text">
-    🚩 नवरात्री स्पेशल लॉन्च | शुभ ऊर्जा • सकारात्मकता • समृद्धी &nbsp;&nbsp;&nbsp; 🎁 ₹999 वरील ऑर्डरवर फ्री शिपिंग &nbsp;&nbsp;&nbsp; ✨ Navratri Special Sale - Up to 35% OFF &nbsp;&nbsp;&nbsp; 🌿 100% Genuine Natural Stones &nbsp;&nbsp;&nbsp; 📦 Secure Packaging | Fast Delivery
-  </span>
-</div>
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <span class="marquee-text">
+      🚩 नवरात्री स्पेशल लॉन्च | शुभ ऊर्जा • सकारात्मकता • समृद्धी &nbsp;&nbsp;&nbsp; 🎁 ₹999 वरील ऑर्डरवर फ्री शिपिंग
+      &nbsp;&nbsp;&nbsp; ✨ Navratri Special Sale - Up to 35% OFF &nbsp;&nbsp;&nbsp; 🌿 100% Genuine Natural Stones
+      &nbsp;&nbsp;&nbsp; 📦 Secure Packaging | Fast Delivery
+    </span>
+  </div>
 
-<!-- SITE HEADER -->
-<header class="site-header" id="site-header">
-  <div class="header-top">
-    <!-- LOGO -->
-    <a href="index.html" class="logo-wrap" style="text-decoration:none;">
-      <div class="logo-icon">🕉️</div>
-      <div class="logo-text">
-        <span class="brand-name">Astro Vastu Setu</span>
-        <span class="brand-tagline">Heal • Balance • Prosper</span>
+  <!-- SITE HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-top">
+      <!-- LOGO -->
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+
+      <!-- HAMBURGER (mobile) -->
+      <div class="hamburger" id="hamburger" onclick="openMobileMenu()">
+        <span></span><span></span><span></span>
       </div>
-    </a>
 
-    <!-- HAMBURGER (mobile) -->
-    <div class="hamburger" id="hamburger" onclick="openMobileMenu()">
-      <span></span><span></span><span></span>
+      <!-- SEARCH BAR -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for bracelets, Lakshmi Potli..." autocomplete="off">
+        <button onclick="doSearch()">🔍</button>
+      </div>
+
+      <!-- HEADER ACTIONS -->
+      <div class="header-actions">
+        <button class="action-btn" onclick="openLoginModal()">
+          <span class="icon">👤</span>
+          <span>Account</span>
+        </button>
+        <button class="action-btn" onclick="location.href='wishlist.html'">
+          <span class="icon">🤍</span>
+          <span>Wishlist</span>
+          <span class="badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span>
+          <span>Cart</span>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20want%20to%20know%20about%20your%20products."
+          target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+
+          <i class="fa-brands fa-whatsapp"></i>
+          WhatsApp
+        </a>
+      </div>
     </div>
 
-    <!-- SEARCH BAR -->
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search for bracelets, Lakshmi Potli..." autocomplete="off">
-      <button onclick="doSearch()">🔍</button>
-    </div>
+    <!-- MAIN NAV -->
+    <nav class="main-nav">
+      <div class="nav-inner">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link active">🏠 Home</a></li>
+          <li class="nav-item">
+            <a href="shop.html" class="nav-link">💎 Bracelets ▾</a>
+            <div class="dropdown">
+              <a href="shop.html?cat=7chakra">🌈 7 Chakra Bracelet</a>
+              <a href="shop.html?cat=citrine">💛 Citrine Bracelet</a>
+              <a href="shop.html?cat=amethyst">💜 Amethyst Bracelet</a>
+              <a href="shop.html?cat=tigereye">🟤 Tiger Eye Bracelet</a>
+              <a href="shop.html?cat=blacktourmaline">⚫ Black Tourmaline</a>
+              <a href="shop.html?cat=rosequartz">🌸 Rose Quartz</a>
+              <a href="shop.html?cat=clearquartz">⚪ Clear Quartz</a>
+              <a href="shop.html?cat=pyrite">✨ Pyrite</a>
+              <a href="shop.html?cat=greenaventurine">💚 Green Aventurine</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="shop.html?cat=lakshmipotli" class="nav-link">🪔 Lakshmi Potli ▾</a>
+            <div class="dropdown">
+              <a href="shop.html?cat=lakshmipotli">🪔 Lakshmi Potli</a>
+              <a href="shop.html?cat=diwaligifts">🎁 Diwali Gift Sets</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="shop.html" class="nav-link">🌟 Festive Collection</a>
+          </li>
+          <li class="nav-item"><a href="shop.html?cat=rudraksha" class="nav-link">📿 Rudraksha</a></li>
+          <li class="nav-item"><a href="shop.html?cat=dhanyog" class="nav-link">✨ Dhanyog</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">Contact Us ▾</a>
+            <div class="dropdown">
+              <a href="contact.html">📞 Contact Us</a>
+              <a href="faq.html">❓ FAQ</a>
+              <a href="shipping.html">🚚 Shipping Policy</a>
+              <a href="returns.html">↩️ Returns & Refund</a>
+              <a href="privacy.html">🔒 Privacy Policy</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <!-- HEADER ACTIONS -->
-    <div class="header-actions">
-      <button class="action-btn" onclick="openLoginModal()">
-        <span class="icon">👤</span>
-        <span>Account</span>
-      </button>
-      <button class="action-btn" onclick="location.href='wishlist.html'">
-        <span class="icon">🤍</span>
-        <span>Wishlist</span>
-        <span class="badge" id="wishlistBadge">0</span>
-      </button>
-      <button class="action-btn" onclick="location.href='cart.html'">
-        <span class="icon">🛒</span>
-        <span>Cart</span>
-        <span class="badge" id="cartBadge">0</span>
-      </button>
-      <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20want%20to%20know%20about%20your%20products." target="_blank" class="whatsapp-btn">
-        💬 WhatsApp
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div>
+          <div style="font-size:11px;opacity:0.7;">Heal • Balance • Prosper</div>
+        </div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="shop.html">💎 All Products</a></li>
+        <li><a href="shop.html?cat=bracelets">📿 Bracelets</a></li>
+        <li><a href="shop.html?cat=rudraksha">🪷 Rudraksha</a></li>
+        <li><a href="shop.html?cat=dhanyog">✨ Dhanyog</a></li>
+        <li><a href="shop.html?cat=lakshmipotli">🪔 Lakshmi Potli</a></li>
+        <li><a href="wishlist.html">❤️ Wishlist</a></li>
+        <li><a href="cart.html">🛒 Cart</a></li>
+        <li><a href="account.html">👤 My Account</a></li>
+        <li><a href="about.html">ℹ️ About Us</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="faq.html">❓ FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-tag">🚩 Navratri Special Website Launch</span>
+        <div class="hero-marathi">शुभ नवरात्रीच्या हार्दिक शुभेच्छा!</div>
+        <h1 class="hero-title">Navratri <span>Special</span><br>Website Launch</h1>
+        <p class="hero-subtitle">सकारात्मक ऊर्जा • समृद्धी • संतुलन</p>
+        <p class="hero-tagline">Bring Positive Energy Into Your Life with Authentic Spiritual Products</p>
+        <div class="hero-buttons">
+          <a href="shop.html" class="btn-primary">🛍️ Shop Now →</a>
+          <a href="shop.html" class="btn-secondary">✨ Explore Collection</a>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-icon">💎</div>
+        <div class="badge-title">Bracelets &amp;<br>Lakshmi Potli</div>
+        <div class="badge-sub">Now Available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY SCROLL -->
+  <div class="categories-section">
+    <div class="categories-inner">
+      <div style="text-align:center;margin-bottom:20px;">
+        <h3 style="font-size:20px;color:var(--primary-green);font-weight:700;">Shop by Category</h3>
+      </div>
+      <div class="category-scroll">
+        <div class="category-card" onclick="location.href='shop.html?cat=7chakra'">
+          <div class="category-img">🌈</div>
+          <span class="category-name">7 Chakra Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=citrine'">
+          <div class="category-img">💛</div>
+          <span class="category-name">Citrine Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=amethyst'">
+          <div class="category-img">💜</div>
+          <span class="category-name">Amethyst Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=tigereye'">
+          <div class="category-img">🟤</div>
+          <span class="category-name">Tiger Eye Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=blacktourmaline'">
+          <div class="category-img">⚫</div>
+          <span class="category-name">Black Tourmaline</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=rosequartz'">
+          <div class="category-img">🌸</div>
+          <span class="category-name">Rose Quartz Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=clearquartz'">
+          <div class="category-img">⚪</div>
+          <span class="category-name">Clear Quartz Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=pyrite'">
+          <div class="category-img">✨</div>
+          <span class="category-name">Pyrite Bracelet</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=greenaventurine'">
+          <div class="category-img">💚</div>
+          <span class="category-name">Green Aventurine</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=rudraksha'">
+          <div class="category-img">📿</div>
+          <span class="category-name">Rudraksha</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=dhanyog'">
+          <div class="category-img">🌿</div>
+          <span class="category-name">Dhanyog</span>
+        </div>
+        <div class="category-card" onclick="location.href='shop.html?cat=lakshmipotli'">
+          <div class="category-img">🪔</div>
+          <span class="category-name">Lakshmi Potli</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section" style="background:var(--ivory);">
+    <div class="section-header">
+      <div class="section-label">Our Collection</div>
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-desc">Carefully selected authentic spiritual products for your wellness journey</p>
+    </div>
+    <div class="products-grid" id="featuredProducts"></div>
+    <div class="view-all-link">
+      <a href="shop.html">View All Products →</a>
+    </div>
+  </section>
+
+  <!-- SHOP BY CATEGORY GRID -->
+  <section style="background:var(--cream);padding:60px 40px;">
+    <div style="max-width:1400px;margin:0 auto;">
+      <div class="section-header">
+        <div class="section-label">Browse</div>
+        <h2 class="section-title">Shop by Category</h2>
+      </div>
+      <div class="categories-grid">
+        <div class="category-grid-card" onclick="location.href='shop.html?cat=bracelets'">
+          <div class="category-grid-icon">💎</div>
+          <div class="category-grid-name">Bracelets</div>
+          <div class="category-grid-sub">Energy & Spiritual</div>
+        </div>
+        <div class="category-grid-card" onclick="location.href='shop.html?cat=rudraksha'">
+          <div class="category-grid-icon">📿</div>
+          <div class="category-grid-name">Rudraksha</div>
+          <div class="category-grid-sub">Traditional Products</div>
+        </div>
+        <div class="category-grid-card" onclick="location.href='shop.html?cat=dhanyog'">
+          <div class="category-grid-icon">✨</div>
+          <div class="category-grid-name">Dhanyog</div>
+          <div class="category-grid-sub">Prosperity Focused</div>
+        </div>
+        <div class="category-grid-card" onclick="location.href='shop.html?cat=lakshmipotli'">
+          <div class="category-grid-icon">🪔</div>
+          <div class="category-grid-name">Lakshmi Potli</div>
+          <div class="category-grid-sub">Diwali Special</div>
+        </div>
+        <div class="category-grid-card" onclick="location.href='shop.html?cat=giftsets'">
+          <div class="category-grid-icon">🎁</div>
+          <div class="category-grid-name">Gift Sets</div>
+          <div class="category-grid-sub">Spiritual Gifts</div>
+        </div>
+        <div class="category-grid-card" onclick="location.href='shop.html?new=true'">
+          <div class="category-grid-icon">⭐</div>
+          <div class="category-grid-name">New Arrivals</div>
+          <div class="category-grid-sub">Latest Products</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <div class="why-us-section">
+    <div class="why-us-inner">
+      <h2 style="text-align:center;font-size:26px;font-weight:700;color:var(--primary-green);margin-bottom:30px;">Why
+        Choose Us?</h2>
+      <div class="why-us-grid">
+        <div class="why-card">
+          <div class="why-icon">💎</div>
+          <div class="why-title">100% Genuine Natural Stones</div>
+          <div class="why-sub">Authentic certified natural gemstones</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🔒</div>
+          <div class="why-title">Secure Payments</div>
+          <div class="why-sub">Razorpay — UPI, Cards, Net Banking</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🚚</div>
+          <div class="why-title">Fast & Safe Shipping</div>
+          <div class="why-sub">Tracked delivery across India</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">↩️</div>
+          <div class="why-title">Easy Returns</div>
+          <div class="why-sub">Within 7 days hassle-free</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💬</div>
+          <div class="why-title">Dedicated Support</div>
+          <div class="why-sub">WhatsApp & Email support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-header">
+      <div class="section-label">Customer Stories</div>
+      <h2 class="section-title">Happy Customers</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="author-avatar">N</div>
+          <div class="author-info">
+            <div class="name">Neha Sharma</div>
+            <div class="verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">★★★★★</div>
+        <p class="testimonial-text">The bracelet quality is amazing and the energy feels so positive. Packaging was also
+          very premium. Highly recommended!</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div class="author-info">
+            <div class="name">Rohit Patil</div>
+            <div class="verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">★★★★★</div>
+        <p class="testimonial-text">I ordered the Citrine bracelet and Lakshmi Potli. Both are beautiful and exactly as
+          shown in the images. Will definitely order again.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div class="author-info">
+            <div class="name">Pooja Deshmukh</div>
+            <div class="verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="testimonial-rating">★★★★★</div>
+        <p class="testimonial-text">Very good customer service and fast delivery. The bracelet is really nice and feels
+          good to wear. Thank you Astro Vastu Setu!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPIRITUAL BANNER -->
+  <div class="spiritual-banner">
+    <div class="spiritual-inner">
+      <div class="spiritual-content">
+        <h2>Spiritual Energy<br>for a Better Life</h2>
+        <p>Align Your Energy • Attract Positivity</p>
+        <p>Bring Balance • Create Abundance</p>
+        <p style="margin-top:16px;font-size:13px;opacity:0.7;">*Benefits described are based on traditional spiritual
+          beliefs and practices. Individual experiences may vary.</p>
+        <a href="shop.html" class="btn-primary" style="margin-top:24px;display:inline-flex;">🛍️ Shop Now</a>
+      </div>
+      <div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">🧘</div>
+            <div style="font-weight:700;color:var(--gold-light);">Meditation</div>
+            <div style="font-size:12px;opacity:0.7;">Spiritual Practice</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">🌿</div>
+            <div style="font-weight:700;color:var(--gold-light);">Wellness</div>
+            <div style="font-size:12px;opacity:0.7;">Balance & Peace</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">💎</div>
+            <div style="font-weight:700;color:var(--gold-light);">Gemstones</div>
+            <div style="font-size:12px;opacity:0.7;">Natural Energy</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">🪔</div>
+            <div style="font-weight:700;color:var(--gold-light);">Prosperity</div>
+            <div style="font-size:12px;opacity:0.7;">Abundance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section-header">
+      <div class="section-label">Help</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Are the stones natural and original?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Yes, all our gemstones are 100% natural and genuine. We source directly from authentic
+          suppliers and provide quality certification for our products.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How long does delivery take?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Standard delivery takes 3-7 working days depending on your location. Express delivery
+          (1-2 days) is available for select cities at an additional charge.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What is your return policy?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">We offer a 7-day easy return policy. If you're not satisfied with your product, you can
+          return it within 7 days of delivery in its original packaging. Contact us on WhatsApp or email for return
+          assistance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Can I track my order?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Yes! Once your order is shipped, you'll receive a tracking number via SMS and email. You
+          can also track your order on our Track Order page using your Order ID and mobile number.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Do you offer Cash on Delivery (COD)?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Currently we accept online payments through Razorpay — UPI, Credit/Debit Cards, Net
+          Banking, and Wallets. COD may be available for select orders; please contact us on WhatsApp for details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How should I care for my bracelet?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Keep your bracelet away from water, perfumes, and harsh chemicals. Store it in the
+          provided pouch when not in use. Clean gently with a soft dry cloth. Avoid exposure to direct sunlight for
+          extended periods.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="faq.html" style="color:var(--primary-green);font-weight:600;font-size:14px;">View All FAQs →</a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER + WHATSAPP -->
+  <div class="newsletter-section">
+    <div class="newsletter-inner">
+      <div class="newsletter-content">
+        <h2>Stay Connected</h2>
+        <p>Get special offers, new arrivals and spiritual guidance.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="whatsapp-section">
+    <div class="whatsapp-inner">
+      <div class="whatsapp-content">
+        <h3>Chat with Us on WhatsApp</h3>
+        <p>Get instant support, product recommendations and order updates</p>
+      </div>
+      <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20want%20to%20know%20about%20your%20products."
+        target="_blank" class="whatsapp-big-btn">
+        💬 Chat Now →
       </a>
     </div>
   </div>
 
-  <!-- MAIN NAV -->
-  <nav class="main-nav">
-    <div class="nav-inner">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="index.html" class="nav-link active">🏠 Home</a></li>
-        <li class="nav-item">
-          <a href="shop.html" class="nav-link">💎 Bracelets ▾</a>
-          <div class="dropdown">
-            <a href="shop.html?cat=7chakra">🌈 7 Chakra Bracelet</a>
-            <a href="shop.html?cat=citrine">💛 Citrine Bracelet</a>
-            <a href="shop.html?cat=amethyst">💜 Amethyst Bracelet</a>
-            <a href="shop.html?cat=tigereye">🟤 Tiger Eye Bracelet</a>
-            <a href="shop.html?cat=blacktourmaline">⚫ Black Tourmaline</a>
-            <a href="shop.html?cat=rosequartz">🌸 Rose Quartz</a>
-            <a href="shop.html?cat=clearquartz">⚪ Clear Quartz</a>
-            <a href="shop.html?cat=pyrite">✨ Pyrite</a>
-            <a href="shop.html?cat=greenaventurine">💚 Green Aventurine</a>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-wrap">
+            <div class="logo-icon">🕉️</div>
+            <div class="logo-text">
+              <span class="brand-name">Astro Vastu Setu</span>
+              <span class="brand-tagline">Heal • Balance • Prosper</span>
+            </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a href="shop.html?cat=lakshmipotli" class="nav-link">🪔 Lakshmi Potli ▾</a>
-          <div class="dropdown">
-            <a href="shop.html?cat=lakshmipotli">🪔 Lakshmi Potli</a>
-            <a href="shop.html?cat=diwaligifts">🎁 Diwali Gift Sets</a>
+          <p class="footer-desc">Premium spiritual & wellness products crafted with care. Bringing authentic gemstone
+            bracelets, Rudraksha, and spiritual products to enhance your life's positive energy.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/" class="social-link" title="Facebook" target="_blank"
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com/" class="social-link" title="Instagram" target="_blank"
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.youtube.com/" class="social-link" title="YouTube" target="_blank"
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="https://x.com/" class="social-link" title="X" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
           </div>
-        </li>
-        <li class="nav-item">
-          <a href="shop.html" class="nav-link">🌟 Festive Collection</a>
-        </li>
-        <li class="nav-item"><a href="shop.html?cat=rudraksha" class="nav-link">📿 Rudraksha</a></li>
-        <li class="nav-item"><a href="shop.html?cat=dhanyog" class="nav-link">✨ Dhanyog</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
-        <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact Us ▾</a>
-          <div class="dropdown">
-            <a href="contact.html">📞 Contact Us</a>
-            <a href="faq.html">❓ FAQ</a>
-            <a href="shipping.html">🚚 Shipping Policy</a>
-            <a href="returns.html">↩️ Returns & Refund</a>
-            <a href="privacy.html">🔒 Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
+            <li><a href="shop.html?cat=lakshmipotli">Lakshmi Potli</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="shipping.html">Shipping Policy</a></li>
+            <li><a href="returns.html">Return & Refund Policy</a></li>
+            <li><a href="cancellation.html">Cancellation Policy</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="track.html">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <div class="footer-contact-item">
+            <span class="ci-icon">📞</span>
+            <span>+91 78218 56342</span>
           </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-
-<!-- MOBILE MENU -->
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-header">
-    <div style="display:flex;align-items:center;gap:10px;">
-      <div style="font-size:24px;color:#c9a227;">🕉️</div>
-      <div>
-        <div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div>
-        <div style="font-size:11px;opacity:0.7;">Heal • Balance • Prosper</div>
-      </div>
-    </div>
-    <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">🏠 Home</a></li>
-      <li><a href="shop.html">💎 All Products</a></li>
-      <li><a href="shop.html?cat=bracelets">📿 Bracelets</a></li>
-      <li><a href="shop.html?cat=rudraksha">🪷 Rudraksha</a></li>
-      <li><a href="shop.html?cat=dhanyog">✨ Dhanyog</a></li>
-      <li><a href="shop.html?cat=lakshmipotli">🪔 Lakshmi Potli</a></li>
-      <li><a href="wishlist.html">❤️ Wishlist</a></li>
-      <li><a href="cart.html">🛒 Cart</a></li>
-      <li><a href="account.html">👤 My Account</a></li>
-      <li><a href="about.html">ℹ️ About Us</a></li>
-      <li><a href="contact.html">📞 Contact</a></li>
-      <li><a href="faq.html">❓ FAQ</a></li>
-    </ul>
-  </nav>
-</div>
-
-<!-- HERO SECTION -->
-<section class="hero-section">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <span class="hero-tag">🚩 Navratri Special Website Launch</span>
-      <div class="hero-marathi">शुभ नवरात्रीच्या हार्दिक शुभेच्छा!</div>
-      <h1 class="hero-title">Navratri <span>Special</span><br>Website Launch</h1>
-      <p class="hero-subtitle">सकारात्मक ऊर्जा • समृद्धी • संतुलन</p>
-      <p class="hero-tagline">Bring Positive Energy Into Your Life with Authentic Spiritual Products</p>
-      <div class="hero-buttons">
-        <a href="shop.html" class="btn-primary">🛍️ Shop Now →</a>
-        <a href="shop.html" class="btn-secondary">✨ Explore Collection</a>
-      </div>
-    </div>
-    <div class="hero-badge">
-      <div class="badge-icon">💎</div>
-      <div class="badge-title">Bracelets &amp;<br>Lakshmi Potli</div>
-      <div class="badge-sub">Now Available</div>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORY SCROLL -->
-<div class="categories-section">
-  <div class="categories-inner">
-    <div style="text-align:center;margin-bottom:20px;">
-      <h3 style="font-size:20px;color:var(--primary-green);font-weight:700;">Shop by Category</h3>
-    </div>
-    <div class="category-scroll">
-      <div class="category-card" onclick="location.href='shop.html?cat=7chakra'">
-        <div class="category-img">🌈</div>
-        <span class="category-name">7 Chakra Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=citrine'">
-        <div class="category-img">💛</div>
-        <span class="category-name">Citrine Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=amethyst'">
-        <div class="category-img">💜</div>
-        <span class="category-name">Amethyst Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=tigereye'">
-        <div class="category-img">🟤</div>
-        <span class="category-name">Tiger Eye Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=blacktourmaline'">
-        <div class="category-img">⚫</div>
-        <span class="category-name">Black Tourmaline</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=rosequartz'">
-        <div class="category-img">🌸</div>
-        <span class="category-name">Rose Quartz Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=clearquartz'">
-        <div class="category-img">⚪</div>
-        <span class="category-name">Clear Quartz Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=pyrite'">
-        <div class="category-img">✨</div>
-        <span class="category-name">Pyrite Bracelet</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=greenaventurine'">
-        <div class="category-img">💚</div>
-        <span class="category-name">Green Aventurine</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=rudraksha'">
-        <div class="category-img">📿</div>
-        <span class="category-name">Rudraksha</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=dhanyog'">
-        <div class="category-img">🌿</div>
-        <span class="category-name">Dhanyog</span>
-      </div>
-      <div class="category-card" onclick="location.href='shop.html?cat=lakshmipotli'">
-        <div class="category-img">🪔</div>
-        <span class="category-name">Lakshmi Potli</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FEATURED PRODUCTS -->
-<section class="section" style="background:var(--ivory);">
-  <div class="section-header">
-    <div class="section-label">Our Collection</div>
-    <h2 class="section-title">Featured Products</h2>
-    <p class="section-desc">Carefully selected authentic spiritual products for your wellness journey</p>
-  </div>
-  <div class="products-grid" id="featuredProducts"></div>
-  <div class="view-all-link">
-    <a href="shop.html">View All Products →</a>
-  </div>
-</section>
-
-<!-- SHOP BY CATEGORY GRID -->
-<section style="background:var(--cream);padding:60px 40px;">
-  <div style="max-width:1400px;margin:0 auto;">
-    <div class="section-header">
-      <div class="section-label">Browse</div>
-      <h2 class="section-title">Shop by Category</h2>
-    </div>
-    <div class="categories-grid">
-      <div class="category-grid-card" onclick="location.href='shop.html?cat=bracelets'">
-        <div class="category-grid-icon">💎</div>
-        <div class="category-grid-name">Bracelets</div>
-        <div class="category-grid-sub">Energy & Spiritual</div>
-      </div>
-      <div class="category-grid-card" onclick="location.href='shop.html?cat=rudraksha'">
-        <div class="category-grid-icon">📿</div>
-        <div class="category-grid-name">Rudraksha</div>
-        <div class="category-grid-sub">Traditional Products</div>
-      </div>
-      <div class="category-grid-card" onclick="location.href='shop.html?cat=dhanyog'">
-        <div class="category-grid-icon">✨</div>
-        <div class="category-grid-name">Dhanyog</div>
-        <div class="category-grid-sub">Prosperity Focused</div>
-      </div>
-      <div class="category-grid-card" onclick="location.href='shop.html?cat=lakshmipotli'">
-        <div class="category-grid-icon">🪔</div>
-        <div class="category-grid-name">Lakshmi Potli</div>
-        <div class="category-grid-sub">Diwali Special</div>
-      </div>
-      <div class="category-grid-card" onclick="location.href='shop.html?cat=giftsets'">
-        <div class="category-grid-icon">🎁</div>
-        <div class="category-grid-name">Gift Sets</div>
-        <div class="category-grid-sub">Spiritual Gifts</div>
-      </div>
-      <div class="category-grid-card" onclick="location.href='shop.html?new=true'">
-        <div class="category-grid-icon">⭐</div>
-        <div class="category-grid-name">New Arrivals</div>
-        <div class="category-grid-sub">Latest Products</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<div class="why-us-section">
-  <div class="why-us-inner">
-    <h2 style="text-align:center;font-size:26px;font-weight:700;color:var(--primary-green);margin-bottom:30px;">Why Choose Us?</h2>
-    <div class="why-us-grid">
-      <div class="why-card">
-        <div class="why-icon">💎</div>
-        <div class="why-title">100% Genuine Natural Stones</div>
-        <div class="why-sub">Authentic certified natural gemstones</div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🔒</div>
-        <div class="why-title">Secure Payments</div>
-        <div class="why-sub">Razorpay — UPI, Cards, Net Banking</div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🚚</div>
-        <div class="why-title">Fast & Safe Shipping</div>
-        <div class="why-sub">Tracked delivery across India</div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">↩️</div>
-        <div class="why-title">Easy Returns</div>
-        <div class="why-sub">Within 7 days hassle-free</div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💬</div>
-        <div class="why-title">Dedicated Support</div>
-        <div class="why-sub">WhatsApp & Email support</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TESTIMONIALS -->
-<section class="section testimonials-section">
-  <div class="section-header">
-    <div class="section-label">Customer Stories</div>
-    <h2 class="section-title">Happy Customers</h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="testimonial-author">
-        <div class="author-avatar">N</div>
-        <div class="author-info">
-          <div class="name">Neha Sharma</div>
-          <div class="verified">✓ Verified Purchase</div>
+          <div class="footer-contact-item">
+            <span class="ci-icon">📧</span>
+            <span>support@astrovastusetu.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="ci-icon">📍</span>
+            <span>Jalgaon, Maharashtra, India</span>
+          </div>
+          <h4 style="margin-top:16px;">Follow Us</h4>
+          <div class="footer-social">
+            <a href="#" class="social-link">📘</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">▶️</a>
+          </div>
         </div>
       </div>
-      <div class="testimonial-rating">★★★★★</div>
-      <p class="testimonial-text">The bracelet quality is amazing and the energy feels so positive. Packaging was also very premium. Highly recommended!</p>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-author">
-        <div class="author-avatar">R</div>
-        <div class="author-info">
-          <div class="name">Rohit Patil</div>
-          <div class="verified">✓ Verified Purchase</div>
-        </div>
-      </div>
-      <div class="testimonial-rating">★★★★★</div>
-      <p class="testimonial-text">I ordered the Citrine bracelet and Lakshmi Potli. Both are beautiful and exactly as shown in the images. Will definitely order again.</p>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-author">
-        <div class="author-avatar">P</div>
-        <div class="author-info">
-          <div class="name">Pooja Deshmukh</div>
-          <div class="verified">✓ Verified Purchase</div>
-        </div>
-      </div>
-      <div class="testimonial-rating">★★★★★</div>
-      <p class="testimonial-text">Very good customer service and fast delivery. The bracelet is really nice and feels good to wear. Thank you Astro Vastu Setu!</p>
-    </div>
-  </div>
-</section>
-
-<!-- SPIRITUAL BANNER -->
-<div class="spiritual-banner">
-  <div class="spiritual-inner">
-    <div class="spiritual-content">
-      <h2>Spiritual Energy<br>for a Better Life</h2>
-      <p>Align Your Energy • Attract Positivity</p>
-      <p>Bring Balance • Create Abundance</p>
-      <p style="margin-top:16px;font-size:13px;opacity:0.7;">*Benefits described are based on traditional spiritual beliefs and practices. Individual experiences may vary.</p>
-      <a href="shop.html" class="btn-primary" style="margin-top:24px;display:inline-flex;">🛍️ Shop Now</a>
-    </div>
-    <div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
-          <div style="font-size:32px;margin-bottom:8px;">🧘</div>
-          <div style="font-weight:700;color:var(--gold-light);">Meditation</div>
-          <div style="font-size:12px;opacity:0.7;">Spiritual Practice</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
-          <div style="font-size:32px;margin-bottom:8px;">🌿</div>
-          <div style="font-weight:700;color:var(--gold-light);">Wellness</div>
-          <div style="font-size:12px;opacity:0.7;">Balance & Peace</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
-          <div style="font-size:32px;margin-bottom:8px;">💎</div>
-          <div style="font-weight:700;color:var(--gold-light);">Gemstones</div>
-          <div style="font-size:12px;opacity:0.7;">Natural Energy</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
-          <div style="font-size:32px;margin-bottom:8px;">🪔</div>
-          <div style="font-weight:700;color:var(--gold-light);">Prosperity</div>
-          <div style="font-size:12px;opacity:0.7;">Abundance</div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+        <div class="payment-badges">
+          <span style="font-size:12px;color:rgba(255,255,255,0.5);">Secure Payments by</span>
+          <span class="payment-badge" style="background:#002970;color:white;">Razorpay</span>
+          <span class="payment-badge">UPI</span>
+          <span class="payment-badge" style="background:#1434CB;color:white;">VISA</span>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-<!-- FAQ -->
-<section class="section faq-section">
-  <div class="section-header">
-    <div class="section-label">Help</div>
-    <h2 class="section-title">Frequently Asked Questions</h2>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Are the stones natural and original?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">Yes, all our gemstones are 100% natural and genuine. We source directly from authentic suppliers and provide quality certification for our products.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        How long does delivery take?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">Standard delivery takes 3-7 working days depending on your location. Express delivery (1-2 days) is available for select cities at an additional charge.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        What is your return policy?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">We offer a 7-day easy return policy. If you're not satisfied with your product, you can return it within 7 days of delivery in its original packaging. Contact us on WhatsApp or email for return assistance.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Can I track my order?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">Yes! Once your order is shipped, you'll receive a tracking number via SMS and email. You can also track your order on our Track Order page using your Order ID and mobile number.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Do you offer Cash on Delivery (COD)?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">Currently we accept online payments through Razorpay — UPI, Credit/Debit Cards, Net Banking, and Wallets. COD may be available for select orders; please contact us on WhatsApp for details.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        How should I care for my bracelet?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">Keep your bracelet away from water, perfumes, and harsh chemicals. Store it in the provided pouch when not in use. Clean gently with a soft dry cloth. Avoid exposure to direct sunlight for extended periods.</div>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:24px;">
-    <a href="faq.html" style="color:var(--primary-green);font-weight:600;font-size:14px;">View All FAQs →</a>
-  </div>
-</section>
-
-<!-- NEWSLETTER + WHATSAPP -->
-<div class="newsletter-section">
-  <div class="newsletter-inner">
-    <div class="newsletter-content">
-      <h2>Stay Connected</h2>
-      <p>Get special offers, new arrivals and spiritual guidance.</p>
-    </div>
-    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-      <input type="email" placeholder="Enter your email address" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-</div>
-
-<div class="whatsapp-section">
-  <div class="whatsapp-inner">
-    <div class="whatsapp-content">
-      <h3>Chat with Us on WhatsApp</h3>
-      <p>Get instant support, product recommendations and order updates</p>
-    </div>
-    <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20want%20to%20know%20about%20your%20products." target="_blank" class="whatsapp-big-btn">
-      💬 Chat Now →
+  <!-- FLOATING WHATSAPP -->
+  <div class="floating-whatsapp">
+    <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20want%20to%20know%20about%20your%20products."
+      target="_blank">
+      <span class="wa-icon">💬</span>
+      <span>WhatsApp</span>
     </a>
   </div>
-</div>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="logo-wrap">
-          <div class="logo-icon">🕉️</div>
-          <div class="logo-text">
-            <span class="brand-name">Astro Vastu Setu</span>
-            <span class="brand-tagline">Heal • Balance • Prosper</span>
-          </div>
-        </div>
-        <p class="footer-desc">Premium spiritual & wellness products crafted with care. Bringing authentic gemstone bracelets, Rudraksha, and spiritual products to enhance your life's positive energy.</p>
-        <div class="footer-social">
-          <a href="#" class="social-link" title="Facebook">📘</a>
-          <a href="#" class="social-link" title="Instagram">📷</a>
-          <a href="#" class="social-link" title="YouTube">▶️</a>
-          <a href="#" class="social-link" title="Twitter">🐦</a>
-        </div>
+  <!-- BACK TO TOP -->
+  <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="mobile-bottom-nav">
+    <ul>
+      <li><a href="index.html" class="active"><span class="bn-icon">🏠</span> Home</a></li>
+      <li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li>
+      <li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li>
+      <li><a href="cart.html"><span class="bn-icon">🛒</span> Cart</a></li>
+      <li><a href="account.html"><span class="bn-icon">👤</span> Account</a></li>
+    </ul>
+  </nav>
+
+  <!-- LOGIN MODAL -->
+  <div class="overlay" id="loginOverlay">
+    <div class="modal">
+      <div class="modal-close" onclick="closeLoginModal()">✕</div>
+      <div style="text-align:center;font-size:36px;margin-bottom:12px;">🕉️</div>
+      <h2 style="text-align:center;">Welcome Back</h2>
+      <p style="text-align:center;">Login to your Astro Vastu Setu account</p>
+      <div class="tab-switch">
+        <button class="tab-btn active" onclick="switchTab('login',this)">Login</button>
+        <button class="tab-btn" onclick="switchTab('signup',this)">Sign Up</button>
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
-          <li><a href="shop.html?cat=lakshmipotli">Lakshmi Potli</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
+      <div id="loginForm">
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Mobile Number / Email</label>
+          <input type="text" placeholder="Enter mobile or email" style="width:100%;">
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Password</label>
+          <input type="password" placeholder="Enter password" style="width:100%;">
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Login →</button>
+        <p style="text-align:center;font-size:13px;margin-top:12px;"><a href="#"
+            style="color:var(--primary-green);">Forgot Password?</a></p>
       </div>
-      <div class="footer-col">
-        <h4>Customer Service</h4>
-        <ul>
-          <li><a href="shipping.html">Shipping Policy</a></li>
-          <li><a href="returns.html">Return & Refund Policy</a></li>
-          <li><a href="cancellation.html">Cancellation Policy</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms & Conditions</a></li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-          <li><a href="track.html">Track Order</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Get In Touch</h4>
-        <div class="footer-contact-item">
-          <span class="ci-icon">📞</span>
-          <span>+91 98765 43210</span>
+      <div id="signupForm" class="hidden">
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your full name" style="width:100%;">
         </div>
-        <div class="footer-contact-item">
-          <span class="ci-icon">📧</span>
-          <span>support@astrovastusetu.com</span>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Mobile Number</label>
+          <input type="tel" placeholder="Enter 10-digit mobile" style="width:100%;">
         </div>
-        <div class="footer-contact-item">
-          <span class="ci-icon">📍</span>
-          <span>Jalgaon, Maharashtra, India</span>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Email</label>
+          <input type="email" placeholder="Enter email" style="width:100%;">
         </div>
-        <h4 style="margin-top:16px;">Follow Us</h4>
-        <div class="footer-social">
-          <a href="#" class="social-link">📘</a>
-          <a href="#" class="social-link">📷</a>
-          <a href="#" class="social-link">▶️</a>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Password</label>
+          <input type="password" placeholder="Create password" style="width:100%;">
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
-      <div class="payment-badges">
-        <span style="font-size:12px;color:rgba(255,255,255,0.5);">Secure Payments by</span>
-        <span class="payment-badge" style="background:#002970;color:white;">Razorpay</span>
-        <span class="payment-badge">UPI</span>
-        <span class="payment-badge" style="background:#1434CB;color:white;">VISA</span>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doSignup()">Create Account
+          →</button>
       </div>
     </div>
   </div>
-</footer>
 
-<!-- FLOATING WHATSAPP -->
-<div class="floating-whatsapp">
-  <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20want%20to%20know%20about%20your%20products." target="_blank">
-    <span class="wa-icon">💬</span>
-    <span>WhatsApp</span>
-  </a>
-</div>
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<!-- BACK TO TOP -->
-<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
-
-<!-- MOBILE BOTTOM NAV -->
-<nav class="mobile-bottom-nav">
-  <ul>
-    <li><a href="index.html" class="active"><span class="bn-icon">🏠</span> Home</a></li>
-    <li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li>
-    <li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li>
-    <li><a href="cart.html"><span class="bn-icon">🛒</span> Cart</a></li>
-    <li><a href="account.html"><span class="bn-icon">👤</span> Account</a></li>
-  </ul>
-</nav>
-
-<!-- LOGIN MODAL -->
-<div class="overlay" id="loginOverlay">
-  <div class="modal">
-    <div class="modal-close" onclick="closeLoginModal()">✕</div>
-    <div style="text-align:center;font-size:36px;margin-bottom:12px;">🕉️</div>
-    <h2 style="text-align:center;">Welcome Back</h2>
-    <p style="text-align:center;">Login to your Astro Vastu Setu account</p>
-    <div class="tab-switch">
-      <button class="tab-btn active" onclick="switchTab('login',this)">Login</button>
-      <button class="tab-btn" onclick="switchTab('signup',this)">Sign Up</button>
-    </div>
-    <div id="loginForm">
-      <div class="form-group" style="margin-bottom:14px;">
-        <label>Mobile Number / Email</label>
-        <input type="text" placeholder="Enter mobile or email" style="width:100%;">
-      </div>
-      <div class="form-group" style="margin-bottom:20px;">
-        <label>Password</label>
-        <input type="password" placeholder="Enter password" style="width:100%;">
-      </div>
-      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Login →</button>
-      <p style="text-align:center;font-size:13px;margin-top:12px;"><a href="#" style="color:var(--primary-green);">Forgot Password?</a></p>
-    </div>
-    <div id="signupForm" class="hidden">
-      <div class="form-group" style="margin-bottom:14px;">
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your full name" style="width:100%;">
-      </div>
-      <div class="form-group" style="margin-bottom:14px;">
-        <label>Mobile Number</label>
-        <input type="tel" placeholder="Enter 10-digit mobile" style="width:100%;">
-      </div>
-      <div class="form-group" style="margin-bottom:14px;">
-        <label>Email</label>
-        <input type="email" placeholder="Enter email" style="width:100%;">
-      </div>
-      <div class="form-group" style="margin-bottom:20px;">
-        <label>Password</label>
-        <input type="password" placeholder="Create password" style="width:100%;">
-      </div>
-      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doSignup()">Create Account →</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOAST CONTAINER -->
-<div class="toast-container" id="toastContainer"></div>
-
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>

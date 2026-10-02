@@ -1,176 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Astro Vastu Setu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="announcement-bar"><span class="marquee-text">📞 Contact Astro Vastu Setu | We're here to help | +91 98765 43210</span></div>
+  <div class="announcement-bar"><span class="marquee-text">📞 Contact Astro Vastu Setu | We're here to help | +91 78218
+      56342</span></div>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="search-bar"><input type="text" id="searchInput" placeholder="Search products..."><button onclick="doSearch()">🔍</button></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="openLoginModal()"><span class="icon">👤</span><span>Account</span></button>
-      <button class="action-btn" onclick="location.href='wishlist.html'"><span class="icon">🤍</span><span>Wishlist</span><span class="badge" id="wishlistBadge">0</span></button>
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
-      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
-    </div>
-  </div>
-  <nav class="main-nav"><div class="nav-inner"><ul class="nav-list">
-    <li><a href="index.html" class="nav-link">🏠 Home</a></li>
-    <li><a href="shop.html" class="nav-link">💎 Shop</a></li>
-    <li><a href="about.html" class="nav-link">About Us</a></li>
-    <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
-  </ul></div></nav>
-</header>
-
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
-
-<div class="page-header">
-  <h1>Contact Astro Vastu Setu</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Contact Us</span></div>
-</div>
-
-<div class="contact-layout" style="padding:40px;">
-  <!-- CONTACT INFO -->
-  <div class="contact-info-card">
-    <h3>Get In Touch</h3>
-    <p>We'd love to hear from you! Reach out for product queries, order support, or any questions.</p>
-
-    <div class="contact-item">
-      <div class="contact-item-icon">📞</div>
-      <div class="contact-item-text">
-        <div class="ci-label">Phone</div>
-        <div class="ci-value">+91 98765 43210</div>
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal •
+            Balance • Prosper</span></div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="search-bar"><input type="text" id="searchInput" placeholder="Search products..."><button
+          onclick="doSearch()">🔍</button></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="openLoginModal()"><span class="icon">👤</span><span>Account</span></button>
+        <button class="action-btn" onclick="location.href='wishlist.html'"><span
+            class="icon">🤍</span><span>Wishlist</span><span class="badge" id="wishlistBadge">0</span></button>
+        <button class="action-btn" onclick="location.href='cart.html'"><span
+            class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+        <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
       </div>
     </div>
-    <div class="contact-item">
-      <div class="contact-item-icon">💬</div>
-      <div class="contact-item-text">
-        <div class="ci-label">WhatsApp</div>
-        <div class="ci-value"><a href="https://wa.me/919876543210" target="_blank" style="color:var(--gold-light);">+91 98765 43210</a></div>
+    <nav class="main-nav">
+      <div class="nav-inner">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+          <li><a href="shop.html" class="nav-link">💎 Shop</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-item-icon">📧</div>
-      <div class="contact-item-text">
-        <div class="ci-label">Email</div>
-        <div class="ci-value">support@astrovastusetu.com</div>
-      </div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-item-icon">📍</div>
-      <div class="contact-item-text">
-        <div class="ci-label">Address</div>
-        <div class="ci-value">Jalgaon, Maharashtra, India</div>
-      </div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-item-icon">🕐</div>
-      <div class="contact-item-text">
-        <div class="ci-label">Business Hours</div>
-        <div class="ci-value">Mon–Sat: 9 AM – 7 PM</div>
-      </div>
-    </div>
+    </nav>
+  </header>
 
-    <div style="margin-top:24px;">
-      <h4 style="color:var(--gold-light);margin-bottom:12px;">Follow Us</h4>
-      <div class="footer-social">
-        <a href="#" class="social-link">📘</a>
-        <a href="#" class="social-link">📷</a>
-        <a href="#" class="social-link">▶️</a>
-        <a href="#" class="social-link">🐦</a>
-      </div>
-    </div>
-
-    <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20need%20help%20with%20my%20order." target="_blank" class="whatsapp-big-btn" style="margin-top:24px;display:inline-flex;">💬 Chat on WhatsApp</a>
-  </div>
-
-  <!-- CONTACT FORM -->
-  <div class="contact-form-card">
-    <h3>📩 Send Us a Message</h3>
-    <form onsubmit="submitContact(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Your Name *</label>
-          <input type="text" placeholder="Enter your name" required>
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div>
+          <div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div>
         </div>
-        <div class="form-group">
-          <label>Mobile Number *</label>
-          <input type="tel" placeholder="10-digit mobile" required>
+      </div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="shop.html">💎 Shop</a></li>
+        <li><a href="cart.html">🛒 Cart</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="page-header">
+    <h1>Contact Astro Vastu Setu</h1>
+    <div class="breadcrumb"><a href="index.html">Home</a> › <span>Contact Us</span></div>
+  </div>
+
+  <div class="contact-layout" style="padding:40px;">
+    <!-- CONTACT INFO -->
+    <div class="contact-info-card">
+      <h3>Get In Touch</h3>
+      <p>We'd love to hear from you! Reach out for product queries, order support, or any questions.</p>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Phone</div>
+          <div class="ci-value">+91 78218 56342</div>
         </div>
       </div>
-      <div class="form-group" style="margin-bottom:16px;">
-        <label>Email Address</label>
-        <input type="email" placeholder="Enter your email">
+      <div class="contact-item">
+        <div class="contact-item-icon">💬</div>
+        <div class="contact-item-text">
+          <div class="ci-label">WhatsApp</div>
+          <div class="ci-value"><a href="https://wa.me/919876543210" target="_blank"
+              style="color:var(--gold-light);">+91 78218 56342</a></div>
+        </div>
       </div>
-      <div class="form-group" style="margin-bottom:16px;">
-        <label>Subject</label>
-        <select style="width:100%;">
-          <option>Order Query</option>
-          <option>Product Information</option>
-          <option>Return / Refund</option>
-          <option>Delivery Issue</option>
-          <option>Payment Issue</option>
-          <option>Feedback</option>
-          <option>Other</option>
-        </select>
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Email</div>
+          <div class="ci-value">support@astrovastusetu.com</div>
+        </div>
       </div>
-      <div class="form-group" style="margin-bottom:20px;">
-        <label>Message *</label>
-        <textarea placeholder="Type your message here..." style="width:100%;min-height:120px;" required></textarea>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Address</div>
+          <div class="ci-value">Jalgaon, Maharashtra, India</div>
+        </div>
       </div>
-      <button type="submit" class="btn-submit">📨 Send Message</button>
-    </form>
-  </div>
-</div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div class="contact-item-text">
+          <div class="ci-label">Business Hours</div>
+          <div class="ci-value">Mon–Sat: 9 AM – 7 PM</div>
+        </div>
+      </div>
 
-<!-- FAQ QUICK LINKS -->
-<div style="background:var(--cream);padding:40px;">
-  <div style="max-width:1400px;margin:0 auto;text-align:center;">
-    <h2 style="font-size:24px;font-weight:700;color:var(--primary-green);margin-bottom:8px;">Frequently Asked Questions</h2>
-    <p style="color:var(--text-medium);margin-bottom:24px;">Find quick answers to common questions</p>
-    <a href="faq.html" class="btn-primary" style="display:inline-flex;">❓ View All FAQs</a>
-  </div>
-</div>
+      <div style="margin-top:24px;">
+        <h4 style="color:var(--gold-light);margin-bottom:12px;">Follow Us</h4>
+        <div class="footer-social">
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">📷</a>
+          <a href="#" class="social-link">▶️</a>
+          <a href="#" class="social-link">🐦</a>
+        </div>
+      </div>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand"><div class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></div></div>
-      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About Us</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
-      <div class="footer-col"><h4>Policies</h4><ul><li><a href="shipping.html">Shipping</a></li><li><a href="returns.html">Returns</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
-      <div class="footer-col"><h4>Get In Touch</h4><div class="footer-contact-item"><span class="ci-icon">📞</span><span>+91 98765 43210</span></div><div class="footer-contact-item"><span class="ci-icon">📧</span><span>support@astrovastusetu.com</span></div></div>
+      <a href="https://wa.me/919876543210?text=Hello%20Astro%20Vastu%20Setu%2C%20I%20need%20help%20with%20my%20order."
+        target="_blank" class="whatsapp-big-btn" style="margin-top:24px;display:inline-flex;">💬 Chat on WhatsApp</a>
     </div>
-    <div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p><div class="payment-badges"><span class="payment-badge" style="background:#002970;">Razorpay</span><span class="payment-badge">UPI</span></div></div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-form-card">
+      <h3>📩 Send Us a Message</h3>
+      <form onsubmit="submitContact(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="tel" placeholder="10-digit mobile" required>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label>Subject</label>
+          <select style="width:100%;">
+            <option>Order Query</option>
+            <option>Product Information</option>
+            <option>Return / Refund</option>
+            <option>Delivery Issue</option>
+            <option>Payment Issue</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Message *</label>
+          <textarea placeholder="Type your message here..." style="width:100%;min-height:120px;" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">📨 Send Message</button>
+      </form>
+    </div>
   </div>
-</footer>
 
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span><span>WhatsApp</span></a></div>
-<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
-<nav class="mobile-bottom-nav"><ul><li><a href="index.html"><span class="bn-icon">🏠</span> Home</a></li><li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li><li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li><li><a href="cart.html"><span class="bn-icon">🛒</span> Cart</a></li><li><a href="account.html"><span class="bn-icon">👤</span> Account</a></li></ul></nav>
+  <!-- FAQ QUICK LINKS -->
+  <div style="background:var(--cream);padding:40px;">
+    <div style="max-width:1400px;margin:0 auto;text-align:center;">
+      <h2 style="font-size:24px;font-weight:700;color:var(--primary-green);margin-bottom:8px;">Frequently Asked
+        Questions</h2>
+      <p style="color:var(--text-medium);margin-bottom:24px;">Find quick answers to common questions</p>
+      <a href="faq.html" class="btn-primary" style="display:inline-flex;">❓ View All FAQs</a>
+    </div>
+  </div>
 
-<div class="overlay" id="loginOverlay"><div class="modal"><div class="modal-close" onclick="closeLoginModal()">✕</div><h2 style="text-align:center;">Welcome Back</h2><div class="form-group" style="margin-bottom:14px;"><label>Mobile / Email</label><input type="text" style="width:100%;"></div><div class="form-group" style="margin-bottom:20px;"><label>Password</label><input type="password" style="width:100%;"></div><button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Login →</button></div></div>
-<div class="toast-container" id="toastContainer"></div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-wrap">
+            <div class="logo-icon">🕉️</div>
+            <div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal •
+                Balance • Prosper</span></div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="shipping.html">Shipping</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <div class="footer-contact-item"><span class="ci-icon">📞</span><span>+91 98765 43210</span></div>
+          <div class="footer-contact-item"><span class="ci-icon">📧</span><span>support@astrovastusetu.com</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+        <div class="payment-badges"><span class="payment-badge" style="background:#002970;">Razorpay</span><span
+            class="payment-badge">UPI</span></div>
+      </div>
+    </div>
+  </footer>
 
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
-<script>
-function submitContact(e) {
-  e.preventDefault();
-  showToast('✅ Message sent! We\'ll reply within 24 hours.', 'success');
-  e.target.reset();
-}
-</script>
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span
+        class="wa-icon">💬</span><span>WhatsApp</span></a></div>
+  <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+  <nav class="mobile-bottom-nav">
+    <ul>
+      <li><a href="index.html"><span class="bn-icon">🏠</span> Home</a></li>
+      <li><a href="shop.html"><span class="bn-icon">🛍️</span> Shop</a></li>
+      <li><a href="wishlist.html"><span class="bn-icon">❤️</span> Wishlist</a></li>
+      <li><a href="cart.html"><span class="bn-icon">🛒</span> Cart</a></li>
+      <li><a href="account.html"><span class="bn-icon">👤</span> Account</a></li>
+    </ul>
+  </nav>
+
+  <div class="overlay" id="loginOverlay">
+    <div class="modal">
+      <div class="modal-close" onclick="closeLoginModal()">✕</div>
+      <h2 style="text-align:center;">Welcome Back</h2>
+      <div class="form-group" style="margin-bottom:14px;"><label>Mobile / Email</label><input type="text"
+          style="width:100%;"></div>
+      <div class="form-group" style="margin-bottom:20px;"><label>Password</label><input type="password"
+          style="width:100%;"></div><button class="btn-primary" style="width:100%;justify-content:center;"
+        onclick="doLogin()">Login →</button>
+    </div>
+  </div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function submitContact(e) {
+      e.preventDefault();
+      showToast('✅ Message sent! We\'ll reply within 24 hours.', 'success');
+      e.target.reset();
+    }
+  </script>
 </body>
+
 </html>
