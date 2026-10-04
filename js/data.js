@@ -2,7 +2,7 @@
 // ASTRO VASTU SETU - Product Data
 // ============================================
 
-const PRODUCTS = [
+const DEFAULT_PRODUCTS = [
   {
     id: 1,
     name: "7 Chakra Bracelet",
@@ -394,6 +394,18 @@ const PRODUCTS = [
     isFeatured: false
   }
 ];
+let fetchedProducts = null;
+try {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:3000/api/products?_t=" + new Date().getTime(), false);
+  xhr.send(null);
+  if (xhr.status === 200) {
+    fetchedProducts = JSON.parse(xhr.responseText);
+  }
+} catch (e) {
+  console.warn("Could not fetch products from backend. Using defaults.", e);
+}
+const PRODUCTS = (fetchedProducts && fetchedProducts.length > 0) ? fetchedProducts : DEFAULT_PRODUCTS;
 
 // Cart & Wishlist Management
 function getCart() {

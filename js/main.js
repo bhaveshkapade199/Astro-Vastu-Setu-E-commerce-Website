@@ -2,30 +2,60 @@
 // ASTRO VASTU SETU - Main JS
 // ============================================
 
+const API_BASE = 'http://localhost:3000/api';
+
+// Global products list (populated async from backend)
+let SITE_PRODUCTS = [];
+
 document.addEventListener('DOMContentLoaded', () => {
   updateBadges();
-  renderFeaturedProducts();
   initBackToTop();
+  // Load all products from backend API (fixes add/delete not reflecting)
+  loadSiteProducts().then(() => {
+    renderFeaturedProducts();
+  });
 });
+
+// ---- FETCH PRODUCTS FROM BACKEND ----
+async function loadSiteProducts() {
+  try {
+    const res = await fetch(`${API_BASE}/products?_t=${Date.now()}`);
+    if (res.ok) {
+      SITE_PRODUCTS = await res.json();
+    } else {
+      SITE_PRODUCTS = DEFAULT_PRODUCTS;
+    }
+  } catch (e) {
+    console.warn('Backend not reachable, using defaults.', e);
+    SITE_PRODUCTS = DEFAULT_PRODUCTS;
+  }
+  return SITE_PRODUCTS;
+}
 
 // ---- RENDER FEATURED PRODUCTS ----
 function renderFeaturedProducts() {
   const container = document.getElementById('featuredProducts');
   if (!container) return;
 
-  const featured = PRODUCTS.filter(p => p.isFeatured).slice(0, 6);
-  container.innerHTML = featured.map(p => productCardHTML(p)).join('');
+  // Show all products (not just featured) so new products always appear
+  const list = SITE_PRODUCTS.length > 0 ? SITE_PRODUCTS : DEFAULT_PRODUCTS;
+  const featured = list.filter(p => p.isFeatured);
+  const display = featured.length > 0 ? featured.slice(0, 6) : list.slice(0, 6);
+  container.innerHTML = display.map(p => productCardHTML(p)).join('');
 }
 
 function productCardHTML(p) {
   const wl = getWishlist();
   const isWishlisted = wl.includes(p.id);
   return `
-    <div class="product-card">
+    <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
-        <div class="product-emoji" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;">${p.emoji}</div>
+        ${p.image ? 
+          `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : 
+          `<div class="product-emoji" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;">${p.emoji || '📦'}</div>`
+        }
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-        <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="handleWishlist(${p.id}, this)" title="Add to Wishlist">
+        <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="event.stopPropagation(); handleWishlist(${p.id}, this)" title="Add to Wishlist">
           ${isWishlisted ? '❤️' : '🤍'}
         </button>
       </div>
@@ -40,7 +70,7 @@ function productCardHTML(p) {
           <span class="price-mrp">₹${p.mrp}</span>
           <span class="price-discount">${p.discount}% OFF</span>
         </div>
-        <button class="btn-add-cart" onclick="addToCart(${p.id})">🛒 Add to Cart</button>
+        <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart(${p.id})">🛒 Add to Cart</button>
       </div>
     </div>
   `;
@@ -122,7 +152,6 @@ function switchTab(tab, btn) {
 }
 
 function doLogin() {
-  // Simulate login
   const user = { name: 'Customer', email: 'customer@email.com' };
   localStorage.setItem('avs_user', JSON.stringify(user));
   closeLoginModal();
@@ -159,3 +188,23 @@ function subscribeNewsletter(e) {
 document.getElementById('loginOverlay')?.addEventListener('click', function(e) {
   if (e.target === this) closeLoginModal();
 });
+
+// ---- SPECIAL BRACELET MODAL ----
+function openSpecialBraceletModal() {
+  document.getElementById('specialBraceletModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSpecialBraceletModal() {
+  document.getElementById('specialBraceletModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function submitSpecialBracelet(e) {
+  e.preventDefault();
+  const name = document.getElementById('sb_name').value;
+  const msg = `Hello Astro Vastu Setu! 🙏\nI want to order a Special Personalized Bracelet.\n\nMy Details:\nName: ${name}\nAge: ${document.getElementById('sb_age').value}\nDate of Birth: ${document.getElementById('sb_dob').value}\nGotra: ${document.getElementById('sb_gotra').value}\nRashi: ${document.getElementById('sb_rashi').value}\nNakshatra: ${document.getElementById('sb_nakshatra').value}\nKundali Info: ${document.getElementById('sb_kundali').value}\nSpecial Wish: ${document.getElementById('sb_wish').value}`;
+  const waUrl = `https://wa.me/919876543210?text=${encodeURIComponent(msg)}`;
+  closeSpecialBraceletModal();
+  window.open(waUrl, '_blank');
+}

@@ -105,6 +105,7 @@
           </li>
           <li class="nav-item"><a href="shop.html?cat=rudraksha" class="nav-link">📿 Rudraksha</a></li>
           <li class="nav-item"><a href="shop.html?cat=dhanyog" class="nav-link">✨ Dhanyog</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" onclick="openSpecialBraceletModal(); return false;" style="color:#f5c842; font-weight:700; background:linear-gradient(135deg,rgba(201,147,59,0.15),rgba(245,200,66,0.1)); border-radius:6px; padding:6px 12px !important; border:1px solid rgba(245,200,66,0.3);">🔮 Special Bracelet ₹51</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
           <li class="nav-item">
             <a href="contact.html" class="nav-link">Contact Us ▾</a>
@@ -243,6 +244,85 @@
     <div class="products-grid" id="featuredProducts"></div>
     <div class="view-all-link">
       <a href="shop.html">View All Products →</a>
+    </div>
+  </section>
+
+  <!-- ✨ SPECIAL PERSONALIZED BRACELET OFFER BANNER ✨ -->
+  <section style="padding: 40px 20px; background: linear-gradient(135deg, #1a0a00 0%, #3d1f00 50%, #1a0a00 100%);">
+    <div style="max-width:1400px; margin:0 auto; display:flex; gap:24px; align-items:stretch; flex-wrap:wrap;">
+
+      <!-- LEFT: Bracelets & Lakshmi Potli quick links -->
+      <div style="display:flex; flex-direction:column; gap:20px; flex:1; min-width:220px;">
+        <!-- Bracelets Box -->
+        <div onclick="location.href='shop.html?cat=bracelets'" style="cursor:pointer; background:linear-gradient(135deg,#2e1600,#5c3000); border:2px solid #c9933b; border-radius:16px; padding:22px 20px; display:flex; align-items:center; gap:16px; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="font-size:44px;">💎</div>
+          <div>
+            <div style="color:#f0c060; font-weight:700; font-size:17px;">Gemstone Bracelets</div>
+            <div style="color:#d4a855; font-size:13px; margin-top:3px;">7 Chakra • Amethyst • Tiger Eye...</div>
+            <div style="color:#fff; font-size:12px; margin-top:6px; opacity:0.8;">Starting ₹699 →</div>
+          </div>
+        </div>
+        <!-- Lakshmi Potli Box -->
+        <div onclick="location.href='shop.html?cat=lakshmipotli'" style="cursor:pointer; background:linear-gradient(135deg,#3d2e00,#6b5000); border:2px solid #f5c842; border-radius:16px; padding:22px 20px; display:flex; align-items:center; gap:16px; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="font-size:44px;">🪔</div>
+          <div>
+            <div style="color:#f5e060; font-weight:700; font-size:17px;">Lakshmi Potli</div>
+            <div style="color:#e8c840; font-size:13px; margin-top:3px;">Diwali Special • Premium Puja Kit</div>
+            <div style="color:#fff; font-size:12px; margin-top:6px; opacity:0.8;">Starting ₹249 →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER: Main Special Offer Card -->
+      <div style="flex:2.5; min-width:300px; background:linear-gradient(135deg,#7c2d00,#c9933b,#f5c842,#c9933b,#7c2d00); border-radius:20px; padding:3px;">
+        <div style="background:linear-gradient(135deg,#1e0a00,#3d1a00,#1e0a00); border-radius:18px; padding:30px 28px; height:100%; box-sizing:border-box; text-align:center; position:relative; overflow:hidden;">
+          <!-- Sparkle decorations -->
+          <div style="position:absolute; top:10px; left:20px; font-size:20px; opacity:0.4; animation: pulse 2s infinite;">✨</div>
+          <div style="position:absolute; top:20px; right:20px; font-size:16px; opacity:0.4; animation: pulse 2.5s infinite;">🌟</div>
+          <div style="position:absolute; bottom:15px; left:30px; font-size:14px; opacity:0.3; animation: pulse 3s infinite;">💫</div>
+
+          <div style="display:inline-block; background:linear-gradient(90deg,#f5c842,#c9933b); color:#1a0a00; padding:5px 16px; border-radius:20px; font-size:13px; font-weight:700; margin-bottom:12px; letter-spacing:1px;">🔥 LIMITED TIME OFFER</div>
+          
+          <div style="font-size:36px; margin-bottom:8px;">🔮📿</div>
+          
+          <h2 style="color:#f5c842; font-size:22px; margin:0 0 6px 0; font-weight:800; line-height:1.3;">विशेष नामांकित कडे</h2>
+          <h3 style="color:#fff; font-size:17px; margin:0 0 14px 0; font-weight:600;">Special Personalized Bracelet</h3>
+          <p style="color:#d4a855; font-size:13px; margin:0 0 18px 0; line-height:1.6;">Based on your <strong style="color:#f5c842;">Gotra • Name • Birth Date • Kundali</strong><br>A specially crafted bracelet for YOU</p>
+          
+          <!-- Price Display -->
+          <div style="margin-bottom:20px;">
+            <span style="color:#888; font-size:18px; text-decoration:line-through; margin-right:8px;">₹500</span>
+            <span style="color:#4ade80; font-size:32px; font-weight:800;">₹51</span>
+            <span style="color:#d4a855; font-size:13px; margin-left:6px;">only!</span>
+            <div style="color:#f5c842; font-size:11px; margin-top:4px; letter-spacing:0.5px;">🎁 NAVRATRI SPECIAL PRICE — Save ₹449!</div>
+          </div>
+
+          <button onclick="openSpecialBraceletModal()" style="background:linear-gradient(135deg,#f5c842,#c9933b); color:#1a0a00; border:none; padding:14px 30px; border-radius:30px; font-size:16px; font-weight:800; cursor:pointer; width:100%; max-width:280px; transition:transform 0.2s; box-shadow:0 4px 20px rgba(245,200,66,0.4);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            🛍️ Order Now — ₹51 Only!
+          </button>
+          <p style="color:#888; font-size:11px; margin-top:10px;">Fill your details → We'll contact you on WhatsApp</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Feature highlights -->
+      <div style="flex:1; min-width:200px; display:flex; flex-direction:column; gap:14px; justify-content:center;">
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,147,59,0.3); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:6px;">🙏</div>
+          <div style="color:#f5c842; font-weight:600; font-size:14px;">Gotra-Based</div>
+          <div style="color:#aaa; font-size:12px; margin-top:3px;">Crafted as per your gotra & tradition</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,147,59,0.3); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:6px;">⭐</div>
+          <div style="color:#f5c842; font-weight:600; font-size:14px;">Kundali Matched</div>
+          <div style="color:#aaa; font-size:12px; margin-top:3px;">Stone selected per your birth chart</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,147,59,0.3); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:6px;">📦</div>
+          <div style="color:#f5c842; font-weight:600; font-size:14px;">Home Delivery</div>
+          <div style="color:#aaa; font-size:12px; margin-top:3px;">Pan India delivery available</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -662,6 +742,92 @@
 
   <!-- TOAST CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ✨ SPECIAL BRACELET ORDER MODAL ✨ -->
+  <div id="specialBraceletModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:linear-gradient(145deg,#1e0a00,#3d1a00); border:2px solid #c9933b; border-radius:20px; width:100%; max-width:550px; max-height:90vh; overflow-y:auto; position:relative;">
+      <!-- Header -->
+      <div style="background:linear-gradient(135deg,#c9933b,#f5c842); padding:20px 24px; border-radius:18px 18px 0 0; text-align:center; position:relative;">
+        <button onclick="closeSpecialBraceletModal()" style="position:absolute; right:14px; top:12px; background:rgba(0,0,0,0.3); border:none; color:#fff; width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:18px; line-height:1;">&#x2715;</button>
+        <div style="font-size:32px; margin-bottom:6px;">&#128302;&#128221;</div>
+        <h2 style="color:#1a0a00; margin:0; font-size:20px; font-weight:800;">Special Personalized Bracelet</h2>
+        <p style="color:#3d1a00; margin:4px 0 0; font-size:13px; font-weight:600;">Based on your Kundali, Gotra &amp; Birth Details</p>
+        <div style="margin-top:8px;">
+          <span style="color:#5a3a00; font-size:15px; text-decoration:line-through; margin-right:8px;">&#8377;500</span>
+          <span style="color:#1a0a00; font-size:22px; font-weight:800; background:#4ade80; padding:2px 12px; border-radius:20px;">&#8377;51 Only!</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form onsubmit="submitSpecialBracelet(event)" style="padding:24px;">
+        <p style="color:#d4a855; font-size:13px; margin:0 0 20px; text-align:center; line-height:1.6;">Fill in your details below. Our expert will create a <strong style="color:#f5c842;">personalized bracelet</strong> based on your Kundali, Gotra and birth details and contact you on WhatsApp!</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+          <div>
+            <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Full Name *</label>
+            <input id="sb_name" type="text" placeholder="Your full name" required style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+          </div>
+          <div>
+            <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Age *</label>
+            <input id="sb_age" type="number" placeholder="Your age" required min="1" max="100" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Date of Birth *</label>
+          <input id="sb_dob" type="date" required style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+          <div>
+            <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Gotra</label>
+            <input id="sb_gotra" type="text" placeholder="e.g. Kashyap, Bharadwaj" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+          </div>
+          <div>
+            <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Rashi (Zodiac)</label>
+            <select id="sb_rashi" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+              <option value="">-- Select Rashi --</option>
+              <option>Mesh (Aries)</option>
+              <option>Vrishabh (Taurus)</option>
+              <option>Mithun (Gemini)</option>
+              <option>Kark (Cancer)</option>
+              <option>Simha (Leo)</option>
+              <option>Kanya (Virgo)</option>
+              <option>Tula (Libra)</option>
+              <option>Vrishchik (Scorpio)</option>
+              <option>Dhanu (Sagittarius)</option>
+              <option>Makar (Capricorn)</option>
+              <option>Kumbh (Aquarius)</option>
+              <option>Meen (Pisces)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Nakshatra (Birth Star)</label>
+          <input id="sb_nakshatra" type="text" placeholder="e.g. Rohini, Ashwini, Pushya..." style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Kundali / Janam Patrika Details</label>
+          <textarea id="sb_kundali" rows="3" placeholder="Birth time, birthplace, or any Kundali info you have..." style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; resize:vertical; box-sizing:border-box;"></textarea>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <label style="color:#f5c842; font-size:13px; font-weight:600; display:block; margin-bottom:5px;">Special Wish / Purpose</label>
+          <input id="sb_wish" type="text" placeholder="e.g. Health, Prosperity, Love, Protection..." style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #c9933b; background:#2a1000; color:#fff; font-size:14px; box-sizing:border-box;">
+        </div>
+
+        <div style="background:rgba(245,200,66,0.1); border:1px solid rgba(245,200,66,0.3); border-radius:10px; padding:12px; margin-bottom:18px; text-align:center;">
+          <p style="color:#f5c842; font-size:12px; margin:0; line-height:1.6;">After submission, you will be redirected to <strong>WhatsApp</strong>.<br>Our team will confirm your order within 24 hours.</p>
+        </div>
+
+        <button type="submit" style="width:100%; background:linear-gradient(135deg,#f5c842,#c9933b); color:#1a0a00; border:none; padding:16px; border-radius:12px; font-size:17px; font-weight:800; cursor:pointer;">
+          Submit &amp; Order on WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

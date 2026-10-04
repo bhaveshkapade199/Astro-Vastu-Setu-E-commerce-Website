@@ -258,7 +258,10 @@ function renderShopProducts(products) {
   container.innerHTML = products.map(p => `
     <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
-        <div class="product-emoji" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;">${p.emoji}</div>
+        ${p.image ? 
+          `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : 
+          `<div class="product-emoji" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;">${p.emoji || '📦'}</div>`
+        }
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
         <button class="wishlist-btn" onclick="event.stopPropagation();handleWishlist(${p.id},this)">${getWishlist().includes(p.id) ? '❤️' : '🤍'}</button>
       </div>
