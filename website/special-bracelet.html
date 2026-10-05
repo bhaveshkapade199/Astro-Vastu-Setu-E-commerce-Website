@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Customized Bracelet - Astro Vastu Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .special-hero {
+      background: linear-gradient(135deg, #1f140e 0%, #3e2716 100%);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .special-hero::after {
+      content: '🕉️';
+      position: absolute;
+      right: 5%;
+      top: 10%;
+      font-size: 150px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .special-hero h1 {
+      font-size: 32px;
+      color: var(--primary-gold, #c9933b);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .special-hero p {
+      max-width: 750px;
+      margin: 0 auto;
+      font-size: 15px;
+      color: #dfd7cc;
+      line-height: 1.6;
+    }
+    .custom-container {
+      max-width: 900px;
+      margin: -30px auto 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      padding: 36px;
+      position: relative;
+      z-index: 10;
+    }
+    .form-step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c1e16;
+      border-bottom: 2px solid #f1ebd9;
+      padding-bottom: 8px;
+      margin-top: 32px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-step-title:first-child {
+      margin-top: 0;
+    }
+    .step-badge {
+      background: #c9933b;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .input-box {
+      margin-bottom: 16px;
+    }
+    .input-box label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #3e322a;
+      margin-bottom: 6px;
+    }
+    .input-box input, .input-box select, .input-box textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #e2dad1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: all 0.2s;
+    }
+    .input-box input:focus, .input-box select:focus, .input-box textarea:focus {
+      outline: none;
+      border-color: #c9933b;
+      box-shadow: 0 0 0 3px rgba(201, 147, 59, 0.15);
+    }
+    .choice-card {
+      border: 1.5px solid #e8e2d9;
+      border-radius: 10px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #faf8f5;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .choice-card:hover {
+      border-color: #c9933b;
+      background: #fffdf9;
+    }
+    .choice-card input[type="radio"], .choice-card input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: #c9933b;
+      width: 17px;
+      height: 17px;
+    }
+    .choice-info .title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #2c1e16;
+    }
+    .choice-info .desc {
+      font-size: 11.5px;
+      color: #7d7065;
+      margin-top: 2px;
+    }
+    .price-box-banner {
+      background: #fff7ea;
+      border: 2px dashed #c9933b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .btn-submit-special {
+      background: linear-gradient(135deg, #c9933b 0%, #a26e1e 100%);
+      color: white;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(201, 147, 59, 0.35);
+      transition: all 0.25s;
+    }
+    .btn-submit-special:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 147, 59, 0.45);
+    }
+    /* Success Modal */
+    .success-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-modal-card {
+      background: #fff;
+      max-width: 520px;
+      width: 90%;
+      border-radius: 16px;
+      padding: 35px 25px;
+      text-align: center;
+      animation: modalFade 0.3s ease;
+    }
+    @keyframes modalFade {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo-wrap">
+      <div class="logo-icon">🕉️</div>
+      <div class="logo-text">
+        <span class="brand-name">Astro Vastu Setu</span>
+        <span class="brand-tagline">Heal • Balance • Prosper</span>
+      </div>
+    </a>
+    <div class="header-actions" style="margin-left:auto;display:flex;align-items:center;gap:12px;">
+      <a href="shop.html" class="action-btn" style="text-decoration:none;">🛍️ Shop</a>
+      <a href="special-bracelet.html" class="action-btn" style="text-decoration:none;color:#c9933b;font-weight:700;">✨ Special Bracelet</a>
+      <button class="action-btn" onclick="location.href='cart.html'">
+        <span class="icon">🛒</span><span>Cart</span>
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="special-hero">
+  <h1>✨ Customized Vedic Bracelet for a Special Person</h1>
+  <p>Every soul has a unique cosmic frequency. Share the astrological birth details and specific intentions of the person you want this bracelet for. Our Astrologers will hand-craft and energize (Abhimantrit) this custom piece with Vedic Sankalp.</p>
+</section>
+
+<div class="custom-container">
+  <form id="specialBraceletForm">
+
+    <!-- STEP 1: SPECIAL PERSON DETAILS -->
+    <div class="form-step-title">
+      <span class="step-badge">1</span>
+      <span>Details of the Special Person (फॉर दैट स्पेशल पर्सन)</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="input-box">
+        <label>Full Name of Special Person *</label>
+        <input type="text" id="personName" placeholder="e.g. Ramesh K. Sharma" required>
+      </div>
+      <div class="input-box">
+        <label>Gender *</label>
+        <select id="personGender" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other / Child</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="input-box">
+        <label>Date of Birth (DOB) *</label>
+        <input type="date" id="personDob" required>
+      </div>
+      <div class="input-box">
+        <label>Time of Birth (if known)</label>
+        <input type="text" id="personBirthTime" placeholder="e.g. 10:45 AM or Afternoon">
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="input-box">
+        <label>Place of Birth (City, State) *</label>
+        <input type="text" id="personBirthPlace" placeholder="e.g. Mumbai, Maharashtra" required>
+      </div>
+      <div class="input-box">
+        <label>Rashi / Zodiac Sign</label>
+        <select id="personRashi">
+          <option value="">-- Let Astrologer Calculate from DOB --</option>
+          <option value="Mesh (Aries)">Mesh (Aries)</option>
+          <option value="Vrishabh (Taurus)">Vrishabh (Taurus)</option>
+          <option value="Mithun (Gemini)">Mithun (Gemini)</option>
+          <option value="Kark (Cancer)">Kark (Cancer)</option>
+          <option value="Singh (Leo)">Singh (Leo)</option>
+          <option value="Kanya (Virgo)">Kanya (Virgo)</option>
+          <option value="Tula (Libra)">Tula (Libra)</option>
+          <option value="Vrishchik (Scorpio)">Vrishchik (Scorpio)</option>
+          <option value="Dhanu (Sagittarius)">Dhanu (Sagittarius)</option>
+          <option value="Makar (Capricorn)">Makar (Capricorn)</option>
+          <option value="Kumbh (Aquarius)">Kumbh (Aquarius)</option>
+          <option value="Meen (Pisces)">Meen (Pisces)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- STEP 2: SIZING & PREFERENCES -->
+    <div class="form-step-title">
+      <span class="step-badge">2</span>
+      <span>Wrist Sizing & Style</span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:18px;">
+      <label class="choice-card">
+        <input type="radio" name="wristSize" value="6.0 Inches (Slim)" checked>
+        <div class="choice-info">
+          <div class="title">6.0" (Slim Wrist)</div>
+          <div class="desc">Common for teenagers or slim wrists</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="wristSize" value="6.5 Inches (Medium Women / Slim Men)">
+        <div class="choice-info">
+          <div class="title">6.5" (Standard Women)</div>
+          <div class="desc">Most popular female wrist size</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="wristSize" value="7.0 Inches (Standard Men)">
+        <div class="choice-info">
+          <div class="title">7.0" (Standard Men)</div>
+          <div class="desc">Most common male wrist size</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="wristSize" value="7.5 Inches (Large Wrist)">
+        <div class="choice-info">
+          <div class="title">7.5" (Large Fit)</div>
+          <div class="desc">Comfortable loose fit</div>
+        </div>
+      </label>
+    </div>
+
+    <div class="grid-2">
+      <div class="input-box">
+        <label>Bead Size Preference</label>
+        <select id="beadSize">
+          <option value="8mm (Most Popular Balance)">8mm (Standard - Elegant & Balanced)</option>
+          <option value="6mm (Subtle & Petite)">6mm (Petite & Delicate)</option>
+          <option value="10mm (Bold & Heavy)">10mm (Prominent & Statement)</option>
+        </select>
+      </div>
+      <div class="input-box">
+        <label>Spacer Elements</label>
+        <select id="spacerStyle">
+          <option value="Vedic Silver Plated Spacers">Vedic Silver Plated Rings</option>
+          <option value="Sacred Rudraksha Beads">Original 5-Mukhi Rudraksha Beads</option>
+          <option value="Pure Crystal Only (No Metal)">Pure Healing Crystals Only (No Metal)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- STEP 3: ASTROLOGICAL PURPOSE -->
+    <div class="form-step-title">
+      <span class="step-badge">3</span>
+      <span>Primary Purpose & Healing Focus *</span>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <label class="choice-card">
+        <input type="radio" name="purpose" value="Wealth, Money Magnet & Prosperity" checked>
+        <div class="choice-info">
+          <div class="title">💰 Wealth & Prosperity (Dhan Labh)</div>
+          <div class="desc">Attract wealth, clear money stagnation, business growth</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="purpose" value="Career Growth, Promotion & Business Success">
+        <div class="choice-info">
+          <div class="title">🚀 Career & Job Growth</div>
+          <div class="desc">Professional promotions, interviews, confidence & leadership</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="purpose" value="Nazar (Evil Eye) & Negative Energy Protection">
+        <div class="choice-info">
+          <div class="title">🧿 Nazar & Evil Eye Protection</div>
+          <div class="desc">Shield from envy, dark energies, black vibes, psychic drain</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="purpose" value="Mental Calmness, Anxiety Relief & Sound Sleep">
+        <div class="choice-info">
+          <div class="title">🧘 Calmness, Peace & Healing</div>
+          <div class="desc">Overthinking relief, stress removal, peace of mind</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="purpose" value="Love, Marriage Harmony & Relationship">
+        <div class="choice-info">
+          <div class="title">💖 Love & Marital Harmony</div>
+          <div class="desc">Attract soulmate, heal misunderstandings, compassion</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="radio" name="purpose" value="Planetary Shanti (Rahu / Ketu / Shani Dosha)">
+        <div class="choice-info">
+          <div class="title">🪐 Planetary Balance (Graha Shanti)</div>
+          <div class="desc">Alleviate Sade Sati, Rahu-Ketu hurdles, cosmic alignment</div>
+        </div>
+      </label>
+    </div>
+
+    <!-- STEP 4: PREFERRED GEMSTONES -->
+    <div class="form-step-title">
+      <span class="step-badge">4</span>
+      <span>Preferred Crystals (Select any or let Astrologer choose)</span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:18px;">
+      <label class="choice-card">
+        <input type="checkbox" name="crystals" value="7 Chakra">
+        <div class="choice-info">
+          <div class="title">🌈 7 Chakra</div>
+          <div class="desc">Full Body Energy</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="checkbox" name="crystals" value="Pyrite (Fool's Gold)">
+        <div class="choice-info">
+          <div class="title">✨ Pyrite</div>
+          <div class="desc">Money & Power</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="checkbox" name="crystals" value="Tiger Eye">
+        <div class="choice-info">
+          <div class="title">🟤 Tiger Eye</div>
+          <div class="desc">Courage & Focus</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="checkbox" name="crystals" value="Citrine">
+        <div class="choice-info">
+          <div class="title">💛 Citrine</div>
+          <div class="desc">Prosperity & Joy</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="checkbox" name="crystals" value="Amethyst">
+        <div class="choice-info">
+          <div class="title">💜 Amethyst</div>
+          <div class="desc">Spiritual Peace</div>
+        </div>
+      </label>
+      <label class="choice-card">
+        <input type="checkbox" name="crystals" value="Black Obsidian">
+        <div class="choice-info">
+          <div class="title">🖤 Black Obsidian</div>
+          <div class="desc">Anti-Evil Eye</div>
+        </div>
+      </label>
+    </div>
+
+    <div class="input-box">
+      <label>Specific Life Concerns / Kundli Problems for Astrologer Sankalp:</label>
+      <textarea id="specialConcerns" rows="3" placeholder="Tell us if the person is facing any specific challenge (e.g., job delay, marital tension, health issue, debt, or exam anxiety)..."></textarea>
+    </div>
+
+    <!-- STEP 5: CONTACT & SHIPPING -->
+    <div class="form-step-title">
+      <span class="step-badge">5</span>
+      <span>Contact & Delivery Address</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="input-box">
+        <label>Your Name (Customer) *</label>
+        <input type="text" id="custName" placeholder="Enter your name" required>
+      </div>
+      <div class="input-box">
+        <label>WhatsApp / Mobile Number *</label>
+        <input type="tel" id="custMobile" placeholder="10-digit mobile number" maxlength="10" required>
+      </div>
+    </div>
+
+    <div class="input-box">
+      <label>Shipping Address (Where to deliver) *</label>
+      <textarea id="custAddress" rows="2" placeholder="House/Flat No., Street, Area, Landmark" required></textarea>
+    </div>
+
+    <div class="grid-3">
+      <div class="input-box">
+        <label>City *</label>
+        <input type="text" id="custCity" placeholder="City" required>
+      </div>
+      <div class="input-box">
+        <label>State *</label>
+        <input type="text" id="custState" placeholder="State" required>
+      </div>
+      <div class="input-box">
+        <label>Pincode *</label>
+        <input type="text" id="custPincode" placeholder="6-digit pincode" maxlength="6" required>
+      </div>
+    </div>
+
+    <!-- PRICING & SUBMIT -->
+    <div class="price-box-banner">
+      <div>
+        <div style="font-size:20px;font-weight:700;color:#2c1e16;">Special Customized Bracelet: ₹999</div>
+        <div style="font-size:12px;color:#7a6858;margin-top:4px;">
+          ✓ Includes Vedic Pooja Consecration (Abhimantrit) in Special Person's Name<br>
+          ✓ Premium Gift Pouch + Certificate of Authenticity + Free Shipping
+        </div>
+      </div>
+      <button type="submit" class="btn-submit-special" id="btnSubmit">
+        <i class="fas fa-magic"></i> Submit Special Bracelet Order
+      </button>
+    </div>
+
+  </form>
+</div>
+
+<!-- SUCCESS CONFIRMATION MODAL -->
+<div class="success-modal" id="specialSuccessModal">
+  <div class="success-modal-card">
+    <div style="font-size:52px;margin-bottom:12px;">🌟</div>
+    <h2 style="color:#2c1e16;font-size:22px;margin-bottom:8px;">Special Bracelet Request Received!</h2>
+    <p style="color:#666;font-size:14px;margin-bottom:16px;">
+      The astrological data for your special person has been successfully stored in our database. Our Astrologer will begin the Vedic analysis and crafting process.
+    </p>
+
+    <div style="background:#f9f6f0;border:1px solid #e0d5c1;padding:12px;border-radius:8px;margin-bottom:20px;text-align:left;font-size:13.5px;">
+      <div><strong>Request ID:</strong> <span id="modalRequestId" style="color:#c9933b;font-weight:700;">—</span></div>
+      <div><strong>Special Person:</strong> <span id="modalPersonName">—</span></div>
+      <div><strong>Estimated Making Time:</strong> 2–3 Days (Abhimantrit Process)</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a id="modalWhatsappBtn" href="#" target="_blank" class="btn-submit-special" style="background:#25D366;justify-content:center;text-decoration:none;">
+        <i class="fab fa-whatsapp"></i> Chat with Astrologer on WhatsApp
+      </a>
+      <a href="index.html" style="color:#c9933b;font-size:13.5px;font-weight:600;margin-top:6px;text-decoration:none;">
+        ← Back to Store Home
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.getElementById('specialBraceletForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving to Database...';
+
+  // Gather chosen crystals
+  const selectedCrystals = [];
+  document.querySelectorAll('input[name="crystals"]:checked').forEach(c => selectedCrystals.push(c.value));
+
+  // Gather wrist size
+  const wristRadio = document.querySelector('input[name="wristSize"]:checked');
+  const wristSize = wristRadio ? wristRadio.value : '6.5 Inches (Standard)';
+
+  // Gather purpose
+  const purposeRadio = document.querySelector('input[name="purpose"]:checked');
+  const purpose = purposeRadio ? purposeRadio.value : 'Wealth & Prosperity';
+
+  const payload = {
+    personDetails: {
+      fullName: document.getElementById('personName').value.trim(),
+      gender: document.getElementById('personGender').value,
+      dob: document.getElementById('personDob').value,
+      birthTime: document.getElementById('personBirthTime').value.trim(),
+      birthPlace: document.getElementById('personBirthPlace').value.trim(),
+      rashi: document.getElementById('personRashi').value
+    },
+    customization: {
+      wristSize,
+      beadSize: document.getElementById('beadSize').value,
+      spacerStyle: document.getElementById('spacerStyle').value,
+      primaryPurpose: purpose,
+      preferredStones: selectedCrystals,
+      specialConcerns: document.getElementById('specialConcerns').value.trim()
+    },
+    customer: {
+      name: document.getElementById('custName').value.trim(),
+      mobile: document.getElementById('custMobile').value.trim(),
+      address: document.getElementById('custAddress').value.trim(),
+      city: document.getElementById('custCity').value.trim(),
+      state: document.getElementById('custState').value.trim(),
+      pincode: document.getElementById('custPincode').value.trim()
+    },
+    pricing: {
+      finalPrice: 999
+    }
+  };
+
+  const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
+
+  try {
+    const res = await fetch(`${apiBase}/special-bracelets`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (res.ok && data.success) {
+      document.getElementById('modalRequestId').textContent = data.requestId;
+      document.getElementById('modalPersonName').textContent = payload.personDetails.fullName;
+
+      const whatsappText = encodeURIComponent(`Namaste Astro Vastu Setu! I have submitted a Special Bracelet request for ${payload.personDetails.fullName} (Request ID: ${data.requestId}). Please confirm the astrological energization.`);
+      document.getElementById('modalWhatsappBtn').href = `https://wa.me/919876543210?text=${whatsappText}`;
+
+      document.getElementById('specialSuccessModal').style.display = 'flex';
+    } else {
+      alert(data.error || 'Failed to submit request. Please try again.');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-magic"></i> Submit Special Bracelet Order';
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Could not connect to backend server. Make sure server is running.');
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-magic"></i> Submit Special Bracelet Order';
+  }
+});
+</script>
+</body>
+</html>

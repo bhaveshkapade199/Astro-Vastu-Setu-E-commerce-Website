@@ -1,8 +1,17 @@
 @echo off
-echo Starting Astro Vastu Setu Backend Server...
-echo The website will be available at http://localhost:3000
-echo The admin panel is at http://localhost:3000/admin.html
-echo Press Ctrl+C to stop the server.
+title Astro Vastu Setu Server
+echo ========================================================
+echo        Astro Vastu Setu - E-Commerce System
+echo ========================================================
 echo.
+echo Starting Node.js Backend Server connected to MongoDB...
+echo.
+echo Website is live at:     http://localhost:5000
+echo Admin Panel is live at: http://localhost:5000/admin
+echo.
+echo Press Ctrl+C to stop the server anytime.
+echo ========================================================
+echo.
+cd /d "%~dp0backend"
 node server.js
 pause
