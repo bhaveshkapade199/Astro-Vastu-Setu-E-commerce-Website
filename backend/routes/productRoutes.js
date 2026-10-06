@@ -27,6 +27,25 @@ const upload = multer({
     limits: { fileSize: 10 * 1024 * 1024 } // 10MB
 });
 
+// Smart image auto-assignment based on product name keywords
+function getAutoImage(name, currentImage) {
+    if (currentImage) return currentImage; // don't override if already set
+    const n = (name || '').toLowerCase();
+    if (n.includes('7 chakra') || n.includes('seven chakra') || n.includes('chakra')) return '/uploads/bracelet-7chakra.jpeg';
+    if (n.includes('amethyst')) return '/uploads/bracelet-amethyst.jpeg';
+    if (n.includes('citrine')) return '/uploads/bracelet-citrine.jpeg';
+    if (n.includes('tiger eye') || n.includes('tigereye')) return '/uploads/bracelet-tigereye.jpeg';
+    if (n.includes('black tourmaline') || n.includes('tourmaline')) return '/uploads/bracelet-blacktourmaline.jpeg';
+    if (n.includes('rose quartz')) return '/uploads/bracelet-rosequartz.jpeg';
+    if (n.includes('clear quartz')) return '/uploads/bracelet-clearquartz.jpeg';
+    if (n.includes('pyrite')) return '/uploads/bracelet-pyrite.jpeg';
+    if (n.includes('green aventurine') || n.includes('aventurine')) return '/uploads/bracelet-greenaventurine.jpeg';
+    if (n.includes('rudraksha')) return '/uploads/bracelet-rudraksha.jpeg';
+    if (n.includes('dhanyog') || n.includes('dhan')) return '/uploads/bracelet-dhanyog.jpeg';
+    if (n.includes('lakshmi') || n.includes('potli')) return '/uploads/bracelet-lakshmipotli.jpeg';
+    return '/uploads/bracelet-default.jpeg';
+}
+
 // GET all products
 router.get('/', async (req, res) => {
     try {
@@ -76,7 +95,7 @@ router.post('/', authenticateAdmin, async (req, res) => {
             category: body.category,
             subcategory: body.subcategory || '',
             emoji: body.emoji || '💎',
-            image: body.image || '',
+            image: getAutoImage(body.name, body.image || ''),
             price: Number(body.price),
             mrp: Number(body.mrp) || Number(body.price),
             discount: Number(body.discount) || 0,

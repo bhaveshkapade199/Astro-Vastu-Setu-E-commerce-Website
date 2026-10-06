@@ -39,6 +39,7 @@
       <ul class="nav-list">
         <li><a href="index.html" class="nav-link">🏠 Home</a></li>
         <li><a href="shop.html" class="nav-link">💎 Bracelets</a></li>
+        <li><a href="find-my-bracelet.html" class="nav-link" style="color:var(--gold);font-weight:700;">🔮 Find My Bracelet (₹51)</a></li>
         <li><a href="shop.html?cat=lakshmipotli" class="nav-link">🪔 Lakshmi Potli</a></li>
         <li><a href="shop.html?cat=rudraksha" class="nav-link">📿 Rudraksha</a></li>
         <li><a href="shop.html?cat=dhanyog" class="nav-link">✨ Dhanyog</a></li>
@@ -229,11 +230,19 @@ function renderProduct(p) {
     <!-- GALLERY -->
     <div class="product-gallery">
       <div class="main-image" id="mainImage" style="font-size:120px; overflow:hidden;">
-        ${p.image ? `<img src="${getProductImageUrl(p.image)}" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='${p.emoji || '💎'}'">` : (p.emoji || '💎')}
+        ${(() => {
+          const imgUrl = getProductImageUrl(p.image);
+          const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
+          return `<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
+        })()}
       </div>
       <div class="thumb-list">
-        <div class="thumb active" onclick="changeImg(this, '${getProductImageUrl(p.image)}', '${p.emoji || '💎'}')">
-          ${p.image ? `<img src="${getProductImageUrl(p.image)}" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='${p.emoji || '💎'}'">` : (p.emoji || "💎")}
+        <div class="thumb active" onclick="changeImg(this, '${getProductImageUrl(p.image)}')">
+          ${(() => {
+            const imgUrl = getProductImageUrl(p.image);
+            const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
+            return `<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
+          })()}
         </div>
       </div>
     </div>
@@ -300,6 +309,17 @@ function renderProduct(p) {
       <button class="btn-wishlist-big ${isWishlisted ? 'active' : ''}" id="wishlistBtn" onclick="handleWishlistProduct(${p.id})">
         ${isWishlisted ? '❤️ Added to Wishlist' : '🤍 ADD TO WISHLIST'}
       </button>
+
+      <!-- 🔮 NUMEROLOGY RECOMMENDATION PROMPT 🔮 -->
+      <div style="background: linear-gradient(135deg, #fefce8 0%, #fffbeb 100%); border: 1.5px solid #ca8a04; border-radius: 12px; padding: 14px 18px; margin: 18px 0; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; box-shadow: 0 4px 15px rgba(202, 138, 4, 0.1);">
+        <div>
+          <div style="font-size: 14px; font-weight: 800; color: #854d0e;">🤔 हे Bracelet तुमच्यासाठी योग्य आहे का?</div>
+          <div style="font-size: 12px; color: #713f12; margin-top: 2px;">तुमच्या Birth Date नुसार personalized recommendation मिळवा.</div>
+        </div>
+        <a href="find-my-bracelet.html" style="background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; padding: 9px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);">
+          🔮 CHECK MY BRACELET – ₹51
+        </a>
+      </div>
 
       <!-- PINCODE CHECK -->
       <div class="pincode-check">
@@ -373,10 +393,11 @@ function renderRelated(current) {
   container.innerHTML = related.map(p => `
     <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
-        ${p.image ? 
-          `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : 
-          `<div class="product-emoji" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;">${p.emoji || '📦'}</div>`
-        }
+        ${(() => {
+          const imgUrl = getProductImageUrl(p.image);
+          const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
+          return `<img src="${imgUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
+        })()}
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
       </div>
       <div class="product-body">

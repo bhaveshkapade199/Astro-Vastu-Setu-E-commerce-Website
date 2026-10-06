@@ -182,8 +182,9 @@ function renderCheckoutSummary() {
     if (!p) return '';
     subtotal += p.price * item.qty;
     return `
-      <div class="order-product-item">
-        <div class="order-product-img">${p.emoji}</div>
+        <div class="order-product-img">
+          <img src="${(typeof getProductImageUrl === 'function') ? getProductImageUrl(p.image) : (p.image || 'Images/bracelet-default.jpeg')}" alt="${p.name}" onerror="this.src='Images/bracelet-default.jpeg'">
+        </div>
         <div>
           <div class="order-product-name">${p.name}</div>
           <div class="order-product-qty">Qty: ${item.qty}</div>

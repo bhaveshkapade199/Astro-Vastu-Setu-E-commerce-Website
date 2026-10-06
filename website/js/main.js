@@ -48,14 +48,13 @@ function productCardHTML(p) {
   const wl = getWishlist();
   const isWishlisted = wl.includes(p.id);
   const resolvedImg = (typeof getProductImageUrl === 'function') ? getProductImageUrl(p.image) : (p.image || '');
+  const defaultImg = (typeof BACKEND_API_BASE !== 'undefined') 
+    ? BACKEND_API_BASE.replace('/api', '') + '/uploads/bracelet-default.jpeg'
+    : 'http://localhost:5000/uploads/bracelet-default.jpeg';
   return `
     <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
-        ${resolvedImg ? 
-          `<img src="${resolvedImg}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex';">
-           <div class="product-emoji" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:64px;">${p.emoji || '💎'}</div>` : 
-          `<div class="product-emoji" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;">${p.emoji || '💎'}</div>`
-        }
+        <img src="${resolvedImg || defaultImg}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defaultImg}'">
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
         <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="event.stopPropagation(); handleWishlist(${p.id}, this)" title="Add to Wishlist">
           ${isWishlisted ? '❤️' : '🤍'}
@@ -193,12 +192,12 @@ document.getElementById('loginOverlay')?.addEventListener('click', function(e) {
 
 // ---- SPECIAL BRACELET MODAL ----
 function openSpecialBraceletModal() {
-  document.getElementById('specialBraceletModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  location.href = 'find-my-bracelet.html';
 }
 
 function closeSpecialBraceletModal() {
-  document.getElementById('specialBraceletModal').style.display = 'none';
+  const modal = document.getElementById('specialBraceletModal');
+  if (modal) modal.style.display = 'none';
   document.body.style.overflow = '';
 }
 

@@ -2,6 +2,9 @@
 // ASTRO VASTU SETU - Product Data
 // ============================================
 
+// Default fallback bracelet image (served from backend)
+const DEFAULT_BRACELET_IMG = '/uploads/bracelet-default.jpeg';
+
 const DEFAULT_PRODUCTS = [
   {
     id: 1,
@@ -9,6 +12,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "7chakra",
     emoji: "🌈",
+    image: "/uploads/bracelet-7chakra.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -39,6 +43,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "citrine",
     emoji: "💛",
+    image: "/uploads/bracelet-citrine.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -69,6 +74,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "amethyst",
     emoji: "💜",
+    image: "/uploads/bracelet-amethyst.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -99,6 +105,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "tigereye",
     emoji: "🟤",
+    image: "/uploads/bracelet-tigereye.jpeg",
     price: 799,
     mrp: 1049,
     discount: 24,
@@ -129,6 +136,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "blacktourmaline",
     emoji: "⚫",
+    image: "/uploads/bracelet-blacktourmaline.jpeg",
     price: 899,
     mrp: 1199,
     discount: 25,
@@ -159,6 +167,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "rosequartz",
     emoji: "🌸",
+    image: "/uploads/bracelet-rosequartz.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -189,6 +198,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "clearquartz",
     emoji: "⚪",
+    image: "/uploads/bracelet-clearquartz.jpeg",
     price: 699,
     mrp: 999,
     discount: 30,
@@ -219,6 +229,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "pyrite",
     emoji: "✨",
+    image: "/uploads/bracelet-pyrite.jpeg",
     price: 899,
     mrp: 1249,
     discount: 28,
@@ -249,6 +260,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "greenaventurine",
     emoji: "💚",
+    image: "/uploads/bracelet-greenaventurine.jpeg",
     price: 799,
     mrp: 1049,
     discount: 24,
@@ -279,6 +291,7 @@ const DEFAULT_PRODUCTS = [
     category: "rudraksha",
     subcategory: "rudraksha",
     emoji: "📿",
+    image: "/uploads/bracelet-rudraksha.jpeg",
     price: 899,
     mrp: 1299,
     discount: 31,
@@ -309,6 +322,7 @@ const DEFAULT_PRODUCTS = [
     category: "dhanyog",
     subcategory: "dhanyog",
     emoji: "🌿",
+    image: "/uploads/bracelet-dhanyog.jpeg",
     price: 999,
     mrp: 1499,
     discount: 33,
@@ -339,6 +353,7 @@ const DEFAULT_PRODUCTS = [
     category: "lakshmipotli",
     subcategory: "lakshmipotli",
     emoji: "🪔",
+    image: "/uploads/bracelet-lakshmipotli.jpeg",
     price: 249,
     mrp: 399,
     discount: 38,
@@ -369,6 +384,7 @@ const DEFAULT_PRODUCTS = [
     category: "lakshmipotli",
     subcategory: "lakshmipotli",
     emoji: "🪔",
+    image: "/uploads/bracelet-lakshmipotli.jpeg",
     price: 499,
     mrp: 799,
     discount: 38,
@@ -400,9 +416,10 @@ const BACKEND_API_BASE = (window.location.origin && window.location.origin.inclu
 window.BACKEND_API_BASE = BACKEND_API_BASE;
 
 function getProductImageUrl(img) {
-  if (!img) return '';
-  if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:')) return img;
   const base = BACKEND_API_BASE.replace('/api', '');
+  // Use default bracelet image if no image is set
+  if (!img) return base + DEFAULT_BRACELET_IMG;
+  if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:')) return img;
   if (img.startsWith('/')) return base + img;
   return base + '/' + img;
 }

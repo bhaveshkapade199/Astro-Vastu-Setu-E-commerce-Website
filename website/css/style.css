@@ -424,6 +424,11 @@ select:focus {
   flex-wrap: wrap;
 }
 
+.Inner-hero-section {
+  display: flex;
+  gap: 16px;
+}
+
 .btn-primary {
   background: var(--gold);
   color: var(--dark-green);
@@ -596,6 +601,14 @@ select:focus {
   justify-content: center;
   font-size: 32px;
   transition: var(--transition);
+}
+
+.category-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
 }
 
 .category-card:hover .category-img {
@@ -2073,6 +2086,13 @@ select:focus {
   flex-shrink: 0;
 }
 
+.cart-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .cart-product-name {
   font-size: 14px;
   font-weight: 600;
@@ -2449,11 +2469,19 @@ select:focus {
   border-radius: var(--radius-sm);
   background: var(--cream);
   border: 1px solid var(--border-light);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 26px;
   flex-shrink: 0;
+}
+
+.order-product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .order-product-name {
@@ -3779,7 +3807,7 @@ select:focus {
 .lang-btn {
   background: transparent;
   border: none;
-  color: #fff;
+  color: #389e1f;
   font-size: 11.5px;
   font-weight: 500;
   padding: 3px 8px;
@@ -3796,7 +3824,7 @@ select:focus {
   background: #f5c842;
   color: #1a0a00;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ============ SHINING STAR SPECIAL BRACELET CTA ============ */
@@ -3820,16 +3848,27 @@ select:focus {
   font-size: 13px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 16px rgba(255, 215, 0, 0.65), 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.65), 0 3px 8px rgba(0, 0, 0, 0.2);
   border: 1.5px solid #fff2a8;
   animation: starPulse 2.4s infinite;
   white-space: nowrap;
 }
 
 @keyframes starPulse {
-  0% { transform: scale(1); box-shadow: 0 0 12px rgba(255, 215, 0, 0.5); }
-  50% { transform: scale(1.04); box-shadow: 0 0 24px rgba(255, 215, 0, 0.9), 0 0 36px rgba(255, 152, 0, 0.5); }
-  100% { transform: scale(1); box-shadow: 0 0 12px rgba(255, 215, 0, 0.5); }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  }
+
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 24px rgba(255, 215, 0, 0.9), 0 0 36px rgba(255, 152, 0, 0.5);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  }
 }
 
 .nav-star-special-btn:hover {
@@ -3844,11 +3883,25 @@ select:focus {
 }
 
 @keyframes starSpin {
-  0% { transform: rotate(0deg) scale(1); }
-  25% { transform: rotate(15deg) scale(1.2); }
-  50% { transform: rotate(0deg) scale(1); }
-  75% { transform: rotate(-15deg) scale(1.2); }
-  100% { transform: rotate(0deg) scale(1); }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(15deg) scale(1.2);
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  75% {
+    transform: rotate(-15deg) scale(1.2);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
 }
 
 .star-special-text {
@@ -3880,16 +3933,281 @@ select:focus {
 .star-shine-glow {
   position: absolute;
   top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: shineSwipe 3s infinite;
+}
+
+/* ========================================================
+   NUMEROLOGY HOMEPAGE BANNERS (Big & Small)
+   ======================================================== */
+.num-big-banner-section {
+  padding: 40px 20px;
+  background: #fdfbf7;
+}
+
+.num-big-banner-card {
+  max-width: 1300px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #e7d8b5;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  padding: 35px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.num-banner-header {
+  margin-bottom: 25px;
+}
+
+.num-banner-subtitle-tag {
+  color: #c9933b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.num-banner-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #123020;
+  line-height: 1.3;
+  margin: 0 0 10px 0;
+}
+
+.num-banner-desc {
+  font-size: 14px;
+  color: #556960;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0;
+}
+
+.num-banner-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Left offer badge */
+.num-offer-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.num-coin-badge {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+  border: 3px solid #fef3c7;
+  text-align: center;
+}
+
+.num-coin-badge .coin-price {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.num-coin-badge .coin-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.num-offer-text-box .offer-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a3325;
+}
+
+.num-offer-text-box .offer-subtitle {
+  font-size: 14px;
+  font-weight: 800;
+  color: #b45309;
+}
+
+/* 3-Step Process */
+.num-steps-timeline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 320px;
+  justify-content: center;
+}
+
+.num-step-box {
+  background: #fbf9f4;
+  border: 1px solid #ebdcc0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+  max-width: 200px;
+  transition: transform 0.2s;
+}
+
+.num-step-box:hover {
+  transform: translateY(-3px);
+  border-color: #c9933b;
+}
+
+.num-step-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.num-step-icon-circle.step-purple {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+}
+
+.num-step-icon-circle.step-blue {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.num-step-icon-circle.step-green {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+.num-step-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 3px;
+}
+
+.num-step-sub {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+.num-arrow-sep {
+  font-size: 20px;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+/* CTA and image column */
+.num-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.num-cta-btn {
+  background: #0f3d26;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(15, 61, 38, 0.3);
+}
+
+.num-cta-btn:hover {
+  background: #082918;
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(15, 61, 38, 0.45);
+  color: #fff;
+}
+
+.num-cta-sub {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* Small Hero side banner */
+.hero-num-banner {
+  background: linear-gradient(135deg, rgba(20, 56, 35, 0.95), rgba(7, 24, 15, 0.98));
+  border: 2px solid #c9933b;
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  max-width: 320px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-num-banner:hover {
+  transform: translateY(-4px);
+  border-color: #ffd700;
+}
+
+@media (max-width: 900px) {
+  .num-banner-main-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .num-steps-timeline {
+    flex-wrap: wrap;
+  }
+}
+
+  position: absolute;
+  top: 0;
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
   transform: skewX(-25deg);
   animation: shineSwipe 3s infinite;
 }
 
 @keyframes shineSwipe {
-  0% { left: -100%; }
-  35% { left: 200%; }
-  100% { left: 200%; }
+  0% {
+    left: -100%;
+  }
+
+  35% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }

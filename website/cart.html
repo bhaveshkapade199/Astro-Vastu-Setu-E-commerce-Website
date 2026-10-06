@@ -104,7 +104,9 @@ function renderCart() {
     return `
       <div class="cart-item" id="cartItem_${p.id}">
         <div class="cart-product-info">
-          <div class="cart-img">${p.emoji}</div>
+          <div class="cart-img">
+            <img src="${(typeof getProductImageUrl === 'function') ? getProductImageUrl(p.image) : (p.image || 'Images/bracelet-default.jpeg')}" alt="${p.name}" onerror="this.src='Images/bracelet-default.jpeg'">
+          </div>
           <div>
             <div class="cart-product-name"><a href="product.html?id=${p.id}">${p.name}</a></div>
             <div style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${p.material.substring(0,40)}...</div>

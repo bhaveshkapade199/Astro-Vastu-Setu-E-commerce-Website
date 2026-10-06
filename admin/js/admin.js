@@ -89,6 +89,7 @@ async function refreshAllData() {
         loadCategories(),
         loadOrders(),
         loadSpecialRequests(),
+        loadNumerologyReports(),
         loadContacts(),
         loadReviews()
     ]);
@@ -112,6 +113,7 @@ function switchTab(tabId) {
         'categories': 'Category Management (Dynamic)',
         'orders': 'Customer Website Orders',
         'special-bracelets': 'Special & Customized Bracelet Requests',
+        'numerology': '₹51 Numerology Reports & Recommendations',
         'contacts': 'Customer Inquiries & Contact Messages',
         'reviews': 'Customer Product Feedback & Reviews'
     };
@@ -121,6 +123,7 @@ function switchTab(tabId) {
     if (tabId === 'categories') loadCategories();
     if (tabId === 'orders') loadOrders();
     if (tabId === 'special-bracelets') loadSpecialRequests();
+    if (tabId === 'numerology') loadNumerologyReports();
     if (tabId === 'contacts') loadContacts();
     if (tabId === 'reviews') loadReviews();
     if (tabId === 'dashboard') updateDashboardStats();
@@ -211,10 +214,9 @@ function renderProductsTable() {
     }
 
     productsData.forEach(p => {
-        const imgSrc = p.image ? (p.image.startsWith('http') ? p.image : (API_BASE.replace('/api', '') + p.image)) : '';
-        const visual = imgSrc
-            ? `<img src="${imgSrc}" class="product-img" onerror="this.outerHTML='<div class=\\'product-img\\'>${p.emoji || '💎'}</div>'">`
-            : `<div class="product-img">${p.emoji || '💎'}</div>`;
+        const defImg = API_BASE.replace('/api', '') + '/uploads/bracelet-default.jpeg';
+        const imgSrc = p.image ? (p.image.startsWith('http') ? p.image : (API_BASE.replace('/api', '') + p.image)) : defImg;
+        const visual = `<img src="${imgSrc}" class="product-img" onerror="this.src='${defImg}'" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">`;
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -1041,6 +1043,138 @@ async function deleteReview(id) {
 }
 
 // -------------------------------------------------------------
+// 6.5. ₹51 NUMEROLOGY REPORTS & RECOMMENDATIONS
+// -------------------------------------------------------------
+let numerologyData = [];
+
+async function loadNumerologyReports() {
+    try {
+        const res = await fetch(`${API_BASE}/numerology-orders`, {
+            headers: getAuthHeaders()
+        });
+        if (res.status === 401 || res.status === 403) return logout();
+        if (!res.ok) throw new Error('Failed to load numerology reports');
+        numerologyData = await res.json();
+        renderNumerologyTable();
+        updateDashboardStats();
+    } catch (err) {
+        console.error('Error loading numerology reports:', err);
+    }
+}
+
+function renderNumerologyTable() {
+    const tbody = document.querySelector('#numerologyTable tbody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    if (!numerologyData.length) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:30px;color:#888;">No numerology report requests received yet. Customer submissions from "Find My Bracelet" will appear here.</td></tr>';
+        return;
+    }
+
+    numerologyData.forEach(r => {
+        const dateStr = r.createdAt ? new Date(r.createdAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }) : 'N/A';
+        const tr = document.createElement('tr');
+
+        const braceletImg = r.recommendation && r.recommendation.braceletImage
+            ? `<img src="${r.recommendation.braceletImage.startsWith('http') ? r.recommendation.braceletImage : (API_BASE.replace('/api', '') + r.recommendation.braceletImage)}" style="width:36px;height:36px;border-radius:6px;object-fit:cover;vertical-align:middle;margin-right:6px;" onerror="this.src='/uploads/bracelet-default.jpeg'">`
+            : '';
+
+        tr.innerHTML = `
+            <td>
+                <span class="badge-tag" style="background:#ede9fe;color:#6d28d9;font-weight:700;padding:4px 8px;border-radius:6px;">${escapeHtml(r.reportId)}</span>
+                <br><small style="color:#888;">${dateStr}</small>
+            </td>
+            <td>
+                <strong>${escapeHtml(r.customer.name)}</strong><br>
+                <a href="tel:${escapeHtml(r.customer.whatsapp)}" style="font-size:12px;color:var(--dark);"><i class="fas fa-phone-alt"></i> ${escapeHtml(r.customer.whatsapp)}</a>
+                ${r.customer.email ? `<br><small style="color:#888;">${escapeHtml(r.customer.email)}</small>` : ''}
+            </td>
+            <td>
+                <strong>🎂 ${escapeHtml(r.customer.dob)}</strong><br>
+                <small style="color:#b45309;font-weight:600;">🎯 ${escapeHtml(r.customer.purpose)}</small>
+            </td>
+            <td>
+                <span style="display:inline-block;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:12px;font-weight:700;font-size:12px;">मूल्यांक: ${r.numerology ? r.numerology.mulank : '-'}</span>
+                <span style="display:inline-block;background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:12px;font-weight:700;font-size:12px;margin-left:4px;">भाग्यांक: ${r.numerology ? r.numerology.bhagyank : '-'}</span><br>
+                <small style="color:#555;">🪐 ${escapeHtml(r.numerology ? r.numerology.rulingPlanet : '')}</small>
+            </td>
+            <td>
+                ${braceletImg}
+                <strong>${escapeHtml(r.recommendation ? r.recommendation.braceletName : '')}</strong>
+                <br><small style="color:#16a34a;font-weight:700;">₹${r.recommendation ? r.recommendation.braceletPrice : 699}</small>
+            </td>
+            <td>
+                <span class="status-pill status-confirmed">₹51 Paid</span>
+            </td>
+            <td>
+                <span class="status-pill ${r.reportStatus === 'Sent on WhatsApp' ? 'status-delivered' : 'status-confirmed'}">
+                    ${escapeHtml(r.reportStatus || 'Generated')}
+                </span>
+            </td>
+            <td>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <a href="/find-my-bracelet.html?reportId=${encodeURIComponent(r.reportId)}" target="_blank" class="btn btn-secondary btn-sm" title="Open Customer Report Page">
+                        <i class="fas fa-file-alt"></i> View
+                    </a>
+                    <button class="btn btn-success btn-sm" onclick="sendNumerologyWhatsApp('${r.reportId}')" title="Send Report on WhatsApp" style="background:#25d366;border-color:#25d366;color:#fff;">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteNumerologyReport('${r._id}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function sendNumerologyWhatsApp(reportId) {
+    const r = numerologyData.find(x => x.reportId === reportId);
+    if (!r) return;
+
+    const msg = `🔮 *Astro Vastu Setu - Numerology Bracelet Report*\n\n` +
+        `नमस्कार ${r.customer.name} जी! 🙏\n\n` +
+        `तुमच्या जन्मतारखेच्या (${r.customer.dob}) आधारावर तुमची Personalized Numerology Bracelet Recommendation तयार करण्यात आली आहे. ✨\n\n` +
+        `🔢 *मूल्यांक:* ${r.numerology.mulank} | *भाग्यांक:* ${r.numerology.bhagyank}\n` +
+        `🪐 *स्वामी ग्रह:* ${r.numerology.rulingPlanet}\n\n` +
+        `✨ *तुमच्यासाठी Recommended Bracelet:* ${r.recommendation.braceletName}\n` +
+        `💰 *किंमत:* ₹${r.recommendation.braceletPrice}\n\n` +
+        `📄 *तुमचा पूर्ण रिपोर्ट पाहण्यासाठी खालील लिंकवर क्लिक करा:*\n` +
+        `http://localhost:5000/find-my-bracelet.html?reportId=${r.reportId}\n\n` +
+        `धन्यवाद! 🕉️ Astro Vastu Setu`;
+
+    const waUrl = `https://wa.me/91${r.customer.whatsapp}?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+
+    // Update status in backend
+    fetch(`${API_BASE}/numerology-orders/${reportId}/status`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ reportStatus: 'Sent on WhatsApp' })
+    }).then(() => loadNumerologyReports()).catch(console.error);
+}
+
+async function deleteNumerologyReport(id) {
+    if (!confirm('Are you sure you want to delete this numerology report record?')) return;
+    try {
+        const res = await fetch(`${API_BASE}/numerology-orders/${id}`, {
+            method: 'DELETE',
+            headers: getAuthHeaders()
+        });
+        if (res.ok) {
+            alert('Numerology report deleted.');
+            await loadNumerologyReports();
+        } else {
+            alert('Failed to delete report.');
+        }
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// -------------------------------------------------------------
 // 7. DASHBOARD STATS
 // -------------------------------------------------------------
 function updateDashboardStats() {
@@ -1051,6 +1185,7 @@ function updateDashboardStats() {
 
     const badgeOrders = document.getElementById('badgeOrdersCount');
     const badgeSpecial = document.getElementById('badgeSpecialCount');
+    const badgeNumerology = document.getElementById('badgeNumerologyCount');
     const badgeContacts = document.getElementById('badgeContactsCount');
     const badgeReviews = document.getElementById('badgeReviewsCount');
 
@@ -1066,6 +1201,10 @@ function updateDashboardStats() {
         badgeSpecial.textContent = specialRequestsData.length;
         badgeSpecial.style.display = specialRequestsData.length ? 'inline-block' : 'none';
     }
+    if (badgeNumerology) {
+        badgeNumerology.textContent = numerologyData.length;
+        badgeNumerology.style.display = numerologyData.length ? 'inline-block' : 'none';
+    }
     if (badgeContacts) {
         const newContacts = contactsData.filter(c => c.status === 'New').length;
         badgeContacts.textContent = newContacts || contactsData.length;
@@ -1077,7 +1216,8 @@ function updateDashboardStats() {
     }
 
     const totalRev = ordersData.reduce((sum, o) => sum + (Number(o.total) || 0), 0) +
-        specialRequestsData.reduce((sum, s) => sum + (Number(s.pricing && s.pricing.finalPrice) || 0), 0);
+        specialRequestsData.reduce((sum, s) => sum + (Number(s.pricing && s.pricing.finalPrice) || 0), 0) +
+        numerologyData.reduce((sum, n) => sum + (Number(n.payment && n.payment.amount) || 51), 0);
 
     if (revenueEl) revenueEl.textContent = `₹${totalRev.toLocaleString('en-IN')}`;
 }
