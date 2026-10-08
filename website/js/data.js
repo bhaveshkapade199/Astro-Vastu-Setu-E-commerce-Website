@@ -1,9 +1,9 @@
 // ============================================
-// ASTRO VASTU SETU - Product Data
+// ASTRO VASTU SETU - Product Data (Pure HTML/CSS/JS - No Backend)
 // ============================================
 
-// Default fallback bracelet image (served from backend)
-const DEFAULT_BRACELET_IMG = '/uploads/bracelet-default.jpeg';
+// Default fallback bracelet image (local)
+const DEFAULT_BRACELET_IMG = 'Images/bracelet-default.jpeg';
 
 const DEFAULT_PRODUCTS = [
   {
@@ -12,7 +12,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "7chakra",
     emoji: "🌈",
-    image: "/uploads/bracelet-7chakra.jpeg",
+    image: "Images/bracelet-7chakra.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -43,7 +43,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "citrine",
     emoji: "💛",
-    image: "/uploads/bracelet-citrine.jpeg",
+    image: "Images/bracelet-citrine.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -74,7 +74,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "amethyst",
     emoji: "💜",
-    image: "/uploads/bracelet-amethyst.jpeg",
+    image: "Images/bracelet-amethyst.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -105,7 +105,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "tigereye",
     emoji: "🟤",
-    image: "/uploads/bracelet-tigereye.jpeg",
+    image: "Images/bracelet-tigereye.jpeg",
     price: 799,
     mrp: 1049,
     discount: 24,
@@ -136,7 +136,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "blacktourmaline",
     emoji: "⚫",
-    image: "/uploads/bracelet-blacktourmaline.jpeg",
+    image: "Images/bracelet-blacktourmaline.jpeg",
     price: 899,
     mrp: 1199,
     discount: 25,
@@ -167,7 +167,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "rosequartz",
     emoji: "🌸",
-    image: "/uploads/bracelet-rosequartz.jpeg",
+    image: "Images/bracelet-rosequartz.jpeg",
     price: 699,
     mrp: 1049,
     discount: 33,
@@ -198,7 +198,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "clearquartz",
     emoji: "⚪",
-    image: "/uploads/bracelet-clearquartz.jpeg",
+    image: "Images/bracelet-clearquartz.jpeg",
     price: 699,
     mrp: 999,
     discount: 30,
@@ -229,7 +229,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "pyrite",
     emoji: "✨",
-    image: "/uploads/bracelet-pyrite.jpeg",
+    image: "Images/bracelet-pyrite.jpeg",
     price: 899,
     mrp: 1249,
     discount: 28,
@@ -260,7 +260,7 @@ const DEFAULT_PRODUCTS = [
     category: "bracelets",
     subcategory: "greenaventurine",
     emoji: "💚",
-    image: "/uploads/bracelet-greenaventurine.jpeg",
+    image: "Images/bracelet-greenaventurine.jpeg",
     price: 799,
     mrp: 1049,
     discount: 24,
@@ -291,7 +291,7 @@ const DEFAULT_PRODUCTS = [
     category: "rudraksha",
     subcategory: "rudraksha",
     emoji: "📿",
-    image: "/uploads/bracelet-rudraksha.jpeg",
+    image: "Images/bracelet-rudraksha.jpeg",
     price: 899,
     mrp: 1299,
     discount: 31,
@@ -322,7 +322,7 @@ const DEFAULT_PRODUCTS = [
     category: "dhanyog",
     subcategory: "dhanyog",
     emoji: "🌿",
-    image: "/uploads/bracelet-dhanyog.jpeg",
+    image: "Images/bracelet-dhanyog.jpeg",
     price: 999,
     mrp: 1499,
     discount: 33,
@@ -353,7 +353,7 @@ const DEFAULT_PRODUCTS = [
     category: "lakshmipotli",
     subcategory: "lakshmipotli",
     emoji: "🪔",
-    image: "/uploads/bracelet-lakshmipotli.jpeg",
+    image: "Images/bracelet-lakshmipotli.jpeg",
     price: 249,
     mrp: 399,
     discount: 38,
@@ -384,7 +384,7 @@ const DEFAULT_PRODUCTS = [
     category: "lakshmipotli",
     subcategory: "lakshmipotli",
     emoji: "🪔",
-    image: "/uploads/bracelet-lakshmipotli.jpeg",
+    image: "Images/bracelet-lakshmipotli.jpeg",
     price: 499,
     mrp: 799,
     discount: 38,
@@ -410,33 +410,17 @@ const DEFAULT_PRODUCTS = [
     isFeatured: false
   }
 ];
-const BACKEND_API_BASE = (window.location.origin && window.location.origin.includes('localhost:'))
-  ? `${window.location.origin}/api`
-  : 'http://localhost:5000/api';
-window.BACKEND_API_BASE = BACKEND_API_BASE;
-
+// ---- Pure JS: Use local images, no backend needed ----
 function getProductImageUrl(img) {
-  const base = BACKEND_API_BASE.replace('/api', '');
-  // Use default bracelet image if no image is set
-  if (!img) return base + DEFAULT_BRACELET_IMG;
+  if (!img) return DEFAULT_BRACELET_IMG;
   if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:')) return img;
-  if (img.startsWith('/')) return base + img;
-  return base + '/' + img;
+  // Already a local relative path (e.g. "Images/bracelet-citrine.jpeg")
+  return img;
 }
 window.getProductImageUrl = getProductImageUrl;
 
-let fetchedProducts = null;
-try {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", `${BACKEND_API_BASE}/products?_t=` + new Date().getTime(), false);
-  xhr.send(null);
-  if (xhr.status === 200) {
-    fetchedProducts = JSON.parse(xhr.responseText);
-  }
-} catch (e) {
-  console.warn("Could not fetch products from MongoDB backend. Using defaults.", e);
-}
-const PRODUCTS = (fetchedProducts && fetchedProducts.length > 0) ? fetchedProducts : DEFAULT_PRODUCTS;
+// Products are defined statically — no backend fetch needed
+const PRODUCTS = DEFAULT_PRODUCTS;
 
 // Cart & Wishlist Management
 function getCart() {

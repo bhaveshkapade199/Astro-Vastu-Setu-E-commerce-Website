@@ -7,59 +7,271 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav><ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop.html">💎 Shop</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul></nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">🔒</div>
+    <h1>Privacy Policy</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Privacy Policy</span>
     </div>
   </div>
-</header>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
 
-<div class="page-header">
-  <h1>Privacy Policy</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Privacy Policy</span></div>
-</div>
+  <!-- POLICY QUICK-LINKS -->
+  <div class="policy-links-strip">
+    <div class="policy-links-strip-inner">
+      <span>Policies:</span>
+      <a href="shipping.html">🚚 Shipping</a>
+      <a href="returns.html">↩️ Returns &amp; Refund</a>
+      <a href="cancellation.html">❌ Cancellation</a>
+      <a href="privacy.html" class="active-policy">🔒 Privacy</a>
+      <a href="terms.html">📄 Terms</a>
+      <a href="disclaimer.html">⚠️ Disclaimer</a>
+    </div>
+  </div>
 
-<div class="legal-content">
-  <p>At Astro Vastu Setu, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights.</p>
+  <!-- CONTENT -->
+  <div class="legal-content">
 
-  <h2>1. Data We Collect</h2>
-  <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
-  <ul>
-    <li><strong>Identity Data:</strong> includes first name, last name, username or similar identifier.</li>
-    <li><strong>Contact Data:</strong> includes billing address, delivery address, email address and telephone numbers.</li>
-    <li><strong>Transaction Data:</strong> includes details about payments to and from you and other details of products you have purchased from us. Note that we do not store sensitive payment card details; these are securely processed by Razorpay.</li>
-  </ul>
+    <div class="legal-meta">
+      <span>📅 <strong>Last Updated:</strong> October 2026</span>
+      <span>🌐 <strong>Applies to:</strong> astrovastusetu.com</span>
+    </div>
 
-  <h2>2. How We Use Your Data</h2>
-  <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
-  <ul>
-    <li>To process and deliver your order, including managing payments, fees and charges.</li>
-    <li>To manage our relationship with you (e.g., notifying you about changes to our terms or privacy policy).</li>
-    <li>To deliver relevant website content and advertisements to you.</li>
-  </ul>
+    <p>At <strong>Astro Vastu Setu</strong>, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, protect, and disclose your information when you visit, access, or use our website, purchase our products, or use our services.</p>
+    <p>Our website provides spiritual and wellness-related products and services, including gemstone bracelets, special bracelet services, astrology services, Reiki healing services, and other related products and services.</p>
+    <p>By using our website, creating an account, placing an order, or using any of our services, you acknowledge that you have read and understood this Privacy Policy.</p>
 
-  <h2>3. Data Security</h2>
-  <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorized way, altered, or disclosed. We use secure HTTPS protocols and partner with trusted payment gateways like Razorpay.</p>
+    <!-- TABLE OF CONTENTS -->
+    <div class="legal-toc">
+      <h3>📋 Table of Contents</h3>
+      <ol>
+        <li><a href="#info-collect">Information We Collect</a></li>
+        <li><a href="#bracelet-info">Bracelet Services Info</a></li>
+        <li><a href="#astrology-info">Astrology Services Info</a></li>
+        <li><a href="#reiki-info">Reiki Healing Services Info</a></li>
+        <li><a href="#how-use">How We Use Your Information</a></li>
+        <li><a href="#payment-info">Payment Information</a></li>
+        <li><a href="#cookies">Cookies &amp; Technologies</a></li>
+        <li><a href="#data-security">Data Security</a></li>
+        <li><a href="#sharing">Sharing of Information</a></li>
+        <li><a href="#marketing">Marketing Communications</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#third-party">Third-Party Websites</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#disclaimer-section">Spiritual Service Disclaimer</a></li>
+        <li><a href="#your-rights">Your Privacy Rights</a></li>
+        <li><a href="#transfers">Data Transfers</a></li>
+        <li><a href="#account-security">Account &amp; Password Security</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#consent">Consent</a></li>
+      </ol>
+    </div>
 
-  <h2>4. Contact Us</h2>
-  <p>If you have any questions about this privacy policy or our privacy practices, please contact us at support@astrovastusetu.com.</p>
+    <h2 id="info-collect">1. Information We Collect</h2>
+    <p>We may collect different types of information depending on how you use our website and services:</p>
+    <ul>
+      <li><strong>Identity Data:</strong> includes your first name, last name, full name, username or similar identifier.</li>
+      <li><strong>Contact Data:</strong> includes email address, mobile number, WhatsApp number, billing address, shipping address, city, state, country and PIN code.</li>
+      <li><strong>Account Data:</strong> includes your login information, account preferences and other information provided when creating an account.</li>
+      <li><strong>Transaction Data:</strong> includes information about products and services purchased, order details, order amount, payment status, transaction reference and delivery details.</li>
+      <li><strong>Technical Data:</strong> includes IP address, browser type, device type, operating system, approximate location, pages visited and website interaction information.</li>
+      <li><strong>Communication Data:</strong> includes information you provide when contacting us through email, WhatsApp, contact forms or other communication methods.</li>
+    </ul>
 
-  <p style="margin-top:40px;"><em>Last updated: October 2025</em></p>
-</div>
+    <h2 id="bracelet-info">2. Information Related to Bracelet Services</h2>
+    <p>When you purchase or request our bracelet-related services, including Special Bracelet Services, we may collect information required to provide the requested service. This may include:</p>
+    <ul>
+      <li>Name</li>
+      <li>Date of birth</li>
+      <li>Personal preferences</li>
+      <li>Bracelet requirements</li>
+      <li>Astrology-related information voluntarily provided by you</li>
+      <li>Shipping and delivery information</li>
+      <li>Other information necessary to provide the requested service</li>
+    </ul>
+    <p>We use this information only for providing, customizing and managing the requested product or service and for other purposes described in this Privacy Policy.</p>
 
-<footer class="site-footer">
-  <div class="footer-inner"><div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div></div>
-</footer>
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+    <h2 id="astrology-info">3. Information Related to Astrology Services</h2>
+    <p>If you use our Astrology services, you may voluntarily provide information required for the consultation or astrology-related service. This information may include:</p>
+    <ul>
+      <li>Full name</li>
+      <li>Date of birth</li>
+      <li>Time of birth</li>
+      <li>Place of birth</li>
+      <li>Gender, where required</li>
+      <li>Questions or information provided during consultation</li>
+      <li>Other information voluntarily provided by you</li>
+    </ul>
+
+    <h2 id="reiki-info">4. Information Related to Reiki Healing Services</h2>
+    <p>If you request Reiki Healing or related spiritual and wellness services, you may voluntarily provide information required to arrange or provide the requested service. This may include:</p>
+    <ul>
+      <li>Name</li>
+      <li>Contact information</li>
+      <li>Appointment information</li>
+      <li>Service preferences</li>
+      <li>Information voluntarily shared during consultation</li>
+    </ul>
+    <div class="legal-warning">
+      ⚠️ Reiki Healing and related services are intended for spiritual, personal and wellness purposes. These services are <strong>not a substitute</strong> for medical diagnosis, medical treatment, psychological treatment or emergency medical services.
+    </div>
+
+    <h2 id="how-use">5. How We Use Your Information</h2>
+    <p>We may use your personal information for the following purposes:</p>
+    <ul>
+      <li>To create and manage your account.</li>
+      <li>To process, confirm and deliver your product orders.</li>
+      <li>To process payments and maintain transaction records.</li>
+      <li>To provide Special Bracelet Services, Astrology services, and Reiki Healing services.</li>
+      <li>To schedule consultations and appointments.</li>
+      <li>To provide customer support and respond to your enquiries.</li>
+      <li>To communicate with you about your orders, payments, appointments and services.</li>
+      <li>To improve our website, products and services.</li>
+      <li>To personalize your website experience and product recommendations.</li>
+      <li>To prevent fraud, unauthorized access and misuse of our website.</li>
+      <li>To maintain the security and functionality of our website.</li>
+      <li>To comply with applicable legal and regulatory requirements.</li>
+    </ul>
+
+    <h2 id="payment-info">6. Payment Information</h2>
+    <p>Payments made through our website may be processed through third-party payment gateways such as <strong>Razorpay</strong> or other authorized payment service providers.</p>
+    <div class="legal-info">
+      🔒 We do <strong>not</strong> intentionally store sensitive payment credentials such as your complete card number, CVV, UPI PIN, ATM PIN or banking password on our website servers. Payment providers may independently collect and process payment information according to their own privacy policies and terms.
+    </div>
+
+    <h2 id="cookies">7. Cookies and Similar Technologies</h2>
+    <p>Our website may use cookies and similar technologies to improve website functionality and user experience. Cookies may be used to:</p>
+    <ul>
+      <li>Remember shopping cart information.</li>
+      <li>Remember user preferences.</li>
+      <li>Maintain login sessions.</li>
+      <li>Understand how visitors use our website.</li>
+      <li>Improve website performance.</li>
+      <li>Detect suspicious or fraudulent activity.</li>
+    </ul>
+    <p>You may control or disable cookies through your browser settings. However, disabling certain cookies may affect some features of the website.</p>
+
+    <h2 id="data-security">8. Data Security</h2>
+    <p>We take reasonable technical and organizational measures to protect your personal information against unauthorized access, misuse, alteration, disclosure, loss or destruction. Security measures may include HTTPS/SSL encryption, authentication mechanisms, access controls, secure databases, server security, backups and monitoring.</p>
+    <p>However, no method of electronic transmission or storage can be guaranteed to be completely secure. Therefore, we cannot guarantee absolute security of your information.</p>
+
+    <h2 id="sharing">9. Sharing of Your Information</h2>
+    <p>We do not sell your personal information as a standalone product. However, we may share necessary information with trusted third parties when required to operate our website and provide our products and services:</p>
+    <ul>
+      <li><strong>Payment Providers:</strong> Information necessary to process payments may be shared with authorized payment service providers.</li>
+      <li><strong>Shipping and Delivery Providers:</strong> Your name, phone number and delivery address may be shared with courier and logistics providers to deliver your order.</li>
+      <li><strong>Technology and Hosting Providers:</strong> Information may be processed by hosting, cloud, database, security, analytics, email, SMS or other technology service providers.</li>
+      <li><strong>Service Providers:</strong> Where necessary, relevant information may be shared with individuals or organizations involved in providing the service requested by you.</li>
+      <li><strong>Legal Requirements:</strong> We may disclose information when required or reasonably necessary to comply with applicable laws, legal processes, government requests, prevent fraud or protect our rights and users.</li>
+    </ul>
+
+    <h2 id="marketing">10. Marketing Communications</h2>
+    <p>If you provide your contact information and consent to receive promotional communications, we may send you information about new products, special offers, discounts, new services, and promotional events. You may opt out of promotional communications at any time by contacting us.</p>
+
+    <h2 id="retention">11. Data Retention</h2>
+    <p>We retain personal information only for as long as reasonably necessary for the purposes described in this Privacy Policy, including providing products and services, maintaining accounts, processing transactions, customer support, resolving disputes, preventing fraud and meeting legal, accounting, tax and regulatory requirements.</p>
+
+    <h2 id="third-party">12. Third-Party Websites and Services</h2>
+    <p>Our website may contain links to third-party websites, payment providers, social media platforms or other services. We are not responsible for the privacy practices, security, content or policies of third-party websites or services. We recommend that you review the privacy policies of any third-party service before providing your personal information.</p>
+
+    <h2 id="children">13. Children's Privacy</h2>
+    <p>Our website is not intentionally designed to collect personal information from children without appropriate consent. If you believe that a child has provided personal information to us without appropriate authorization, please contact us so that we can take appropriate action.</p>
+
+    <h2 id="disclaimer-section">14. Astrology, Reiki and Spiritual Service Disclaimer</h2>
+    <p>Astrology, Reiki Healing, gemstone recommendations, bracelet recommendations and other spiritual or wellness-related services offered through Astro Vastu Setu are intended for spiritual, personal, cultural, entertainment or wellness purposes, as applicable.</p>
+    <div class="legal-warning">
+      ⚠️ These services should <strong>not</strong> be considered a substitute for professional medical, psychological, legal or financial advice. You should consult an appropriately qualified professional whenever such advice is required.
+    </div>
+
+    <h2 id="your-rights">15. Your Privacy Rights</h2>
+    <p>Depending on applicable law, you may have rights regarding your personal information, including:</p>
+    <ul>
+      <li>Requesting access to personal information we hold about you.</li>
+      <li>Requesting correction of inaccurate or incomplete information.</li>
+      <li>Requesting deletion of personal information where legally permitted.</li>
+      <li>Withdrawing consent where processing is based on consent.</li>
+      <li>Requesting information about how your personal information is processed.</li>
+      <li>Raising a privacy-related complaint or grievance.</li>
+    </ul>
+    <p>Some requests may be subject to applicable legal, contractual or regulatory limitations.</p>
+
+    <h2 id="transfers">16. Data Transfers</h2>
+    <p>Some of our hosting, payment, analytics, communication, cloud or technology service providers may process information from locations outside your state or country. Where required by applicable law, we will take appropriate measures for handling and protecting personal information during such processing.</p>
+
+    <h2 id="account-security">17. Account and Password Security</h2>
+    <p>If you create an account on our website, you are responsible for keeping your login credentials confidential. You should use a strong password, avoid sharing your password with others and notify us immediately if you believe your account has been compromised.</p>
+
+    <h2 id="changes">18. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our products, services, website functionality, technology, business operations or applicable laws and regulations. When we make changes, we may update the "Last Updated" date displayed at the bottom of this page. We encourage you to review this Privacy Policy periodically.</p>
+
+    <h2 id="contact">19. Contact Us</h2>
+    <p>If you have questions, concerns, requests or complaints regarding this Privacy Policy or the handling of your personal information, please contact us:</p>
+    <ul>
+      <li>🌐 <strong>Website:</strong> Astro Vastu Setu</li>
+      <li>📧 <strong>Email:</strong> support@astrovastusetu.com</li>
+      <li>📞 <strong>Phone / WhatsApp:</strong> +91 78218 56342</li>
+      <li>🏢 <strong>Business Address:</strong> Jalgaon, Maharashtra, India</li>
+    </ul>
+
+    <h2 id="consent">20. Consent</h2>
+    <p>By using our website, creating an account, purchasing our products, submitting an enquiry or requesting our services, you acknowledge that you have read and understood this Privacy Policy. Where required by applicable law, we will obtain your consent before collecting or processing personal information for the relevant purpose.</p>
+
+    <p class="legal-updated">Last updated: October 2026</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Astro Vastu Setu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

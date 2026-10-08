@@ -3,59 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Return & Refund Policy - Astro Vastu Setu</title>
+  <title>Return &amp; Refund Policy - Astro Vastu Setu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav><ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop.html">💎 Shop</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul></nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">↩️</div>
+    <h1>Return &amp; Refund Policy</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Returns &amp; Refunds</span>
     </div>
   </div>
-</header>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
 
-<div class="page-header">
-  <h1>Return & Refund Policy</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Returns & Refunds</span></div>
-</div>
+  <!-- POLICY QUICK-LINKS -->
+  <div class="policy-links-strip">
+    <div class="policy-links-strip-inner">
+      <span>Policies:</span>
+      <a href="shipping.html">🚚 Shipping</a>
+      <a href="returns.html" class="active-policy">↩️ Returns &amp; Refund</a>
+      <a href="cancellation.html">❌ Cancellation</a>
+      <a href="privacy.html">🔒 Privacy</a>
+      <a href="terms.html">📄 Terms</a>
+      <a href="disclaimer.html">⚠️ Disclaimer</a>
+    </div>
+  </div>
 
-<div class="legal-content">
-  <h2>1. Returns</h2>
-  <p>We accept returns within 7 days of the delivery date. To be eligible for a return, your item must be unused, in the same condition that you received it, and in its original packaging.</p>
-  <p>To process your return seamlessly, we highly recommend recording an <strong>unboxing video</strong> when you receive the package. This helps us quickly verify any claims of damage or missing items.</p>
+  <!-- CONTENT -->
+  <div class="legal-content">
 
-  <h2>2. Non-returnable Items</h2>
-  <p>Certain items cannot be returned, including:</p>
-  <ul>
-    <li>Products that have been used, altered, or damaged by the customer.</li>
-    <li>Gift cards or promotional free items.</li>
-  </ul>
+    <div class="legal-meta">
+      <span>📅 <strong>Last Updated:</strong> October 2025</span>
+      <span>📦 <strong>Return Window:</strong> 7 Days from Delivery</span>
+    </div>
 
-  <h2>3. Refunds</h2>
-  <p>Once your return is received and inspected, we will notify you of the approval or rejection of your refund. If approved, your refund will be processed, and a credit will automatically be applied to your original method of payment (e.g., Razorpay, UPI, Credit Card) within 5-7 business days.</p>
+    <div class="legal-info">
+      We want you to be completely satisfied with your purchase. If you are not happy for any reason, we are here to help. Please read our return &amp; refund policy carefully.
+    </div>
 
-  <h2>4. Exchanges</h2>
-  <p>We only replace items if they are defective or damaged upon arrival. If you need to exchange an item for the same product, contact us at <strong>support@astrovastusetu.com</strong>.</p>
+    <h2>1. Return Eligibility</h2>
+    <p>We accept returns within <strong>7 days of the delivery date</strong>. To be eligible for a return, your item must meet all of the following conditions:</p>
+    <ul>
+      <li>The item must be <strong>unused</strong> and in the same condition you received it.</li>
+      <li>The item must be in its <strong>original packaging</strong> with all tags, pouches, and accessories intact.</li>
+      <li>The return request must be initiated within 7 days of the delivery date.</li>
+      <li>A valid proof of purchase (Order ID / Invoice) must be provided.</li>
+    </ul>
 
-  <h2>5. Return Shipping</h2>
-  <p>You will be responsible for paying for your own shipping costs for returning your item unless the return is due to a defect or error on our part. Shipping costs are non-refundable.</p>
+    <div class="legal-note">
+      📹 We strongly recommend recording an <strong>unboxing video</strong> when you receive your package. This helps us quickly verify any claims of damage or missing items and speeds up your return/refund process.
+    </div>
 
-  <p style="margin-top:40px;"><em>Last updated: October 2025</em></p>
-</div>
+    <h2>2. Non-Returnable Items</h2>
+    <p>Certain items are not eligible for return, including:</p>
+    <ul>
+      <li>Products that have been <strong>used, altered, or damaged</strong> by the customer.</li>
+      <li>Items returned without original packaging or missing accessories.</li>
+      <li>Gift cards or promotional/complimentary free items.</li>
+      <li>Items purchased during special clearance or final sale events (if marked non-returnable).</li>
+    </ul>
 
-<footer class="site-footer">
-  <div class="footer-inner"><div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div></div>
-</footer>
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+    <div class="legal-warning">
+      ⚠️ Returns initiated after 7 days of delivery will <strong>not</strong> be accepted under any circumstances.
+    </div>
+
+    <h2>3. How to Initiate a Return</h2>
+    <p>To start your return process, please follow these steps:</p>
+    <ol>
+      <li>Email us at <strong>support@astrovastusetu.com</strong> or WhatsApp us at <strong>+91 78218 56342</strong> within 7 days of delivery.</li>
+      <li>Share your <strong>Order ID</strong>, reason for return, and photos/video of the product.</li>
+      <li>Our team will review your request and respond within <strong>24–48 hours</strong>.</li>
+      <li>If approved, we will provide return instructions and the return address.</li>
+    </ol>
+
+    <h2>4. Refund Process</h2>
+    <p>Once your returned item is received and inspected, we will notify you of the approval or rejection of your refund via email.</p>
+    <p>If approved, your refund will be processed and a credit will be applied to your original method of payment within:</p>
+
+    <table class="policy-table">
+      <thead>
+        <tr>
+          <th>Payment Method</th>
+          <th>Refund Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>UPI / Wallet</td>
+          <td>3 – 5 Business Days</td>
+        </tr>
+        <tr>
+          <td>Credit / Debit Card</td>
+          <td>5 – 7 Business Days</td>
+        </tr>
+        <tr>
+          <td>Net Banking</td>
+          <td>5 – 7 Business Days</td>
+        </tr>
+        <tr>
+          <td>Razorpay</td>
+          <td>5 – 7 Business Days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>5. Exchanges</h2>
+    <p>We only replace items if they are <strong>defective or damaged upon arrival</strong>. If you need to exchange an item for the same product due to a manufacturing defect, contact us at <strong>support@astrovastusetu.com</strong> within 48 hours of delivery with your unboxing video and photos.</p>
+    <p>We do not offer size/color exchanges at this time.</p>
+
+    <h2>6. Return Shipping Costs</h2>
+    <p>Return shipping costs are handled as follows:</p>
+    <ul>
+      <li><strong>Defective / Wrong Item Received:</strong> Return shipping costs will be borne by Astro Vastu Setu.</li>
+      <li><strong>Customer-Initiated Returns (Change of Mind):</strong> The customer is responsible for return shipping costs. Shipping costs are non-refundable.</li>
+    </ul>
+
+    <h2>7. Contact Us</h2>
+    <p>For any return or refund related queries, please reach out to us:</p>
+    <ul>
+      <li>📧 Email: <strong>support@astrovastusetu.com</strong></li>
+      <li>📞 Phone / WhatsApp: <strong>+91 78218 56342</strong></li>
+      <li>🕒 Support Hours: Monday – Saturday, 10:00 AM – 6:00 PM</li>
+    </ul>
+
+    <p class="legal-updated">Last updated: October 2025</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -7,52 +7,164 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav><ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop.html">💎 Shop</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul></nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">❌</div>
+    <h1>Cancellation Policy</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Cancellation Policy</span>
     </div>
   </div>
-</header>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
 
-<div class="page-header">
-  <h1>Cancellation Policy</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Cancellation Policy</span></div>
-</div>
+  <!-- POLICY QUICK-LINKS -->
+  <div class="policy-links-strip">
+    <div class="policy-links-strip-inner">
+      <span>Policies:</span>
+      <a href="shipping.html">🚚 Shipping</a>
+      <a href="returns.html">↩️ Returns &amp; Refund</a>
+      <a href="cancellation.html" class="active-policy">❌ Cancellation</a>
+      <a href="privacy.html">🔒 Privacy</a>
+      <a href="terms.html">📄 Terms</a>
+      <a href="disclaimer.html">⚠️ Disclaimer</a>
+    </div>
+  </div>
 
-<div class="legal-content">
-  <h2>1. Order Cancellation by Customer</h2>
-  <p>You can cancel your order at any time before it is dispatched from our warehouse. Once the order has been shipped, it cannot be cancelled. However, you may return the order under our <a href="returns.html" style="color:var(--primary-green);font-weight:600;">Return & Refund Policy</a> once it is delivered to you.</p>
-  
-  <p>To request a cancellation, please email us at <strong>support@astrovastusetu.com</strong> or contact us via WhatsApp at <strong>+91 98765 43210</strong> with your Order ID.</p>
+  <!-- CONTENT -->
+  <div class="legal-content">
 
-  <h2>2. Refund for Cancelled Orders</h2>
-  <p>If you successfully cancel your order before it is shipped, the full amount will be refunded to your original payment method within 5-7 business days.</p>
+    <div class="legal-meta">
+      <span>📅 <strong>Last Updated:</strong> October 2025</span>
+      <span>⏱️ <strong>Cancel Before:</strong> Order Dispatch</span>
+    </div>
 
-  <h2>3. Cancellation by Astro Vastu Setu</h2>
-  <p>We reserve the right to cancel any order for reasons including but not limited to:</p>
-  <ul>
-    <li>Stock unavailability.</li>
-    <li>Errors in product pricing or description.</li>
-    <li>Fraud detection or payment verification issues.</li>
-  </ul>
-  <p>In such cases, you will be notified, and a full refund will be processed immediately.</p>
+    <div class="legal-info">
+      You can cancel your order before it is dispatched from our warehouse. Once shipped, cancellation is not possible — but you may return the order after delivery under our <a href="returns.html">Return &amp; Refund Policy</a>.
+    </div>
 
-  <p style="margin-top:40px;"><em>Last updated: October 2025</em></p>
-</div>
+    <h2>1. Order Cancellation by Customer</h2>
+    <p>You may cancel your order at any time <strong>before it is dispatched</strong> from our warehouse. Once the order has been shipped and a tracking number has been assigned, cancellation is no longer possible.</p>
+    <p>To request a cancellation, please contact us immediately with your Order ID:</p>
+    <ul>
+      <li>📧 Email: <strong>support@astrovastusetu.com</strong></li>
+      <li>💬 WhatsApp: <strong>+91 78218 56342</strong></li>
+    </ul>
+    <p>We process orders quickly. For the best chance of successful cancellation, please contact us <strong>within 2 hours</strong> of placing your order.</p>
 
-<footer class="site-footer">
-  <div class="footer-inner"><div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div></div>
-</footer>
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+    <div class="legal-note">
+      💡 If your order has already been shipped, you can still <a href="returns.html">initiate a return</a> once the package is delivered to you.
+    </div>
+
+    <h2>2. Refund for Cancelled Orders</h2>
+    <p>If your order is successfully cancelled <strong>before dispatch</strong>, a full refund will be processed to your original payment method:</p>
+
+    <table class="policy-table">
+      <thead>
+        <tr>
+          <th>Cancellation Scenario</th>
+          <th>Refund Amount</th>
+          <th>Refund Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cancelled before dispatch</td>
+          <td>100% Full Refund</td>
+          <td>5 – 7 Business Days</td>
+        </tr>
+        <tr>
+          <td>Order already shipped</td>
+          <td>Not Applicable (Return after delivery)</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Cancelled by Astro Vastu Setu</td>
+          <td>100% Full Refund</td>
+          <td>3 – 5 Business Days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Cancellation by Astro Vastu Setu</h2>
+    <p>We reserve the right to cancel any order for reasons including but not limited to:</p>
+    <ul>
+      <li>Product stock unavailability or discontinuation.</li>
+      <li>Errors in product pricing or product description.</li>
+      <li>Fraud detection or payment verification issues.</li>
+      <li>Technical errors during order processing.</li>
+      <li>Inability to deliver to the provided address.</li>
+    </ul>
+    <p>In such cases, you will be notified via email or phone and a <strong>full refund</strong> will be processed immediately without any deductions.</p>
+
+    <h2>4. After Delivery</h2>
+    <p>Post-delivery cancellations are not possible. However, if you are unsatisfied with your order, you may initiate a return within 7 days of delivery under our <a href="returns.html">Return &amp; Refund Policy</a>.</p>
+
+    <div class="legal-warning">
+      ⚠️ Please do not refuse delivery of your order. If you wish to return a product, accept the delivery first and then contact us to initiate a return. Refused deliveries are not covered under our refund policy.
+    </div>
+
+    <h2>5. Contact Us</h2>
+    <p>For cancellation requests or queries, please contact us promptly:</p>
+    <ul>
+      <li>📧 Email: <strong>support@astrovastusetu.com</strong></li>
+      <li>📞 Phone / WhatsApp: <strong>+91 78218 56342</strong></li>
+      <li>🕒 Support Hours: Monday – Saturday, 10:00 AM – 6:00 PM</li>
+    </ul>
+
+    <p class="legal-updated">Last updated: October 2025</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

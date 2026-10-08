@@ -3,54 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms & Conditions - Astro Vastu Setu</title>
+  <title>Terms &amp; Conditions - Astro Vastu Setu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav><ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop.html">💎 Shop</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul></nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">📄</div>
+    <h1>Terms &amp; Conditions</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Terms &amp; Conditions</span>
     </div>
   </div>
-</header>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
 
-<div class="page-header">
-  <h1>Terms & Conditions</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Terms</span></div>
-</div>
+  <!-- POLICY QUICK-LINKS -->
+  <div class="policy-links-strip">
+    <div class="policy-links-strip-inner">
+      <span>Policies:</span>
+      <a href="shipping.html">🚚 Shipping</a>
+      <a href="returns.html">↩️ Returns &amp; Refund</a>
+      <a href="cancellation.html">❌ Cancellation</a>
+      <a href="privacy.html">🔒 Privacy</a>
+      <a href="terms.html" class="active-policy">📄 Terms</a>
+      <a href="disclaimer.html">⚠️ Disclaimer</a>
+    </div>
+  </div>
 
-<div class="legal-content">
-  <h2>1. General Overview</h2>
-  <p>Welcome to Astro Vastu Setu. By accessing or using our website, you agree to be bound by these Terms & Conditions. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services.</p>
+  <!-- CONTENT -->
+  <div class="legal-content">
 
-  <h2>2. Products and Pricing</h2>
-  <p>We strive to accurately display the colors and images of our products. However, due to the natural origin of our stones and variations in device displays, we cannot guarantee that your screen's display will be entirely accurate. All product pricing and availability are subject to change without notice.</p>
+    <div class="legal-meta">
+      <span>📅 <strong>Last Updated:</strong> October 2025</span>
+      <span>⚖️ <strong>Jurisdiction:</strong> Jalgaon, Maharashtra, India</span>
+    </div>
 
-  <h2>3. Order Acceptance</h2>
-  <p>We reserve the right to refuse any order you place with us. We may, in our sole discretion, limit or cancel quantities purchased per person, per household or per order. In the event that we make a change to or cancel an order, we will attempt to notify you via email or phone.</p>
+    <div class="legal-info">
+      Welcome to Astro Vastu Setu. By accessing or using our website, you agree to be bound by these Terms &amp; Conditions. Please read them carefully before placing any order or using our services.
+    </div>
 
-  <h2>4. Disclaimer of Warranties</h2>
-  <p>Our products are sold as wellness and spiritual items. We do not guarantee, represent, or warrant that your use of our products will bring specific physical, medical, or financial results. Please review our <a href="disclaimer.html" style="color:var(--primary-green);font-weight:600;">Disclaimer</a> for more information.</p>
+    <!-- TABLE OF CONTENTS -->
+    <div class="legal-toc">
+      <h3>📋 Table of Contents</h3>
+      <ol>
+        <li><a href="#general">General Overview</a></li>
+        <li><a href="#products">Products &amp; Pricing</a></li>
+        <li><a href="#orders">Order Acceptance</a></li>
+        <li><a href="#payment">Payment Terms</a></li>
+        <li><a href="#shipping-t">Shipping &amp; Delivery</a></li>
+        <li><a href="#returns-t">Returns &amp; Refunds</a></li>
+        <li><a href="#account">User Accounts</a></li>
+        <li><a href="#prohibited">Prohibited Activities</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#disclaimer-t">Disclaimer of Warranties</a></li>
+        <li><a href="#liability">Limitation of Liability</a></li>
+        <li><a href="#governing">Governing Law</a></li>
+        <li><a href="#changes-t">Changes to Terms</a></li>
+        <li><a href="#contact-t">Contact Us</a></li>
+      </ol>
+    </div>
 
-  <h2>5. Governing Law</h2>
-  <p>These Terms of Service and any separate agreements whereby we provide you services shall be governed by and construed in accordance with the laws of India, with jurisdiction in Jalgaon, Maharashtra.</p>
+    <h2 id="general">1. General Overview</h2>
+    <p>Welcome to <strong>Astro Vastu Setu</strong>. By accessing or using our website (astrovastusetu.com), placing orders, or using any of our services, you agree to be bound by these Terms &amp; Conditions ("Terms"), our <a href="privacy.html">Privacy Policy</a>, and any other policies referenced herein.</p>
+    <p>If you do not agree to all of these Terms, you must not access or use our website or services.</p>
+    <p>These Terms apply to all visitors, users, and customers of our website. We reserve the right to update these Terms at any time. Continued use of the website after any changes constitutes acceptance of those changes.</p>
 
-  <p style="margin-top:40px;"><em>Last updated: October 2025</em></p>
-</div>
+    <h2 id="products">2. Products &amp; Pricing</h2>
+    <p>We strive to accurately display the colors, images, and descriptions of our products. However, please note:</p>
+    <ul>
+      <li>Due to the <strong>natural origin</strong> of our gemstones and spiritual products, colors, patterns, sizes, and textures may vary slightly from the photographs shown on the website.</li>
+      <li>Natural variations in gemstones are <strong>not considered defects</strong>.</li>
+      <li>Variations in device screen calibration may also affect color representation.</li>
+      <li>All product pricing and availability are <strong>subject to change without prior notice</strong>.</li>
+      <li>Prices displayed are in <strong>Indian Rupees (INR)</strong> and are inclusive of applicable taxes unless stated otherwise.</li>
+    </ul>
 
-<footer class="site-footer">
-  <div class="footer-inner"><div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div></div>
-</footer>
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+    <h2 id="orders">3. Order Acceptance</h2>
+    <p>Placing an order on our website constitutes an offer to purchase the selected products. We reserve the right to accept or refuse any order at our sole discretion.</p>
+    <p>We may limit or cancel quantities purchased per person, per household, or per order. In such events, we will attempt to notify you via the email or phone number provided at the time of ordering.</p>
+    <div class="legal-note">
+      💡 Your order is confirmed only after you receive an <strong>Order Confirmation Email/SMS</strong> from us. Until then, no contract of sale is formed.
+    </div>
+
+    <h2 id="payment">4. Payment Terms</h2>
+    <p>All payments must be made in Indian Rupees (INR) through our accepted payment methods. We accept:</p>
+    <ul>
+      <li>UPI (Google Pay, PhonePe, Paytm, etc.)</li>
+      <li>Credit Cards and Debit Cards</li>
+      <li>Net Banking</li>
+      <li>Wallets (via Razorpay)</li>
+    </ul>
+    <p>Payments are processed through <strong>Razorpay</strong>, a secure PCI-DSS compliant payment gateway. We do not store your payment credentials on our servers.</p>
+
+    <h2 id="shipping-t">5. Shipping &amp; Delivery</h2>
+    <p>Please refer to our <a href="shipping.html">Shipping Policy</a> for complete details on delivery timelines, charges, and tracking. By placing an order, you agree to the terms outlined in our Shipping Policy.</p>
+
+    <h2 id="returns-t">6. Returns &amp; Refunds</h2>
+    <p>Please refer to our <a href="returns.html">Return &amp; Refund Policy</a> for details on eligibility, process, and timelines. By placing an order, you agree to the terms outlined in our Return &amp; Refund Policy.</p>
+
+    <h2 id="account">7. User Accounts</h2>
+    <p>You may create an account on our website to manage your orders and profile. You are responsible for:</p>
+    <ul>
+      <li>Maintaining the confidentiality of your account credentials.</li>
+      <li>All activities that occur under your account.</li>
+      <li>Notifying us immediately of any unauthorized use of your account.</li>
+    </ul>
+    <p>We reserve the right to suspend or terminate accounts that violate these Terms.</p>
+
+    <h2 id="prohibited">8. Prohibited Activities</h2>
+    <p>When using our website, you must not:</p>
+    <ul>
+      <li>Use the website for any unlawful or fraudulent purpose.</li>
+      <li>Attempt to gain unauthorized access to any part of the website.</li>
+      <li>Transmit any harmful, offensive, or malicious content.</li>
+      <li>Use automated tools or bots to scrape or access our website content.</li>
+      <li>Impersonate any person or entity.</li>
+      <li>Violate any applicable local, national, or international law or regulation.</li>
+    </ul>
+
+    <h2 id="ip">9. Intellectual Property</h2>
+    <p>All content on this website — including but not limited to text, graphics, images, logos, product descriptions, and website design — is the property of <strong>Astro Vastu Setu</strong> and is protected by applicable intellectual property laws.</p>
+    <p>You may not reproduce, distribute, modify, or use any content from this website without our prior written permission.</p>
+
+    <h2 id="disclaimer-t">10. Disclaimer of Warranties</h2>
+    <p>Our products are sold as wellness and spiritual items based on traditional beliefs and practices. We do not guarantee, represent, or warrant that your use of our products will bring specific physical, medical, financial, or metaphysical results.</p>
+    <div class="legal-warning">
+      ⚠️ The spiritual and wellness benefits attributed to our products are based on traditional beliefs and are not scientifically proven claims. Our products are <strong>not intended to diagnose, treat, cure, or prevent any disease</strong>. Please review our <a href="disclaimer.html">Disclaimer</a> for more information.
+    </div>
+
+    <h2 id="liability">11. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, Astro Vastu Setu, its owners, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:</p>
+    <ul>
+      <li>Your use of or inability to use our website or products.</li>
+      <li>Any errors or omissions in the website content.</li>
+      <li>Unauthorized access to or alteration of your data.</li>
+      <li>Delays or failures in delivery due to circumstances beyond our control.</li>
+    </ul>
+
+    <h2 id="governing">12. Governing Law</h2>
+    <p>These Terms &amp; Conditions and any separate agreements whereby we provide you services shall be governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in <strong>Jalgaon, Maharashtra, India</strong>.</p>
+
+    <h2 id="changes-t">13. Changes to Terms</h2>
+    <p>We reserve the right to update or modify these Terms &amp; Conditions at any time without prior notice. The most current version will always be available on this page. Your continued use of the website after any modifications constitutes your acceptance of the updated Terms.</p>
+
+    <h2 id="contact-t">14. Contact Us</h2>
+    <p>If you have any questions about these Terms &amp; Conditions, please contact us:</p>
+    <ul>
+      <li>📧 Email: <strong>support@astrovastusetu.com</strong></li>
+      <li>📞 Phone / WhatsApp: <strong>+91 78218 56342</strong></li>
+      <li>🏢 Address: Jalgaon, Maharashtra, India</li>
+    </ul>
+
+    <p class="legal-updated">Last updated: October 2025</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

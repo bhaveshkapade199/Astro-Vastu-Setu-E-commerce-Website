@@ -7,49 +7,166 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav><ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop.html">💎 Shop</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul></nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">⚠️</div>
+    <h1>Disclaimer</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Disclaimer</span>
     </div>
   </div>
-</header>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
 
-<div class="page-header">
-  <h1>Disclaimer</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Disclaimer</span></div>
-</div>
+  <!-- POLICY QUICK-LINKS -->
+  <div class="policy-links-strip">
+    <div class="policy-links-strip-inner">
+      <span>Policies:</span>
+      <a href="shipping.html">🚚 Shipping</a>
+      <a href="returns.html">↩️ Returns &amp; Refund</a>
+      <a href="cancellation.html">❌ Cancellation</a>
+      <a href="privacy.html">🔒 Privacy</a>
+      <a href="terms.html">📄 Terms</a>
+      <a href="disclaimer.html" class="active-policy">⚠️ Disclaimer</a>
+    </div>
+  </div>
 
-<div class="legal-content">
-  <h2>1. No Medical Claims</h2>
-  <p>The products sold by Astro Vastu Setu, including gemstone bracelets, Rudraksha, and other spiritual items, are intended for spiritual, metaphysical, and wellness practices. The descriptions and benefits listed on our website, packaging, or promotional materials are based on traditional spiritual beliefs, holistic wellness practices, and historical usage.</p>
-  
-  <p><strong>Crucially: These products and statements are NOT intended to diagnose, treat, cure, or prevent any disease or medical condition.</strong> They should never be used as a substitute for professional medical advice, diagnosis, or treatment from a qualified healthcare provider.</p>
+  <!-- CONTENT -->
+  <div class="legal-content">
 
-  <h2>2. Personal Belief and Efficacy</h2>
-  <p>Results from using spiritual and energy products vary significantly from person to person. We do not guarantee or promise any specific physical, mental, emotional, or financial results. The effectiveness of these products relies heavily on the user's personal beliefs, mindset, and spiritual practice.</p>
+    <div class="legal-meta">
+      <span>📅 <strong>Last Updated:</strong> October 2025</span>
+      <span>🧘 <strong>Category:</strong> Spiritual &amp; Wellness Products</span>
+    </div>
 
-  <h2>3. Natural Variations</h2>
-  <p>Since our bracelets and items are crafted from natural stones and materials, variations in color, size, shape, and texture are entirely normal. The product you receive may look slightly different from the photographs displayed on the website.</p>
+    <div class="legal-warning">
+      ⚠️ <strong>Important Notice:</strong> The products and services offered by Astro Vastu Setu are based on traditional spiritual beliefs. They are <strong>NOT</strong> intended to diagnose, treat, cure, or prevent any disease or medical condition. Please read this disclaimer carefully before purchasing.
+    </div>
 
-  <h2>4. Limitation of Liability</h2>
-  <p>Under no circumstances shall Astro Vastu Setu, its owners, or employees be held liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use our products or the information provided on our website.</p>
+    <h2>1. No Medical Claims</h2>
+    <p>The products sold by Astro Vastu Setu — including gemstone bracelets, Rudraksha, Dhanyog, Lakshmi Potli, and other spiritual items — are intended exclusively for <strong>spiritual, metaphysical, and wellness practices</strong>.</p>
+    <p>The descriptions and benefits listed on our website, packaging, or promotional materials are based on:</p>
+    <ul>
+      <li>Traditional spiritual beliefs and practices</li>
+      <li>Holistic wellness and alternative healing traditions</li>
+      <li>Historical, cultural, and religious usage</li>
+    </ul>
+    <div class="legal-warning">
+      🚫 <strong>These products and statements are NOT intended to diagnose, treat, cure, or prevent any disease or medical condition.</strong> They should never be used as a substitute for professional medical advice, diagnosis, or treatment from a qualified healthcare provider. Always seek the advice of a qualified medical professional for any health concerns.
+    </div>
 
-  <p style="margin-top:40px;"><em>Last updated: October 2025</em></p>
-</div>
+    <h2>2. Spiritual &amp; Wellness Purpose Only</h2>
+    <p>Our products are sold as spiritual and wellness items. The energy, healing, protective, and prosperity-enhancing properties attributed to gemstones, Rudraksha, and other spiritual products are based on ancient traditions, belief systems, and metaphysical philosophies — and are <strong>not scientifically proven claims</strong>.</p>
+    <p>Purchasing and using our products is a matter of <strong>personal choice, belief, and faith</strong>. Astro Vastu Setu makes no guarantees or warranties about any specific outcomes.</p>
 
-<footer class="site-footer">
-  <div class="footer-inner"><div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div></div>
-</footer>
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+    <h2>3. Personal Belief and Efficacy</h2>
+    <p>Results from using spiritual and energy products vary significantly from person to person. We do not guarantee or promise any specific physical, mental, emotional, financial, or metaphysical results from using our products or services.</p>
+    <p>The effectiveness of these products is believed to rely on the user's personal beliefs, intentions, mindset, and spiritual practice. Individual results may vary.</p>
+
+    <h2>4. Natural Variations in Products</h2>
+    <p>Since our bracelets, Rudraksha beads, and other items are crafted from <strong>natural stones and materials</strong>, the following natural variations are entirely normal and expected:</p>
+    <ul>
+      <li>Variations in color, shade, and tone</li>
+      <li>Variations in size, shape, and weight</li>
+      <li>Variations in surface texture and pattern</li>
+      <li>Inclusions, veins, or natural markings in gemstones</li>
+    </ul>
+    <div class="legal-note">
+      💡 The product you receive may look slightly different from the photographs displayed on the website. Natural variations are a mark of genuine, authentic materials — not defects.
+    </div>
+
+    <h2>5. Astrology Services Disclaimer</h2>
+    <p>Astrology readings, predictions, and consultations provided through Astro Vastu Setu are for <strong>entertainment, spiritual, cultural, and personal guidance purposes only</strong>. Astrological predictions are not guaranteed to be accurate or to materialize in any specific way.</p>
+    <p>You should not make important life decisions — including medical, legal, financial, or relationship decisions — based solely on astrological guidance. Always consult qualified professionals for such decisions.</p>
+
+    <h2>6. Reiki Healing Services Disclaimer</h2>
+    <p>Reiki Healing and related energy healing services offered through Astro Vastu Setu are <strong>complementary wellness practices</strong> and are not a substitute for professional medical diagnosis, treatment, or care.</p>
+    <div class="legal-warning">
+      🚫 If you have a medical condition, mental health condition, or emergency, please consult a qualified healthcare professional immediately. Do <strong>NOT</strong> rely on Reiki Healing or any other energy healing service as a replacement for medical treatment.
+    </div>
+
+    <h2>7. Numerology Bracelet Recommendations</h2>
+    <p>Our numerology-based bracelet recommendation service provides personalized bracelet suggestions based on your birth date and numerological calculations. These recommendations are provided for spiritual and personal exploration purposes and:</p>
+    <ul>
+      <li>Are not guarantees of any specific outcome or benefit.</li>
+      <li>Are based on traditional numerological beliefs, not scientific methodology.</li>
+      <li>Should be used as a guide for personal spiritual exploration only.</li>
+    </ul>
+
+    <h2>8. Limitation of Liability</h2>
+    <p>Under no circumstances shall <strong>Astro Vastu Setu</strong>, its owners, directors, employees, or agents be held liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising from:</p>
+    <ul>
+      <li>The use or inability to use our products or services.</li>
+      <li>Reliance on any information, recommendations, or guidance provided on our website.</li>
+      <li>The results or outcomes (or lack thereof) from using our spiritual products or services.</li>
+      <li>Any health decisions made based on information from our website.</li>
+    </ul>
+    <p>By purchasing our products or using our services, you agree to <strong>assume full responsibility</strong> for your decisions and their outcomes.</p>
+
+    <h2>9. Third-Party Claims</h2>
+    <p>From time to time, our website may reference studies, traditions, or beliefs about the properties of gemstones, crystals, Rudraksha beads, or other spiritual items. These references are provided for informational and cultural context purposes only and do not constitute scientific claims or medical advice.</p>
+
+    <h2>10. Contact Us</h2>
+    <p>If you have any questions about this Disclaimer or about the nature of our products and services, please contact us:</p>
+    <ul>
+      <li>📧 Email: <strong>support@astrovastusetu.com</strong></li>
+      <li>📞 Phone / WhatsApp: <strong>+91 78218 56342</strong></li>
+      <li>🕒 Support Hours: Monday – Saturday, 10:00 AM – 6:00 PM</li>
+    </ul>
+
+    <p class="legal-updated">Last updated: October 2025</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

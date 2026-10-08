@@ -230,19 +230,11 @@ function renderProduct(p) {
     <!-- GALLERY -->
     <div class="product-gallery">
       <div class="main-image" id="mainImage" style="font-size:120px; overflow:hidden;">
-        ${(() => {
-          const imgUrl = getProductImageUrl(p.image);
-          const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
-          return `<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
-        })()}
+        <img src="${getProductImageUrl(p.image)}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${DEFAULT_BRACELET_IMG}'">
       </div>
       <div class="thumb-list">
         <div class="thumb active" onclick="changeImg(this, '${getProductImageUrl(p.image)}')">
-          ${(() => {
-            const imgUrl = getProductImageUrl(p.image);
-            const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
-            return `<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
-          })()}
+          <img src="${getProductImageUrl(p.image)}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${DEFAULT_BRACELET_IMG}'">
         </div>
       </div>
     </div>
@@ -393,11 +385,7 @@ function renderRelated(current) {
   container.innerHTML = related.map(p => `
     <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
-        ${(() => {
-          const imgUrl = getProductImageUrl(p.image);
-          const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
-          return `<img src="${imgUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
-        })()}
+        <img src="${getProductImageUrl(p.image)}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${DEFAULT_BRACELET_IMG}'">
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
       </div>
       <div class="product-body">
@@ -424,70 +412,55 @@ function showTab(tab, btn) {
   btn.style.fontWeight = '700';
 }
 
-async function submitProductReview(e) {
+function submitProductReview(e) {
   e.preventDefault();
   const userName = document.getElementById('revUserName').value.trim();
   const rating = Number(document.getElementById('revRating').value);
   const comment = document.getElementById('revComment').value.trim();
 
-  const payload = {
+  const review = {
     productId: currentProduct ? currentProduct.id : 1,
     productName: currentProduct ? currentProduct.name : '',
     userName,
     rating,
-    comment
+    comment,
+    createdAt: new Date().toISOString()
   };
 
-  const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-  try {
-    const res = await fetch(`${apiBase}/reviews`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-    if (res.ok) {
-      showToast('⭐ Thank you! Your review has been submitted.', 'success');
-      document.getElementById('productReviewForm').reset();
-      loadProductReviews(payload.productId);
-    } else {
-      showToast(data.error || 'Failed to submit review', 'error');
-    }
-  } catch (err) {
-    showToast('Could not connect to backend server', 'error');
-  }
+  // Save to localStorage
+  const storageKey = `avs_reviews_${review.productId}`;
+  const existing = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  existing.unshift(review);
+  localStorage.setItem(storageKey, JSON.stringify(existing));
+
+  showToast('⭐ Thank you! Your review has been submitted.', 'success');
+  document.getElementById('productReviewForm').reset();
+  loadProductReviews(review.productId);
 }
 
-async function loadProductReviews(productId) {
-  const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-  try {
-    const res = await fetch(`${apiBase}/reviews/product/${productId}`);
-    if (!res.ok) return;
-    const dbReviews = await res.json();
-    if (!dbReviews || !dbReviews.length) return;
+function loadProductReviews(productId) {
+  const storageKey = `avs_reviews_${productId}`;
+  const savedReviews = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  if (!savedReviews.length) return;
 
-    const list = document.querySelector('.review-list');
-    if (!list) return;
+  const list = document.querySelector('.review-list');
+  if (!list) return;
 
-    // Prepend dynamic reviews from MongoDB
-    const html = dbReviews.map(r => `
-      <div class="review-item" style="border-left:3px solid var(--primary-green);padding-left:12px;">
-        <div class="review-header">
-          <div class="review-avatar" style="background:var(--primary-green);color:white;">${r.userName.charAt(0).toUpperCase()}</div>
-          <div>
-            <div class="reviewer-name">${r.userName} <span class="verified-badge">✓ Verified Buyer</span></div>
-            <div class="review-date">${new Date(r.createdAt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}</div>
-          </div>
+  const html = savedReviews.map(r => `
+    <div class="review-item" style="border-left:3px solid var(--primary-green);padding-left:12px;">
+      <div class="review-header">
+        <div class="review-avatar" style="background:var(--primary-green);color:white;">${r.userName.charAt(0).toUpperCase()}</div>
+        <div>
+          <div class="reviewer-name">${r.userName} <span class="verified-badge">✓ Verified Buyer</span></div>
+          <div class="review-date">${new Date(r.createdAt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}</div>
         </div>
-        <div class="review-stars" style="color:#f5c842;">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
-        <p class="review-text">${r.comment}</p>
       </div>
-    `).join('');
+      <div class="review-stars" style="color:#f5c842;">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+      <p class="review-text">${r.comment}</p>
+    </div>
+  `).join('');
 
-    list.insertAdjacentHTML('afterbegin', html);
-  } catch (e) {
-    console.warn('Could not load reviews:', e);
-  }
+  list.insertAdjacentHTML('afterbegin', html);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

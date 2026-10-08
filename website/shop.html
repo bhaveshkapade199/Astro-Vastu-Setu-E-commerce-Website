@@ -259,11 +259,7 @@ function renderShopProducts(products) {
   container.innerHTML = products.map(p => `
     <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
-        ${(() => {
-          const imgUrl = getProductImageUrl(p.image);
-          const defImg = (typeof BACKEND_API_BASE !== 'undefined' ? BACKEND_API_BASE.replace('/api','') : 'http://localhost:5000') + '/uploads/bracelet-default.jpeg';
-          return `<img src="${imgUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${defImg}'">`;
-        })()}
+        <img src="${getProductImageUrl(p.image)}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${DEFAULT_BRACELET_IMG}'">
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
         <button class="wishlist-btn" onclick="event.stopPropagation();handleWishlist(${p.id},this)">${getWishlist().includes(p.id) ? '❤️' : '🤍'}</button>
       </div>

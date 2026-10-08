@@ -263,29 +263,19 @@
         mobile: form.querySelector('input[type="tel"]').value.trim(),
         email: form.querySelector('input[type="email"]').value.trim(),
         subject: form.querySelector('select').value,
-        message: form.querySelector('textarea').value.trim()
+        message: form.querySelector('textarea').value.trim(),
+        createdAt: new Date().toISOString()
       };
 
-      const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-      try {
-        const res = await fetch(`${apiBase}/contacts`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        if (res.ok) {
-          showToast('✅ Message sent to Astro Vastu Setu! We will reply promptly.', 'success');
-          form.reset();
-        } else {
-          showToast('❌ ' + (data.error || 'Failed to send message'), 'error');
-        }
-      } catch (err) {
-        showToast('❌ Could not connect to backend server', 'error');
-      } finally {
-        btn.disabled = false;
-        btn.textContent = originalText;
-      }
+      // Save contact message to localStorage
+      const contacts = JSON.parse(localStorage.getItem('avs_contact_messages') || '[]');
+      contacts.unshift(payload);
+      localStorage.setItem('avs_contact_messages', JSON.stringify(contacts));
+
+      showToast('✅ Message sent to Astro Vastu Setu! We will reply promptly.', 'success');
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = originalText;
     }
   </script>
 </body>

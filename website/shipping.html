@@ -7,52 +7,162 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="index.html" class="logo-wrap"><div class="logo-icon">🕉️</div><div class="logo-text"><span class="brand-name">Astro Vastu Setu</span><span class="brand-tagline">Heal • Balance • Prosper</span></div></a>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
-    <div class="header-actions">
-      <button class="action-btn" onclick="location.href='cart.html'"><span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span></button>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+        <div class="logo-icon">🕉️</div>
+        <div class="logo-text">
+          <span class="brand-name">Astro Vastu Setu</span>
+          <span class="brand-tagline">Heal • Balance • Prosper</span>
+        </div>
+      </a>
+      <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+      <div class="header-actions">
+        <button class="action-btn" onclick="location.href='cart.html'">
+          <span class="icon">🛒</span><span>Cart</span><span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;color:#c9a227;">🕉️</div>
+        <div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div>
+      </div>
+      <span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span>
+    </div>
+    <nav><ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="shop.html">💎 Shop</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul></nav>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">🚚</div>
+    <h1>Shipping Policy</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Shipping Policy</span>
     </div>
   </div>
-</header>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-header"><div style="display:flex;align-items:center;gap:10px;"><div style="font-size:24px;color:#c9a227;">🕉️</div><div><div style="font-weight:700;font-size:15px;">Astro Vastu Setu</div></div></div><span class="mobile-menu-close" onclick="closeMobileMenu()">✕</span></div><nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="shop.html">💎 Shop</a></li><li><a href="cart.html">🛒 Cart</a></li></ul></nav></div>
 
-<div class="page-header">
-  <h1>Shipping Policy</h1>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Shipping Policy</span></div>
-</div>
+  <!-- POLICY QUICK-LINKS -->
+  <div class="policy-links-strip">
+    <div class="policy-links-strip-inner">
+      <span>Policies:</span>
+      <a href="shipping.html" class="active-policy">🚚 Shipping</a>
+      <a href="returns.html">↩️ Returns &amp; Refund</a>
+      <a href="cancellation.html">❌ Cancellation</a>
+      <a href="privacy.html">🔒 Privacy</a>
+      <a href="terms.html">📄 Terms</a>
+      <a href="disclaimer.html">⚠️ Disclaimer</a>
+    </div>
+  </div>
 
-<div class="legal-content">
-  <h2>1. Order Processing</h2>
-  <p>All orders are processed within 24-48 business hours after receiving your order confirmation email. You will receive another notification when your order has shipped.</p>
+  <!-- CONTENT -->
+  <div class="legal-content">
 
-  <h2>2. Shipping Rates and Estimates</h2>
-  <p>We offer shipping across India. Shipping charges for your order will be calculated and displayed at checkout.</p>
-  <ul>
-    <li><strong>Standard Shipping:</strong> ₹99 (Free for orders above ₹999) - Estimated delivery: 3 to 7 working days.</li>
-    <li><strong>Express Shipping:</strong> ₹99 - Estimated delivery: 1 to 2 working days (available in select pin codes).</li>
-  </ul>
-  <p>Delivery delays can occasionally occur due to public holidays, extreme weather conditions, or unforeseen circumstances with courier partners.</p>
+    <div class="legal-meta">
+      <span>📅 <strong>Last Updated:</strong> October 2025</span>
+      <span>📦 <strong>Applies to:</strong> All orders placed on Astro Vastu Setu</span>
+    </div>
 
-  <h2>3. Shipment Confirmation & Order Tracking</h2>
-  <p>You will receive a Shipment Confirmation email/SMS once your order has shipped containing your tracking number(s). The tracking number will be active within 24 hours. You can also track your order via the <a href="track.html" style="color:var(--primary-green);font-weight:600;">Track Order</a> page.</p>
+    <div class="legal-info">
+      We are committed to delivering your spiritual products safely and promptly across India. Please read our shipping policy carefully before placing an order.
+    </div>
 
-  <h2>4. Damages</h2>
-  <p>Astro Vastu Setu is not liable for any products damaged or lost during shipping. If you received your order damaged, please contact the shipment carrier to file a claim. Please save all packaging materials and damaged goods before filing a claim, and consider taking an unboxing video.</p>
+    <h2>1. Order Processing</h2>
+    <p>All orders are processed within <strong>24–48 business hours</strong> after receiving your order confirmation email. Orders placed on weekends or public holidays will be processed on the next working day.</p>
+    <p>You will receive a notification email/SMS once your order has been confirmed and is being prepared for shipment.</p>
 
-  <p style="margin-top:40px;"><em>Last updated: October 2025</em></p>
-</div>
+    <h2>2. Shipping Rates & Delivery Estimates</h2>
+    <p>We offer shipping across India. Shipping charges are calculated and displayed at checkout based on your location.</p>
 
-<footer class="site-footer">
-  <div class="footer-inner"><div class="footer-bottom"><p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p></div></div>
-</footer>
-<div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+    <table class="policy-table">
+      <thead>
+        <tr>
+          <th>Shipping Type</th>
+          <th>Cost</th>
+          <th>Estimated Delivery</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Standard Shipping</strong></td>
+          <td>₹99 <br><small style="color:#1a5c2e;font-weight:600;">(FREE above ₹999)</small></td>
+          <td>3 – 7 Working Days</td>
+          <td>Pan India</td>
+        </tr>
+        <tr>
+          <td><strong>Express Shipping</strong></td>
+          <td>₹199</td>
+          <td>1 – 2 Working Days</td>
+          <td>Select Pin Codes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="legal-note">
+      🎁 <strong>Free Shipping</strong> is automatically applied on all orders above ₹999. No coupon code required!
+    </div>
+
+    <p>Delivery estimates are approximate and may vary depending on your location, courier partner availability, and external factors. Delivery delays may occasionally occur due to public holidays, extreme weather conditions, or unforeseen circumstances with courier partners.</p>
+
+    <h2>3. Shipment Confirmation & Order Tracking</h2>
+    <p>Once your order has been shipped, you will receive a <strong>Shipment Confirmation</strong> via email and/or SMS containing your tracking number(s). The tracking number will become active within 24 hours of dispatch.</p>
+    <p>You can also track your order anytime using the <a href="track.html">Track Order</a> page with your Order ID and registered mobile number.</p>
+
+    <h2>4. Packaging</h2>
+    <p>All products are carefully packed to ensure they reach you in perfect condition. Our gemstone bracelets and spiritual products are wrapped in protective packaging to preserve their energy and quality during transit.</p>
+    <div class="legal-info">
+      📹 We strongly recommend recording an <strong>unboxing video</strong> when you receive your package. This helps us quickly resolve any claims related to damage or missing items during transit.
+    </div>
+
+    <h2>5. Damages During Shipping</h2>
+    <p>Astro Vastu Setu is not liable for any products damaged or lost during shipping once the order has been dispatched and handed over to the courier partner. If you received your order in a damaged condition, please:</p>
+    <ul>
+      <li>Contact the courier/shipment carrier to file a claim.</li>
+      <li>Save all original packaging materials and damaged goods.</li>
+      <li>Share your unboxing video with us at <strong>support@astrovastusetu.com</strong> within 48 hours of delivery.</li>
+    </ul>
+
+    <h2>6. Incorrect Address</h2>
+    <p>Please ensure your shipping address is complete and correct at the time of placing the order. Astro Vastu Setu is not responsible for delays or non-delivery caused by an incorrect or incomplete address provided by the customer. Additional shipping charges may apply for re-delivery attempts.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have any questions about your shipment, please contact us:</p>
+    <ul>
+      <li>📧 Email: <strong>support@astrovastusetu.com</strong></li>
+      <li>📞 Phone / WhatsApp: <strong>+91 78218 56342</strong></li>
+      <li>🕒 Support Hours: Monday – Saturday, 10:00 AM – 6:00 PM</li>
+    </ul>
+
+    <p class="legal-updated">Last updated: October 2025</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Astro Vastu Setu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-whatsapp"><a href="https://wa.me/919876543210" target="_blank"><span class="wa-icon">💬</span></a></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -264,7 +264,7 @@ function proceedToPayment() {
     return;
   }
   
-  // Save order data
+  // Save order data & redirect (no backend needed — localStorage only)
   const cart = getCart();
   const subtotal = cart.reduce((s, i) => {
     const p = PRODUCTS.find(x => x.id === i.id);
@@ -283,7 +283,15 @@ function proceedToPayment() {
     };
   });
 
-  const orderData = {
+  const createdOrderId = 'AVS' + Date.now().toString().slice(-6);
+  const order = {
+    id: createdOrderId,
+    orderId: createdOrderId,
+    paymentId: 'pay_' + Math.random().toString(36).substr(2,10),
+    status: 'Confirmed',
+    paymentMethod: 'Razorpay',
+    date: new Date().toLocaleDateString('en-IN'),
+    estimatedDelivery: new Date(Date.now() + 5*24*60*60*1000).toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'}),
     customer: {
       name: document.getElementById('fullName').value.trim(),
       mobile: document.getElementById('mobile').value.trim(),
@@ -301,53 +309,9 @@ function proceedToPayment() {
     deliveryMethod,
     paymentMethod: 'Razorpay / Online'
   };
-  
-  localStorage.setItem('avs_pending_order', JSON.stringify(orderData));
-  
-  // Show processing feedback
-  showToast('🔒 Connecting to Secure Payment & Saving Order...', 'gold');
-  
-  // Call Backend to record Order into MongoDB
-  setTimeout(async () => {
-    await submitOrderToBackend(orderData);
-  }, 1000);
-}
-
-async function submitOrderToBackend(orderData) {
-  const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-  let createdOrderId = 'AVS' + Date.now().toString().slice(-6);
-
-  try {
-    const res = await fetch(`${apiBase}/orders`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData)
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      if (data.order && data.order.orderId) {
-        createdOrderId = data.order.orderId;
-      }
-    } else {
-      console.warn('Backend order response not ok, saving local backup.');
-    }
-  } catch (err) {
-    console.error('Could not connect to MongoDB backend. Order stored locally.', err);
-  }
-
-  const order = {
-    ...orderData,
-    id: createdOrderId,
-    orderId: createdOrderId,
-    paymentId: 'pay_' + Math.random().toString(36).substr(2,10),
-    status: 'Confirmed',
-    paymentMethod: 'Razorpay',
-    date: new Date().toLocaleDateString('en-IN'),
-    estimatedDelivery: new Date(Date.now() + 5*24*60*60*1000).toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'})
-  };
 
   localStorage.setItem('avs_last_order', JSON.stringify(order));
+  localStorage.setItem('avs_pending_order', JSON.stringify(order));
 
   // Save to customer order history
   const orders = JSON.parse(localStorage.getItem('avs_orders') || '[]');
@@ -357,7 +321,8 @@ async function submitOrderToBackend(orderData) {
   // Clear cart
   setCart([]);
 
-  location.href = 'order-success.html';
+  showToast('🔒 Order Confirmed! Redirecting...', 'success');
+  setTimeout(() => { location.href = 'order-success.html'; }, 800);
 }
 </script>
 </body>

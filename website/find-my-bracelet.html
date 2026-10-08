@@ -614,36 +614,119 @@
       document.getElementById('stepIndicator3').classList.remove('active');
     }
 
-    async function processNumerologyPayment() {
+    function processNumerologyPayment() {
       const payBtn = document.getElementById('payBtn');
       payBtn.disabled = true;
-      payBtn.innerHTML = '⏳ Payment Processing & Generating Report...';
+      payBtn.innerHTML = '⏳ Generating Numerology Report...';
 
-      const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-
-      try {
-        const res = await fetch(`${apiBase}/numerology-orders`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(currentNumerologyData)
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          generatedReport = data.order;
-          displayGeneratedReport(data.order);
-        } else {
-          const err = await res.json();
-          showToast(err.error || 'त्रुटी आढळली', 'error');
-          payBtn.disabled = false;
-          payBtn.innerHTML = '🎁 Pay ₹51 & Get My Recommendation →';
-        }
-      } catch (err) {
-        console.error('Error submitting order:', err);
-        showToast('सर्व्हरशी संपर्क होऊ शकला नाही', 'error');
+      // currentNumerologyData has: { name, dob, whatsapp, email, purpose }
+      const d = currentNumerologyData;
+      if (!d) {
+        showToast('कृपया पहिले माहिती भरा', 'error');
         payBtn.disabled = false;
         payBtn.innerHTML = '🎁 Pay ₹51 & Get My Recommendation →';
+        return;
       }
+
+      const reportId = 'NB-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Compute numerology from DOB
+      const numData = computeNumerologyReport(d.name, d.dob, d.purpose);
+
+      const order = {
+        reportId,
+        customer: {
+          name: d.name,
+          dob: d.dob,
+          purpose: d.purpose,
+          whatsapp: d.whatsapp
+        },
+        numerology: numData.numerology,
+        recommendation: numData.recommendation
+      };
+
+      // Save to localStorage
+      const reports = JSON.parse(localStorage.getItem('avs_numerology_reports') || '[]');
+      reports.unshift(order);
+      localStorage.setItem('avs_numerology_reports', JSON.stringify(reports));
+
+      generatedReport = order;
+      displayGeneratedReport(order);
+
+      payBtn.disabled = false;
+      payBtn.innerHTML = '🎁 Pay ₹51 & Get My Recommendation →';
+    }
+
+    // ── Numerology computation engine ──────────────────────────────────────
+    function digitSum(n) {
+      while (n > 9) { n = String(n).split('').reduce((a, c) => a + parseInt(c), 0); }
+      return n;
+    }
+
+    function computeNumerologyReport(name, dob, purpose) {
+      // dob format: YYYY-MM-DD (from date input)
+      const parts = dob.split('-');
+      const day   = parseInt(parts[2] || 1);
+      const month = parseInt(parts[1] || 1);
+      const year  = parseInt(parts[0] || 2000);
+
+      const mulank   = digitSum(day);
+      const bhagyank = digitSum(day + month + year);
+
+      const planetMap = {
+        1: 'Sun (सूर्य)', 2: 'Moon (चंद्र)', 3: 'Jupiter (गुरु)',
+        4: 'Rahu (राहू)', 5: 'Mercury (बुध)', 6: 'Venus (शुक्र)',
+        7: 'Ketu (केतू)', 8: 'Saturn (शनि)', 9: 'Mars (मंगळ)'
+      };
+      const colorMap = {
+        1: 'Gold / Orange', 2: 'White / Silver', 3: 'Yellow / Purple',
+        4: 'Blue / Grey',   5: 'Green',          6: 'Pink / White',
+        7: 'Violet / Blue', 8: 'Black / Blue',   9: 'Red / Orange'
+      };
+      const analysisMap = {
+        1: 'तुम्ही नैसर्गिक नेतृत्वगुण, आत्मविश्वास आणि दृढनिश्चयाचे धनी आहात.',
+        2: 'तुम्ही संवेदनशील, कलात्मक आणि सहकार्याची प्रवृत्ती असलेले आहात.',
+        3: 'तुम्ही सर्जनशील, उत्साही आणि सामाजिक स्वभावाचे आहात.',
+        4: 'तुम्ही मेहनती, शिस्तप्रिय आणि व्यावहारिक विचारसरणीचे आहात.',
+        5: 'तुम्ही स्वतंत्र विचारांचे, साहसी आणि बदलाचे समर्थक आहात.',
+        6: 'तुम्ही कुटुंब-प्रेमी, जबाबदार आणि सौंदर्यप्रिय आहात.',
+        7: 'तुम्ही अध्यात्मिक, विश्लेषणात्मक आणि सत्यशोधक आहात.',
+        8: 'तुम्ही महत्वाकांक्षी, संघटक आणि भौतिक यशाचे इच्छुक आहात.',
+        9: 'तुम्ही परोपकारी, आदर्शवादी आणि मानवतावादी विचारांचे आहात.'
+      };
+
+      // Bracelet recommendation map: [mulank][purpose]
+      const braceletDB = {
+        purpose_map: {
+          'Wealth & Prosperity':    { id: 2,  name: 'Citrine Bracelet',         img: 'bracelet-citrine.jpeg',       price: 699,  benefits: ['आर्थिक वृद्धी आकर्षित करते','सकारात्मक ऊर्जा वाढवते','व्यवसाय वृद्धीस मदत करते'], instructions: 'गुरुवारी उजव्या हाताला परिधान करावे.' },
+          'Career & Success':       { id: 4,  name: 'Tiger Eye Bracelet',        img: 'bracelet-tigereye.jpeg',      price: 749,  benefits: ['करिअर वृद्धी आणि यश','आत्मविश्वास वाढवते','निर्णयशक्ती सुधारते'], instructions: 'रविवारी उजव्या हाताला परिधान करावे.' },
+          'Love & Relationships':   { id: 6,  name: 'Rose Quartz Bracelet',      img: 'bracelet-rosequartz.jpeg',    price: 649,  benefits: ['प्रेम आणि मैत्री वाढवते','नातेसंबंध सुधारते','भावनिक उपचार करते'], instructions: 'शुक्रवारी डाव्या हाताला परिधान करावे.' },
+          'Peace & Relaxation':     { id: 3,  name: 'Amethyst Bracelet',         img: 'bracelet-amethyst.jpeg',      price: 699,  benefits: ['मानसिक शांतता मिळवते','तणाव कमी करते','झोप सुधारते'], instructions: 'बुधवारी डाव्या हाताला परिधान करावे.' },
+          'Protection':             { id: 5,  name: 'Black Tourmaline Bracelet', img: 'bracelet-blacktourmaline.jpeg', price: 799, benefits: ['नकारात्मक ऊर्जा रोखते','नजरदोषापासून संरक्षण','ऊर्जा शिल्ड तयार करते'], instructions: 'शनिवारी उजव्या हाताला परिधान करावे.' },
+          'Overall Well-being':     { id: 1,  name: '7 Chakra Bracelet',         img: 'bracelet-7chakra.jpeg',       price: 849,  benefits: ['सातही चक्रे संतुलित करते','सर्वांगीण उपचार करते','सकारात्मक ऊर्जा वाढवते'], instructions: 'सोमवारी डाव्या हाताला परिधान करावे.' }
+        }
+      };
+
+      const rec = braceletDB.purpose_map[purpose] || braceletDB.purpose_map['Overall Well-being'];
+
+      return {
+        numerology: {
+          mulank,
+          bhagyank,
+          rulingPlanet: planetMap[mulank] || 'Sun (सूर्य)',
+          luckyColor:   colorMap[mulank]  || 'Gold',
+          analysisText: analysisMap[mulank] || 'तुम्ही विशेष ऊर्जा आणि गुणांचे धनी आहात.'
+        },
+        recommendation: {
+          braceletId:          rec.id,
+          braceletName:        rec.name,
+          braceletImage:       'Images/' + rec.img,
+          braceletPrice:       rec.price,
+          reason:              `तुमच्या मूल्यांक ${mulank} आणि "${purpose}" या उद्दिष्टानुसार हे Bracelet तुमच्यासाठी सर्वाधिक पूरक आहे.`,
+          benefits:            rec.benefits,
+          wearingInstructions: rec.instructions
+        }
+      };
     }
 
     function displayGeneratedReport(order) {
@@ -675,9 +758,8 @@
       document.getElementById('rep_instructions').textContent = order.recommendation.wearingInstructions;
 
       if (order.recommendation.braceletImage) {
-        document.getElementById('rep_braceletImg').src = order.recommendation.braceletImage.startsWith('http') 
-          ? order.recommendation.braceletImage 
-          : (window.BACKEND_API_BASE ? window.BACKEND_API_BASE.replace('/api', '') : 'http://localhost:5000') + order.recommendation.braceletImage;
+        const img = order.recommendation.braceletImage;
+        document.getElementById('rep_braceletImg').src = img.startsWith('http') ? img : ('Images/' + img.split('/').pop());
       }
 
       // Benefits
@@ -711,27 +793,22 @@
         `💰 *किंमत:* ₹${r.recommendation.braceletPrice}\n` +
         `🎯 *उद्देश:* ${r.customer.purpose}\n\n` +
         `📄 *Report ID:* ${r.reportId}\n` +
-        `Order Bracelet: http://localhost:5000/product.html?id=${r.recommendation.braceletId}`;
+        `Order Bracelet: https://astrovastusetu.com/product.html?id=${r.recommendation.braceletId}`;
       
       const waUrl = `https://wa.me/91${r.customer.whatsapp}?text=${encodeURIComponent(msg)}`;
       window.open(waUrl, '_blank');
     }
 
-    // Check URL params if reportId passed e.g. find-my-bracelet.html?reportId=NB-123456
-    document.addEventListener('DOMContentLoaded', async () => {
+    // Check URL params — load from localStorage if reportId passed
+    document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const repId = urlParams.get('reportId');
       if (repId) {
-        const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-        try {
-          const res = await fetch(`${apiBase}/numerology-orders/${repId}`);
-          if (res.ok) {
-            const data = await res.json();
-            generatedReport = data;
-            displayGeneratedReport(data);
-          }
-        } catch (e) {
-          console.error(e);
+        const reports = JSON.parse(localStorage.getItem('avs_numerology_reports') || '[]');
+        const found = reports.find(r => r.reportId === repId);
+        if (found) {
+          generatedReport = found;
+          displayGeneratedReport(found);
         }
       }
     });

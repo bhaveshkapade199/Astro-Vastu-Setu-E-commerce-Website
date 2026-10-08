@@ -1,56 +1,28 @@
 // ============================================
-// ASTRO VASTU SETU - Main JS
+// ASTRO VASTU SETU - Main JS (Pure HTML/CSS/JS - No Backend)
 // ============================================
-
-const API_BASE = 'http://localhost:3000/api';
-
-// Global products list (populated async from backend)
-let SITE_PRODUCTS = [];
 
 document.addEventListener('DOMContentLoaded', () => {
   updateBadges();
   initBackToTop();
-  // Load all products from backend API (fixes add/delete not reflecting)
-  loadSiteProducts().then(() => {
-    renderFeaturedProducts();
-  });
+  renderFeaturedProducts();
 });
-
-// ---- FETCH PRODUCTS FROM BACKEND ----
-async function loadSiteProducts() {
-  try {
-    const res = await fetch(`${API_BASE}/products?_t=${Date.now()}`);
-    if (res.ok) {
-      SITE_PRODUCTS = await res.json();
-    } else {
-      SITE_PRODUCTS = DEFAULT_PRODUCTS;
-    }
-  } catch (e) {
-    console.warn('Backend not reachable, using defaults.', e);
-    SITE_PRODUCTS = DEFAULT_PRODUCTS;
-  }
-  return SITE_PRODUCTS;
-}
 
 // ---- RENDER FEATURED PRODUCTS ----
 function renderFeaturedProducts() {
   const container = document.getElementById('featuredProducts');
   if (!container) return;
 
-  // Show all products (not just featured) so new products always appear
-  const list = SITE_PRODUCTS.length > 0 ? SITE_PRODUCTS : DEFAULT_PRODUCTS;
-  const featured = list.filter(p => p.isFeatured);
-  const display = featured.length > 0 ? featured.slice(0, 6) : list.slice(0, 6);
+  const featured = PRODUCTS.filter(p => p.isFeatured);
+  const display = featured.length > 0 ? featured.slice(0, 6) : PRODUCTS.slice(0, 6);
   container.innerHTML = display.map(p => productCardHTML(p)).join('');
 }
 
 function productCardHTML(p) {
   const wl = getWishlist();
   const isWishlisted = wl.includes(p.id);
-  const resolvedImg = (typeof getProductImageUrl === 'function') ? getProductImageUrl(p.image) : (p.image || '');
-  const defaultImg = (typeof BACKEND_API_BASE !== 'undefined') 
-    ? BACKEND_API_BASE.replace('/api', '') + '/uploads/bracelet-default.jpeg'
-    : 'http://localhost:5000/uploads/bracelet-default.jpeg';
+  const resolvedImg = getProductImageUrl(p.image);
+  const defaultImg = DEFAULT_BRACELET_IMG;
   return `
     <div class="product-card" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer;">
       <div class="product-img-wrap">
@@ -201,7 +173,7 @@ function closeSpecialBraceletModal() {
   document.body.style.overflow = '';
 }
 
-async function submitSpecialBracelet(e) {
+function submitSpecialBracelet(e) {
   e.preventDefault();
   const name = document.getElementById('sb_name').value.trim();
   const age = document.getElementById('sb_age') ? document.getElementById('sb_age').value : '';
@@ -214,54 +186,13 @@ async function submitSpecialBracelet(e) {
   const kundali = document.getElementById('sb_kundali') ? document.getElementById('sb_kundali').value.trim() : '';
   const wish = document.getElementById('sb_wish') ? document.getElementById('sb_wish').value.trim() : 'Astrological Healing & Prosperity';
 
-  const apiBase = window.BACKEND_API_BASE || 'http://localhost:5000/api';
-  let requestId = 'SPB-' + Math.floor(100000 + Math.random() * 900000);
+  // Generate local request ID — no backend needed
+  const requestId = 'SPB-' + Math.floor(100000 + Math.random() * 900000);
 
-  const payload = {
-    personDetails: {
-      fullName: name,
-      gender: 'Male',
-      dob: dob || new Date().toISOString().split('T')[0],
-      birthTime: '',
-      birthPlace: city,
-      rashi: rashi,
-      nakshatra: nakshatra,
-      gotra: gotra
-    },
-    customization: {
-      wristSize: '7.0 Inches (Standard)',
-      beadSize: '8mm',
-      primaryPurpose: wish || 'Planetary Healing & Prosperity',
-      preferredStones: ['Kundli Recommended Stones'],
-      specialConcerns: `Age: ${age}. Kundali / Birth Info: ${kundali}`
-    },
-    customer: {
-      name: name,
-      mobile: mobile,
-      whatsapp: mobile,
-      address: `${city}, India`,
-      city: city,
-      state: 'India',
-      pincode: '400001'
-    },
-    pricing: {
-      finalPrice: 51
-    }
-  };
-
-  try {
-    const res = await fetch(`${apiBase}/special-bracelets`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (res.ok) {
-      const data = await res.json();
-      if (data.requestId) requestId = data.requestId;
-    }
-  } catch (err) {
-    console.warn('Could not post to MongoDB backend:', err);
-  }
+  // Save request to localStorage for tracking
+  const requests = JSON.parse(localStorage.getItem('avs_special_requests') || '[]');
+  requests.unshift({ requestId, name, dob, city, rashi, createdAt: new Date().toISOString() });
+  localStorage.setItem('avs_special_requests', JSON.stringify(requests));
 
   showToast(`✨ Special bracelet request (${requestId}) saved! Opening WhatsApp...`, 'gold');
 
