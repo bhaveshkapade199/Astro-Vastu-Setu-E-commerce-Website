@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro Vastu Setu - Admin Control Center</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css">
 </head>
+
 <body>
 
+    <!-- Mobile Top Header Bar (Appears on <= 991px) -->
+    <header class="mobile-top-header">
+        <button class="mobile-nav-toggle" id="sidebarToggleBtn" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a href="#" class="mobile-brand">
+            <span class="mobile-brand-icon">🕉️</span>
+            <span class="mobile-brand-text">Astro Vastu Setu</span>
+        </a>
+        <div class="mobile-header-actions">
+            <button class="btn-icon" onclick="refreshAllData()" title="Refresh All Data">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="btn-icon danger" onclick="logout()" title="Logout Admin">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar Backdrop Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="adminSidebar">
         <div class="brand-section">
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+                <i class="fas fa-times"></i>
+            </button>
             <div class="brand-logo-icon">🕉️</div>
             <div class="brand-title">Astro Vastu Setu</div>
             <div class="brand-tagline">Admin Management Panel</div>
         </div>
 
         <nav class="nav-links">
-            <a href="/" target="_blank" class="nav-link">
+            <a href="../website/index.html" target="_blank" class="nav-link">
                 <i class="fas fa-external-link-alt"></i>
                 <span>Open Website</span>
             </a>
@@ -29,7 +57,7 @@
             </a>
             <a href="#" class="nav-link active" data-tab="products">
                 <i class="fas fa-box-open"></i>
-                <span>Products (MongoDB)</span>
+                <span>Products Catalog</span>
             </a>
             <a href="#" class="nav-link" data-tab="categories">
                 <i class="fas fa-tags"></i>
@@ -48,23 +76,23 @@
             <a href="#" class="nav-link" data-tab="numerology">
                 <i class="fas fa-magic"></i>
                 <span>₹51 Numerology Reports</span>
-                <span class="badge-count" id="badgeNumerologyCount" style="background:#8b5cf6;display:none;">0</span>
+                <span class="badge-count" id="badgeNumerologyCount">0</span>
             </a>
             <a href="#" class="nav-link" data-tab="contacts">
                 <i class="fas fa-envelope-open-text"></i>
                 <span>Contact Messages</span>
-                <span class="badge-count" id="badgeContactsCount" style="background:#0288d1;display:none;">0</span>
+                <span class="badge-count" id="badgeContactsCount">0</span>
             </a>
             <a href="#" class="nav-link" data-tab="reviews">
                 <i class="fas fa-star"></i>
                 <span>Product Feedback</span>
-                <span class="badge-count" id="badgeReviewsCount" style="background:#f57c00;display:none;">0</span>
+                <span class="badge-count" id="badgeReviewsCount">0</span>
             </a>
         </nav>
 
         <div class="sidebar-footer">
             <div style="font-size:12px;color:#a8998d;text-align:center;">
-                <i class="fas fa-database" style="color:#4caf50;"></i> MongoDB Connected
+                <i class="fas fa-shield-alt" style="color:var(--primary);"></i> Authenticated Admin
             </div>
             <button class="btn btn-secondary btn-sm" onclick="logout()" style="width:100%;justify-content:center;">
                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -75,10 +103,19 @@
     <!-- Main Content Area -->
     <main class="main-content">
         <header class="top-bar">
-            <h1 id="pageTitle"><i class="fas fa-box-open"></i> Product Management (MongoDB)</h1>
+            <div class="top-bar-left">
+                <button class="top-bar-toggle-btn" id="topBarToggleBtn" aria-label="Open navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="pageTitle"><i class="fas fa-box-open"></i> Product Management</h1>
+            </div>
             <div class="admin-pill">
-                <span class="user-badge"><i class="fas fa-user-shield"></i> Master Admin</span>
+                <span class="user-badge" id="currentUserBadge">
+                    <i class="fas fa-user-shield"></i> <span id="currentAdminName">Master Admin</span>
+                </span>
                 <button class="btn btn-sm" onclick="refreshAllData()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                <button class="btn btn-secondary btn-sm" onclick="logout()"><i class="fas fa-sign-out-alt"></i>
+                    Logout</button>
             </div>
         </header>
 
@@ -120,16 +157,19 @@
                 <div class="card-header">
                     <h2><i class="fas fa-tachometer-alt"></i> Quick Actions & Overview</h2>
                 </div>
-                <p style="margin-bottom:20px;color:#555;">Welcome to Astro Vastu Setu Administrator Portal. From here you can manage all store products in MongoDB, track real-time orders placed by customers, and view personalized astrological data for Special Bracelet requests.</p>
-                
-                <div style="display:flex;gap:15px;flex-wrap:wrap;">
+                <p style="margin-bottom:20px;color:#555;">Welcome to Astro Vastu Setu Administrator Portal. From here
+                    you can manage all store products, track real-time orders placed by customers, and view personalized
+                    astrological data for Special Bracelet requests.</p>
+
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
                     <button class="btn" onclick="switchTab('products'); openProductModal();">
                         <i class="fas fa-plus-circle"></i> Add New Product
                     </button>
                     <button class="btn btn-secondary" onclick="switchTab('orders');">
                         <i class="fas fa-list-alt"></i> View Website Orders
                     </button>
-                    <button class="btn btn-secondary" onclick="switchTab('special-bracelets');" style="background:#f3e5f5;color:#6a1b9a;">
+                    <button class="btn btn-secondary" onclick="switchTab('special-bracelets');"
+                        style="background:#f3e5f5;color:#6a1b9a;">
                         <i class="fas fa-star-of-david"></i> View Special Bracelet Requests
                     </button>
                 </div>
@@ -151,7 +191,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Image/Icon</th>
+                                <th>Image</th>
                                 <th>Product Details</th>
                                 <th>Category</th>
                                 <th>Price</th>
@@ -172,7 +212,8 @@
             <div class="content-card">
                 <div class="card-header">
                     <h2><i class="fas fa-shopping-bag"></i> Customer Orders from Website</h2>
-                    <button class="btn btn-secondary btn-sm" onclick="loadOrders()"><i class="fas fa-sync-alt"></i> Reload Orders</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadOrders()"><i class="fas fa-sync-alt"></i>
+                        Reload Orders</button>
                 </div>
 
                 <div class="table-responsive">
@@ -200,10 +241,13 @@
             <div class="content-card">
                 <div class="card-header">
                     <h2><i class="fas fa-gem" style="color:#8e24aa;"></i> Personalized Special Bracelet Requests</h2>
-                    <button class="btn btn-secondary btn-sm" onclick="loadSpecialRequests()"><i class="fas fa-sync-alt"></i> Reload Requests</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadSpecialRequests()"><i
+                            class="fas fa-sync-alt"></i> Reload Requests</button>
                 </div>
                 <p style="margin-bottom:16px;font-size:13px;color:#666;">
-                    These are custom orders made specifically for an individual person with their astrological birth chart (DOB, Time, Place of Birth), wrist measurement, and specific life intentions (Wealth, Health, Protection, Career).
+                    These are custom orders made specifically for an individual person with their astrological birth
+                    chart (DOB, Time, Place of Birth), wrist measurement, and specific life intentions (Wealth, Health,
+                    Protection, Career).
                 </p>
 
                 <div class="table-responsive">
@@ -231,11 +275,15 @@
         <div class="tab-panel" id="tab-numerology">
             <div class="content-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-magic" style="color:#8b5cf6;"></i> ₹51 Numerology Reports &amp; Bracelet Recommendations</h2>
-                    <button class="btn btn-secondary btn-sm" onclick="loadNumerologyReports()"><i class="fas fa-sync-alt"></i> Reload Reports</button>
+                    <h2><i class="fas fa-magic" style="color:#8b5cf6;"></i> ₹51 Numerology Reports &amp; Bracelet
+                        Recommendations</h2>
+                    <button class="btn btn-secondary btn-sm" onclick="loadNumerologyReports()"><i
+                            class="fas fa-sync-alt"></i> Reload Reports</button>
                 </div>
                 <p style="margin-bottom:16px;font-size:13px;color:#666;">
-                    All customer submissions from the <b>"Find My Bracelet"</b> flow. The system calculates <b>मूल्यांक (Mulank)</b> and <b>भाग्यांक (Bhagyank)</b> from birth date and recommends the personalized bracelet.
+                    All customer submissions from the <b>"Find My Bracelet"</b> flow. The system calculates <b>मूल्यांक
+                        (Mulank)</b> and <b>भाग्यांक (Bhagyank)</b> from birth date and recommends the personalized
+                    bracelet.
                 </p>
 
                 <div class="table-responsive">
@@ -268,19 +316,22 @@
                     <span style="font-size:13px;color:#666;">Add and manage custom product categories</span>
                 </div>
 
-                <div style="background:#faf6f0;border:1px solid #ebdcc5;border-radius:10px;padding:20px;margin-bottom:24px;">
-                    <h3 style="font-size:15px;margin-bottom:12px;color:var(--dark);"><i class="fas fa-plus-circle"></i> Add New Store Category</h3>
+                <div
+                    style="background:#faf6f0;border:1px solid #ebdcc5;border-radius:10px;padding:20px;margin-bottom:24px;">
+                    <h3 style="font-size:15px;margin-bottom:12px;color:var(--dark);"><i class="fas fa-plus-circle"></i>
+                        Add New Store Category</h3>
                     <form id="addCategoryForm" onsubmit="saveCategory(event)">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Category Name *</label>
-                                <input type="text" id="catName" placeholder="e.g. Vastu Yantras, Gemstones, Mala" required>
+                                <input type="text" id="catName" placeholder="e.g. Vastu Yantras, Gemstones, Mala"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label>Category Slug (URL code)</label>
                                 <input type="text" id="catSlug" placeholder="e.g. vastu-yantras">
                             </div>
-                            <div class="form-group" style="max-width:120px;">
+                            <div class="form-group" style="max-width:140px;">
                                 <label>Emoji / Icon</label>
                                 <input type="text" id="catIcon" placeholder="🕉️, 📿, 💎" value="💎">
                             </div>
@@ -289,7 +340,7 @@
                             <label>Short Description</label>
                             <input type="text" id="catDesc" placeholder="Brief description of this collection...">
                         </div>
-                        <button type="submit" class="btn"><i class="fas fa-check"></i> Create Category in MongoDB</button>
+                        <button type="submit" class="btn"><i class="fas fa-check"></i> Create Category</button>
                     </form>
                 </div>
 
@@ -317,10 +368,12 @@
             <div class="content-card">
                 <div class="card-header">
                     <h2><i class="fas fa-envelope-open-text" style="color:#0288d1;"></i> Customer Contact Messages</h2>
-                    <button class="btn btn-secondary btn-sm" onclick="loadContacts()"><i class="fas fa-sync-alt"></i> Refresh Messages</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadContacts()"><i class="fas fa-sync-alt"></i>
+                        Refresh Messages</button>
                 </div>
                 <p style="margin-bottom:16px;font-size:13px;color:#666;">
-                    All inquiries submitted by customers via the <b>Contact Us</b> page arrive here in real time with customer contact details and 1-click WhatsApp buttons.
+                    All inquiries submitted by customers via the <b>Contact Us</b> page arrive here in real time with
+                    customer contact details and 1-click WhatsApp buttons.
                 </p>
 
                 <div class="table-responsive">
@@ -348,7 +401,8 @@
             <div class="content-card">
                 <div class="card-header">
                     <h2><i class="fas fa-star" style="color:#f57c00;"></i> Customer Product Reviews &amp; Feedback</h2>
-                    <button class="btn btn-secondary btn-sm" onclick="loadReviews()"><i class="fas fa-sync-alt"></i> Refresh Reviews</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadReviews()"><i class="fas fa-sync-alt"></i>
+                        Refresh Reviews</button>
                 </div>
                 <p style="margin-bottom:16px;font-size:13px;color:#666;">
                     Ratings and feedback submitted by users on product pages.
@@ -388,15 +442,17 @@
                     <label>Product Name *</label>
                     <input type="text" id="productName" placeholder="e.g. 7 Chakra Energy Bracelet" required>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
                             <label style="margin-bottom:0;">Category *</label>
-                            <a href="#" onclick="switchTab('categories');closeProductModal();return false;" style="font-size:11px;color:var(--primary);font-weight:600;text-decoration:none;">+ Add Category</a>
+                            <a href="#" onclick="switchTab('categories');closeProductModal();return false;"
+                                style="font-size:11px;color:var(--primary);font-weight:600;text-decoration:none;">+ Add
+                                Category</a>
                         </div>
                         <select id="productCategory" required>
-                            <!-- Populated dynamically via loadCategories() from MongoDB -->
+                            <!-- Populated dynamically via loadCategories() -->
                         </select>
                     </div>
                     <div class="form-group">
@@ -432,7 +488,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Upload Image</label>
+                    <label>Upload Image / Image Path</label>
                     <input type="file" id="productImageFile" accept="image/*">
                     <input type="hidden" id="productImageUrl">
                     <div id="uploadStatus" style="font-size:12px;margin-top:4px;"></div>
@@ -440,7 +496,8 @@
 
                 <div class="form-group">
                     <label>Short Description *</label>
-                    <textarea id="productDesc" rows="3" placeholder="Brief spiritual and material description..." required></textarea>
+                    <textarea id="productDesc" rows="3" placeholder="Brief spiritual and material description..."
+                        required></textarea>
                 </div>
 
                 <div class="form-row" style="margin-top:10px;">
@@ -451,7 +508,8 @@
                     </div>
                     <div class="form-group">
                         <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
-                            <input type="checkbox" id="productIsFeatured" checked style="width:auto;"> Featured (Home Page)
+                            <input type="checkbox" id="productIsFeatured" checked style="width:auto;"> Featured (Home
+                            Page)
                         </label>
                     </div>
                     <div class="form-group">
@@ -462,7 +520,7 @@
                 </div>
 
                 <button type="submit" class="btn" style="width:100%;margin-top:18px;justify-content:center;">
-                    <i class="fas fa-save"></i> Save Product to MongoDB
+                    <i class="fas fa-save"></i> Save Product
                 </button>
             </form>
         </div>
@@ -494,30 +552,141 @@
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div class="modal" id="adminLoginModal" style="display:none;background:var(--dark);">
-        <div class="modal-content" style="max-width:420px;text-align:center;">
-            <div style="font-size:42px;margin-bottom:10px;">🕉️</div>
-            <h2 style="color:var(--primary);margin-bottom:6px;">Admin Authentication</h2>
-            <p style="margin-bottom:20px;font-size:13px;color:#777;">Please enter your credentials to access the store database.</p>
-            
-            <form id="adminLoginForm">
-                <div class="form-group" style="text-align:left;">
-                    <label>Username</label>
-                    <input type="text" id="adminUsername" value="admin" required>
-                </div>
-                <div class="form-group" style="text-align:left;">
-                    <label>Password</label>
-                    <input type="password" id="adminPassword" value="admin123" required>
-                </div>
-                <button type="submit" class="btn" style="width:100%;margin-top:10px;justify-content:center;">
-                    <i class="fas fa-lock-open"></i> Login to Admin
+    <!-- =============================================================
+         AUTH GATEWAY: LOGIN & REGISTER BEFORE ADMIN PANEL
+         ============================================================= -->
+    <div class="auth-gateway" id="adminAuthGateway">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <div class="auth-icon-ring">🕉️</div>
+                <h2>Astro Vastu Setu</h2>
+                <p>Admin Portal &amp; Management Gateway</p>
+            </div>
+
+            <!-- Auth Tabs (Login / Register) -->
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab-btn active" id="tabBtnLogin" onclick="switchAuthTab('login')">
+                    <i class="fas fa-sign-in-alt"></i> Admin Login
                 </button>
+                <button type="button" class="auth-tab-btn" id="tabBtnRegister" onclick="switchAuthTab('register')">
+                    <i class="fas fa-user-plus"></i> Register Admin
+                </button>
+            </div>
+
+            <!-- Dynamic Alert for Success / Error -->
+            <div id="authAlert" class="auth-alert" style="display:none;"></div>
+
+            <!-- LOGIN FORM -->
+            <form id="adminLoginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="adminUsername"><i class="fas fa-user"></i> Username or Email</label>
+                    <input type="text" id="adminUsername" placeholder="e.g. admin" value="admin" required
+                        autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="adminPassword"><i class="fas fa-lock"></i> Password</label>
+                    <div class="password-input-wrap">
+                        <input type="password" id="adminPassword" placeholder="••••••••" value="admin123" required
+                            autocomplete="current-password">
+                        <button type="button" class="toggle-password-btn"
+                            onclick="togglePasswordVisibility('adminPassword', this)" aria-label="Toggle password view">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="auth-options">
+                    <label class="remember-label">
+                        <input type="checkbox" id="rememberMe" checked> Remember session
+                    </label>
+                </div>
+
+                <button type="submit" class="btn auth-submit-btn" id="loginSubmitBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login to Admin Panel
+                </button>
+
+                <div class="auth-hint">
+                    <div class="hint-title"><i class="fas fa-key"></i> Default Admin Credentials:</div>
+                    <code>Username: <b>admin</b> | Password: <b>admin123</b></code>
+                </div>
             </form>
-            <div id="loginError" style="color:red;font-size:13px;margin-top:12px;display:none;"></div>
+
+            <!-- REGISTER FORM -->
+            <form id="adminRegisterForm" class="auth-form" style="display:none;">
+                <div class="form-group">
+                    <label for="regFullName"><i class="fas fa-id-card"></i> Full Name *</label>
+                    <input type="text" id="regFullName" placeholder="e.g. Acharya Sharma" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regUsername"><i class="fas fa-user"></i> Username *</label>
+                        <input type="text" id="regUsername" placeholder="e.g. acharya_admin" required
+                            autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="regRole"><i class="fas fa-shield-alt"></i> Role *</label>
+                        <select id="regRole" required>
+                            <option value="Master Admin">Master Admin</option>
+                            <option value="Store Manager">Store Manager</option>
+                            <option value="Astrologer Support">Astrologer Support</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail"><i class="fas fa-envelope"></i> Email Address *</label>
+                    <input type="email" id="regEmail" placeholder="admin@astrovastussetu.com" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regPassword"><i class="fas fa-lock"></i> Password *</label>
+                        <div class="password-input-wrap">
+                            <input type="password" id="regPassword" placeholder="Min 6 characters" required
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-password-btn"
+                                onclick="togglePasswordVisibility('regPassword', this)"
+                                aria-label="Toggle password view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword"><i class="fas fa-lock"></i> Confirm *</label>
+                        <div class="password-input-wrap">
+                            <input type="password" id="regConfirmPassword" placeholder="Re-type password" required
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-password-btn"
+                                onclick="togglePasswordVisibility('regConfirmPassword', this)"
+                                aria-label="Toggle password view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regSecretCode"><i class="fas fa-user-secret"></i> Admin Security Passkey *</label>
+                    <input type="text" id="regSecretCode" placeholder="Enter registration secret passkey" required>
+                    <small style="color:#777;font-size:11px;display:block;margin-top:3px;">
+                        Passkey is: <code>ASTRO2026</code> (Secures admin registration from unauthorized access)
+                    </small>
+                </div>
+
+                <button type="submit" class="btn auth-submit-btn" id="registerSubmitBtn">
+                    <i class="fas fa-user-check"></i> Register Admin Account
+                </button>
+
+                <p class="auth-switch-note">
+                    Already registered? <a href="#" onclick="switchAuthTab('login');return false;">Sign in here</a>
+                </p>
+            </form>
         </div>
     </div>
 
     <script src="js/admin.js"></script>
 </body>
+
 </html>

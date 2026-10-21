@@ -1,5 +1,6 @@
 // ============================================================
-// Astro Vastu Setu - Multi-Language System (English, Hindi, Marathi)
+// Astro Vastu Setu - Global Multi-Language System (English, Hindi, Marathi)
+// Full-Website Translation: Translates every container, small word & page
 // ============================================================
 
 const translations = {
@@ -42,9 +43,7 @@ const translations = {
     mobileLabel: "Mobile / WhatsApp Number *",
     emailLabel: "Email Address",
     subjectLabel: "Subject *",
-    messageLabel: "Your Message / Question *",
-    specialModalTitle: "Special Personalized Bracelet",
-    specialModalDesc: "Crafted specifically for that special person with their Kundali, Gotra & Birth details."
+    messageLabel: "Your Message / Question *"
   },
   hi: {
     announcement: "🚩 नवरात्रि स्पेशल लॉन्च | दिव्य ऊर्जा • सकारात्मकता • समृद्धि | ₹999 से अधिक ऑर्डर पर फ्री डिलीवरी | 100% असली रत्न",
@@ -85,9 +84,7 @@ const translations = {
     mobileLabel: "मोबाइल / व्हाट्सएप नंबर *",
     emailLabel: "ईमेल पता",
     subjectLabel: "विषय *",
-    messageLabel: "आपका संदेश / प्रश्न *",
-    specialModalTitle: "विशेष कस्टमाइज्ड ब्रेसलेट",
-    specialModalDesc: "उस खास व्यक्ति के लिए उनकी कुंडली, गोत्र और जन्म विवरण के अनुसार अभिमंत्रित ब्रेसलेट।"
+    messageLabel: "आपका संदेश / प्रश्न *"
   },
   mr: {
     announcement: "🚩 नवरात्री स्पेशल लॉन्च | शुभ ऊर्जा • सकारात्मकता • समृद्धी | ₹999 वरील ऑर्डरवर फ्री शिपिंग | 100% अस्सल नैसर्गिक खडे",
@@ -128,20 +125,116 @@ const translations = {
     mobileLabel: "मोबाईल / व्हॉट्सअ‍ॅप नंबर *",
     emailLabel: "ईमेल पत्ता",
     subjectLabel: "विषय *",
-    messageLabel: "तुमचा संदेश / विचारणा *",
-    specialModalTitle: "विशेष कस्टमाईज्ड ब्रेसलेट",
-    specialModalDesc: "त्या खास व्यक्तीसाठी त्यांच्या कुंडली, गोत्र आणि जन्मतारीख/वेळेनुसार बनवलेले अभिमंत्रित ब्रेसलेट."
+    messageLabel: "तुमचा संदेश / विचारणा *"
   }
 };
 
 let currentLanguage = localStorage.getItem('avs_lang') || 'en';
 
+// Cookie Helpers
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + d.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/;";
+  if (window.location.hostname) {
+    document.cookie = name + "=" + (value || "") + expires + "; domain=" + window.location.hostname + "; path=/;";
+  }
+}
+
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  if (window.location.hostname) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+  }
+}
+
+// Global Google Translate Init Callback
+window.googleTranslateElementInit = function () {
+  try {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,mr',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    const savedLang = localStorage.getItem('avs_lang') || 'en';
+    if (savedLang && savedLang !== 'en') {
+      waitForGoogleTranslateCombo(savedLang);
+    }
+  } catch (err) {
+    console.warn('Google Translate initialization:', err);
+  }
+};
+
+// Trigger language selection in Google's internal dropdown
+function triggerGoogleTranslate(lang) {
+  const select = document.querySelector('.goog-te-combo');
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+    return true;
+  }
+  return false;
+}
+
+function waitForGoogleTranslateCombo(lang, maxAttempts = 30) {
+  let attempts = 0;
+  const interval = setInterval(() => {
+    attempts++;
+    const success = triggerGoogleTranslate(lang);
+    if (success || attempts >= maxAttempts) {
+      clearInterval(interval);
+    }
+  }, 120);
+}
+
+// User clicked language button
 function setLanguage(lang) {
-  if (!translations[lang]) return;
+  if (!['en', 'hi', 'mr'].includes(lang)) lang = 'en';
   currentLanguage = lang;
   localStorage.setItem('avs_lang', lang);
-  applyTranslations();
   updateLangButtonUI();
+
+  // 1. Instant dictionary translation for tagged elements
+  applyTranslations();
+
+  // 2. Full website translation via Google Translate
+  if (lang === 'en') {
+    deleteCookie('googtrans');
+    setCookie('googtrans', '/en/en', 1);
+
+    const bannerFrame = document.querySelector('.goog-te-banner-frame');
+    if (bannerFrame && bannerFrame.contentWindow) {
+      try {
+        const closeBtn = bannerFrame.contentWindow.document.querySelector('.goog-close-link, .goog-te-button button');
+        if (closeBtn) closeBtn.click();
+      } catch (e) {}
+    }
+
+    const success = triggerGoogleTranslate('en');
+    if (!success) {
+      location.reload();
+    } else {
+      setTimeout(() => {
+        if (document.documentElement.classList.contains('translated-ltr') ||
+            document.body.classList.contains('translated-ltr') ||
+            document.querySelector('font')) {
+          location.reload();
+        }
+      }, 300);
+    }
+  } else {
+    setCookie('googtrans', `/en/${lang}`, 30);
+    setCookie('googtrans', `/auto/${lang}`, 30);
+    const success = triggerGoogleTranslate(lang);
+    if (!success) {
+      waitForGoogleTranslateCombo(lang);
+    }
+  }
 }
 
 function t(key) {
@@ -150,6 +243,12 @@ function t(key) {
 }
 
 function applyTranslations() {
+  // Prevent brand name from being translated
+  document.querySelectorAll('.brand-name').forEach(el => {
+    el.classList.add('notranslate');
+    el.setAttribute('translate', 'no');
+  });
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const trans = t(key);
@@ -161,19 +260,100 @@ function applyTranslations() {
       }
     }
   });
-
-  // Update document language attribute
   document.documentElement.lang = currentLanguage;
 }
 
 function updateLangButtonUI() {
+  const lang = localStorage.getItem('avs_lang') || 'en';
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === currentLanguage);
+    btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 }
 
-// Auto-inject Language Selector in Header if container exists
-document.addEventListener('DOMContentLoaded', () => {
+// Ensure Google Translate container & script exist
+function ensureGoogleTranslateLoaded() {
+  if (!document.getElementById('google_translate_element')) {
+    const div = document.createElement('div');
+    div.id = 'google_translate_element';
+    div.style.display = 'none';
+    if (document.body) {
+      document.body.appendChild(div);
+    } else {
+      document.addEventListener('DOMContentLoaded', () => document.body.appendChild(div));
+    }
+  }
+
+  if (!document.getElementById('google-translate-script')) {
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+}
+
+// Ensure Language Selector UI exists on ANY page header & mobile menu
+function ensureLanguageSelectorUI() {
+  const existing = document.querySelector('.lang-selector-wrap');
+  if (existing) {
+    updateLangButtonUI();
+  } else {
+    const headerActions = document.querySelector('.header-actions');
+    if (headerActions) {
+      const wrap = document.createElement('div');
+      wrap.className = 'lang-selector-wrap';
+      wrap.title = 'Choose Language / भाषा निवडा';
+      wrap.innerHTML = `
+        <button class="lang-btn ${currentLanguage === 'en' ? 'active' : ''}" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn ${currentLanguage === 'hi' ? 'active' : ''}" data-lang="hi" onclick="setLanguage('hi')">हिन्दी</button>
+        <button class="lang-btn ${currentLanguage === 'mr' ? 'active' : ''}" data-lang="mr" onclick="setLanguage('mr')">मराठी</button>
+      `;
+      headerActions.insertBefore(wrap, headerActions.firstChild);
+    }
+  }
+
+  // Also in mobile menu if exists
+  const mobileMenu = document.getElementById('mobileMenu') || document.querySelector('.mobile-menu');
+  if (mobileMenu && !mobileMenu.querySelector('.mobile-lang-bar')) {
+    const bar = document.createElement('div');
+    bar.className = 'mobile-lang-bar';
+    bar.style.padding = '12px 20px';
+    bar.style.background = 'rgba(0, 0, 0, 0.03)';
+    bar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.08)';
+    bar.style.display = 'flex';
+    bar.style.alignItems = 'center';
+    bar.style.justifyContent = 'space-between';
+    bar.innerHTML = `
+      <span class="lang-title" style="font-size:12px; font-weight:600; color:#1a5c2e;">🌐 भाषा / Language:</span>
+      <div class="lang-selector-wrap">
+        <button class="lang-btn ${currentLanguage === 'en' ? 'active' : ''}" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn ${currentLanguage === 'hi' ? 'active' : ''}" data-lang="hi" onclick="setLanguage('hi')">हिन्दी</button>
+        <button class="lang-btn ${currentLanguage === 'mr' ? 'active' : ''}" data-lang="mr" onclick="setLanguage('mr')">मराठी</button>
+      </div>
+    `;
+    const nav = mobileMenu.querySelector('nav');
+    if (nav) {
+      mobileMenu.insertBefore(bar, nav);
+    } else {
+      mobileMenu.appendChild(bar);
+    }
+  }
+
+  updateLangButtonUI();
+}
+
+// Auto-run Google Translate script injection immediately
+ensureGoogleTranslateLoaded();
+
+// Auto-run on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    ensureLanguageSelectorUI();
+    applyTranslations();
+    updateLangButtonUI();
+  });
+} else {
+  ensureLanguageSelectorUI();
   applyTranslations();
   updateLangButtonUI();
-});
+}

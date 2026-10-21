@@ -2,6 +2,14 @@
 // ASTRO VASTU SETU - Main JS (Pure HTML/CSS/JS - No Backend)
 // ============================================
 
+// Auto-load i18n script if not already included on this page
+if (typeof setLanguage === 'undefined' && !document.getElementById('avs-i18n-script')) {
+  const i18nTag = document.createElement('script');
+  i18nTag.id = 'avs-i18n-script';
+  i18nTag.src = 'js/i18n.js';
+  document.head.appendChild(i18nTag);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateBadges();
   initBackToTop();
